@@ -1,4 +1,4 @@
-id_sinistre,id_contrat,branche,type_sinistre,charge_sinistre,date_survenance,date_declaration,annee_survenance,mois_survenance,statut,delai_reglement_jours,cause_principale,region,gravite
+﻿id_sinistre,id_contrat,branche,type_sinistre,charge_sinistre,date_survenance,date_declaration,annee_survenance,mois_survenance,statut,delai_reglement_jours,cause_principale,region,gravite
 SI-000001,IARD-082061,Auto,Collision,162000,2019-06-20,2019-08-01,2019,6,Réglé,315,Inconnu,Touba,Moyen
 SI-000002,IARD-060422,Auto,Vol,373000,2022-06-08,2022-07-01,2022,6,En cours,,Tiers non identifié,Abengourou,Moyen
 SI-000003,IARD-018997,Habitation,Vandalisme,350000,2024-06-17,2024-07-27,2024,6,Réglé,288,Tiers non identifié,Gagnoa,Moyen

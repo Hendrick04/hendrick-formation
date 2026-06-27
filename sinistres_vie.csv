@@ -1,4 +1,4 @@
-id_sinistre,id_contrat,produit,type_sinistre,capital_assure,capital_verse,taux_couverture,date_sinistre,date_declaration,annee_sinistre,statut,provision_constituee,delai_instruction_jours,expert_designe,cause_deces
+﻿id_sinistre,id_contrat,produit,type_sinistre,capital_assure,capital_verse,taux_couverture,date_sinistre,date_declaration,annee_sinistre,statut,provision_constituee,delai_instruction_jours,expert_designe,cause_deces
 SV-000001,VIE-016476,Prévoyance,Décès accidentel,28000000,28000000,1.0,2019-12-13,2020-02-10,2019,Réglé,0,290,Dr. Touré,Autre accident
 SV-000002,VIE-053093,Prévoyance,Décès accidentel,18000000,18000000,1.0,2022-06-06,2022-06-12,2022,En cours,16304766,,Dr. Koné,Autre accident
 SV-000003,VIE-035236,Prévoyance,Invalidité permanente partielle,11000000,8000000,0.7361,2022-03-02,2022-03-13,2022,Contesté,7282351,,Dr. Koné,
