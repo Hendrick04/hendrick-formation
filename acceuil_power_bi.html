@@ -186,6 +186,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .btn-pdf-cours:disabled{background:#888;cursor:not-allowed}
 
 .footer{text-align:center;padding-top:2rem;border-top:1px solid #e0ddd5;font-size:13px;color:#888;margin-top:1rem}
+
+/* ── Téléchargement des données ── */
+.data-dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.75rem}
+@media(max-width:600px){.data-dl-grid{grid-template-columns:1fr}}
+.data-dl-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:.75rem .9rem;border-radius:9px;border:1px solid #e0ddd5;background:#faf9f8}
+.data-dl-left{display:flex;align-items:flex-start;gap:9px;min-width:0}
+.data-dl-name{font-size:13px;font-weight:700;color:#1a1a1a}
+.data-dl-desc{font-size:11.5px;color:#888;line-height:1.4}
+.data-dl-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;background:#0C447C;color:#fff;flex-shrink:0}
+.data-dl-btn:hover{background:#08325b}
+
+/* ── Mini-captures illustratives (résultat attendu) ── */
+.screenshot-box{background:#f7f6f2;border:1px solid #e0ddd5;border-radius:10px;padding:.875rem;margin:.75rem 0}
+.screenshot-caption{font-size:11.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.625rem;display:flex;align-items:center;gap:6px;justify-content:center}
 </style>
 </head>
 <body>
@@ -242,6 +256,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <h2><i class="fa-solid fa-circle-info" style="margin-right:8px"></i>À propos de la formation</h2>
     <p>Face à l'évolution croissante du volume des données dans les organisations, la gestion et l'exploitation des données deviennent un défi majeur. La donnée est un actif important accélérant le développement de toute entreprise ambitieuse.</p>
     <p>Cette formation, taillée sur mesure par des professionnels et experts de la data, vous donnera les outils pour gérer et exploiter vos données sereinement — de l'architecture d'une Data Office jusqu'au reporting Power BI, en passant par l'ingénierie de données (Talend, SQL, Python), la modélisation Data Vault et l'automatisation avec n8n.</p>
+    <p>Tous les exercices et cas pratiques s'appuient sur les systèmes d'information de trois compagnies d'assurance fictives : <strong>ADA Assurance Vie</strong> (épargne, prévoyance), <strong>Oméga Assurance</strong> (Non-Vie / IARD : auto, habitation, RC) et <strong>SigmaRé</strong>, le réassureur qui couvre ADA et Oméga via des traités cédés et acceptés. Vous installerez d'abord l'environnement technique (PostgreSQL, DBeaver, Python, Talend, Power BI, n8n), puis construirez pas à pas, pour chaque entité, un exercice adapté à son activité et aux spécificités de son SI.</p>
     <div class="intro-grid">
       <div class="intro-col">
         <h3>Public cible</h3>
@@ -267,6 +282,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="objectif-card">
     <h2><i class="fa-solid fa-bullseye" style="margin-right:8px"></i>Objectifs de la formation</h2>
     <ul class="objectif-list">
+      <li>Installer et configurer un environnement de travail complet : <strong>PostgreSQL</strong>, <strong>DBeaver</strong>, <strong>Power BI Desktop</strong>, <strong>n8n</strong></li>
       <li>Comprendre les composantes d'une Data Office moderne : architecture, gouvernance, engineering, BI, monitoring</li>
       <li>Concevoir des flux ETL/ELT avec <strong>Talend</strong> et manipuler des données avec <strong>SQL</strong> et <strong>Python/Pandas</strong></li>
       <li>Modéliser un entrepôt de données robuste avec la méthode <strong>Data Vault 2.0</strong></li>
@@ -298,8 +314,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="mod-header" onclick="toggleModule(1)">
       <div class="mod-num" style="background:#E6F1FB;color:#0C447C">01</div>
       <div class="mod-title-block">
-        <div class="mod-title">Introduction à la Data Office</div>
-        <div class="mod-sub">Architecture · Gouvernance · Engineering · BI · Monitoring</div>
+        <div class="mod-title">Introduction à la Data Office &amp; Environnement de travail</div>
+        <div class="mod-sub">Installation PostgreSQL/DBeaver/Python/Talend/Power BI/n8n · Architecture · Gouvernance · Engineering · BI · Monitoring</div>
       </div>
       <div class="mod-right">
         <span class="mod-badge" style="background:#E6F1FB;color:#0C447C;border-color:#B5D4F4">8h</span>
@@ -315,15 +331,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
           <div class="mod-section">
             <div class="mod-section-title">Objectifs</div>
             <ul class="mod-list">
+              <li>Installer et configurer son environnement de travail : PostgreSQL, DBeaver, Python, Talend, Power BI Desktop, n8n</li>
               <li>Comprendre les composantes d'une Data Office moderne et leur liaison</li>
               <li>Se familiariser avec les 5 piliers : architecture, gouvernance, engineering, BI, monitoring</li>
+              <li>Découvrir les 3 compagnies fil rouge et les spécificités de leur activité et de leur SI</li>
+              <li>Identifier les métiers et l'organisation humaine nécessaires pour faire fonctionner une Data Office</li>
             </ul>
           </div>
           <div class="mod-section">
-            <div class="mod-section-title">Outils abordés</div>
+            <div class="mod-section-title">Outils installés</div>
             <div class="tools-row">
-              <span class="tool-pill" style="background:#E6F1FB;color:#0C447C;border-color:#B5D4F4">Power BI</span>
-              <span class="tool-pill" style="background:#EAF3DE;color:#27500A;border-color:#C0DD97">Tableau</span>
+              <span class="tool-pill" style="background:#E6F1FB;color:#0C447C;border-color:#B5D4F4">PostgreSQL</span>
+              <span class="tool-pill" style="background:#EAF3DE;color:#27500A;border-color:#C0DD97">DBeaver</span>
+              <span class="tool-pill" style="background:#f7f6f2;color:#444;border-color:#d3d1c7">Python</span>
+              <span class="tool-pill" style="background:#EEEDFE;color:#3C3489;border-color:#AFA9EC">Talend</span>
+              <span class="tool-pill" style="background:#FAEEDA;color:#633806;border-color:#FAC775">Power BI Desktop</span>
               <span class="tool-pill" style="background:#f7f6f2;color:#444;border-color:#d3d1c7">n8n</span>
             </div>
           </div>
@@ -331,14 +353,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="mod-section">
           <div class="mod-section-title">Contenu</div>
           <ul class="mod-list">
+            <li><strong>Installation</strong> — PostgreSQL local, connexion via DBeaver, chargement des dumps des 3 SI, Python (Pandas/SQLAlchemy), Talend Open Studio, Power BI Desktop, n8n (Docker ou npm)</li>
             <li><strong>Entrepôt de données</strong> — Data Lake, DWH, DataMart : rôles et différences</li>
             <li><strong>Gouvernance de la donnée</strong> — qualité, fiabilité, sécurité, conformité</li>
             <li><strong>Engineering</strong> — flux ETL/ELT, orchestration avec n8n, pratiques DataOps</li>
             <li><strong>Analyse et Visualisation</strong> — outils Power BI / Tableau, construction de KPIs</li>
             <li><strong>Monitoring des données</strong> — logs, alerting, observabilité</li>
+            <li><strong>Les 3 compagnies fil rouge</strong> — ADA Assurance Vie, Oméga Assurance (IARD), SigmaRé (Réassurance) : activité et spécificités SI</li>
+            <li><strong>Ressources humaines &amp; organisation</strong> — métiers clés d'une Data Office (CDO, Data Engineer, Data Analyst, Data Steward, DPO...), comités, RACI, cycle de vie projet, catalogue de données</li>
           </ul>
         </div>
-        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Design d'une Data Office de bout en bout dans une Banque</p></div>
+        <div class="use-case-box"><p><strong>Fil rouge de la formation :</strong> tous les modules s'appuient sur les systèmes d'information de trois compagnies distinctes — <strong>ADA Assurance Vie</strong>, <strong>Oméga Assurance</strong> (Non-Vie/IARD) et <strong>SigmaRé</strong> (Réassurance de ADA et Oméga). <strong>Cas d'usage du module :</strong> installation de l'environnement technique complet et découverte des spécificités métier de chaque entité.</p></div>
+        <div class="mod-section">
+          <div class="mod-section-title">Données à télécharger — dumps des 3 SI</div>
+          <div style="background:#FAEEDA;border-left:3px solid #FAC775;border-radius:8px;padding:.7rem .9rem;margin-bottom:.75rem;font-size:12.5px;color:#633806">
+            <strong>Note pour le formateur :</strong> ces 3 dumps sont fournis en pièce jointe de la conversation. Dépose-les dans un dossier <code>dumps/</code> à côté de ce fichier HTML sur ton hébergement pour que les boutons ci-dessous fonctionnent une fois la page publiée.
+          </div>
+          <div class="data-dl-grid">
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-zipper" style="color:#633806;margin-top:2px"></i><div><div class="data-dl-name">omega_assurance_dwh_dump.sql.gz</div><div class="data-dl-desc">13 tables — ~404 000 lignes (Oméga IARD)</div></div></div>
+              <a class="data-dl-btn" href="dumps/omega_assurance_dwh_dump.sql.gz" download><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-zipper" style="color:#633806;margin-top:2px"></i><div><div class="data-dl-name">ada_vie_dwh_dump.sql.gz</div><div class="data-dl-desc">11 tables — ~212 000 lignes (ADA Vie)</div></div></div>
+              <a class="data-dl-btn" href="dumps/ada_vie_dwh_dump.sql.gz" download><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-zipper" style="color:#633806;margin-top:2px"></i><div><div class="data-dl-name">sigmare_dwh_dump.sql.gz</div><div class="data-dl-desc">9 tables — ~16 000 lignes (SigmaRé)</div></div></div>
+              <a class="data-dl-btn" href="dumps/sigmare_dwh_dump.sql.gz" download><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -384,7 +429,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <div class="mod-section-title">Partie 2 — SQL</div>
             <ul class="mod-list">
               <li>SELECT, WHERE, ORDER BY, DISTINCT · COUNT, SUM, AVG</li>
-              <li>Jointures INNER, LEFT, RIGHT, FULL sur tables ventes/clients</li>
+              <li>Jointures INNER, LEFT, RIGHT, FULL sur les tables polices/sinistres</li>
               <li>NULL, COALESCE, CASE WHEN, GROUP BY HAVING</li>
               <li>Création de vues et procédures stockées</li>
             </ul>
@@ -399,7 +444,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <li>Export vers CSV, Excel ou PostgreSQL</li>
           </ul>
         </div>
-        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Pipeline d'ingestion CSV + API → PostgreSQL · Nettoyage de données brutes (doublons, types, formats)</p></div>
+        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Un exercice par entité — Talend pour Oméga Assurance (polices/sinistres IARD + API météo), SQL pour ADA Assurance Vie (polices/primes Vie), Python pour SigmaRé (traités de réassurance) → chargement PostgreSQL</p></div>
+        <div class="mod-section">
+          <div class="mod-section-title">Données à télécharger avant de commencer</div>
+          <div style="background:#FAEEDA;border-left:3px solid #FAC775;border-radius:8px;padding:.7rem .9rem;margin-bottom:.75rem;font-size:12.5px;color:#633806">
+            <strong>Note pour le formateur :</strong> ces 4 fichiers sont fournis en pièce jointe de la conversation. Pour que les boutons ci-dessous fonctionnent une fois la page publiée, dépose-les dans un dossier <code>data/</code> à côté de ce fichier HTML sur ton hébergement (même principe que pour la formation R — par ex. un dépôt GitHub Pages).
+          </div>
+          <div class="data-dl-grid">
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-excel" style="color:#27500A;margin-top:2px"></i><div><div class="data-dl-name">polices_omega.xlsx</div><div class="data-dl-desc">151 lignes — polices IARD Oméga</div></div></div>
+              <a class="data-dl-btn" href="data/polices_omega.xlsx" download><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-excel" style="color:#27500A;margin-top:2px"></i><div><div class="data-dl-name">sinistres_omega.xlsx</div><div class="data-dl-desc">80 lignes — sinistres IARD Oméga</div></div></div>
+              <a class="data-dl-btn" href="data/sinistres_omega.xlsx" download><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-excel" style="color:#27500A;margin-top:2px"></i><div><div class="data-dl-name">polices_ada_vie.xlsx</div><div class="data-dl-desc">150 lignes — polices Vie ADA</div></div></div>
+              <a class="data-dl-btn" href="data/polices_ada_vie.xlsx" download><i class="fa-solid fa-download"></i></a>
+            </div>
+            <div class="data-dl-item">
+              <div class="data-dl-left"><i class="fa-solid fa-file-excel" style="color:#27500A;margin-top:2px"></i><div><div class="data-dl-name">traites_sigmare.xlsx</div><div class="data-dl-desc">2 feuilles — traités &amp; sinistres cédés SigmaRé</div></div></div>
+              <a class="data-dl-btn" href="data/traites_sigmare.xlsx" download><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -444,7 +513,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             </ul>
           </div>
         </div>
-        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Construction d'un mini-DWH en Data Vault à partir de données clients &amp; ventes</p></div>
+        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Construction d'un mini-DWH groupe en Data Vault consolidant les polices d'ADA Assurance Vie, d'Oméga Assurance, et les traités de SigmaRé</p></div>
       </div>
     </div>
   </div>
@@ -492,7 +561,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <li>Storytelling avec Power BI : tableaux de bord, visuels, slicers</li>
           </ul>
         </div>
-        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Tableau de bord des ventes avec filtres temporels et indicateurs personnalisés · Rapport ALM (Asset Liability Management)</p></div>
+        <div class="use-case-box"><p><strong>Cas d'usage :</strong> Tableau de bord comparant le ratio S/P d'ADA Assurance Vie, d'Oméga Assurance et de SigmaRé, avec filtres temporels · Rapport ALM (Asset Liability Management) pour ADA Vie</p></div>
       </div>
     </div>
   </div>
@@ -534,7 +603,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <li>Publication automatique de rapports mis à jour</li>
           </ul>
         </div>
-        <div class="use-case-box"><p><strong>Workflow complet :</strong> Source → Traitement Python → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email</p></div>
+        <div class="use-case-box"><p><strong>Workflow complet :</strong> API d'Oméga Assurance ou d'ADA Assurance Vie → Traitement Python → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email</p></div>
       </div>
     </div>
   </div>
@@ -576,7 +645,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
             <li><strong>Présentation orale</strong> de 5 minutes</li>
           </ul>
         </div>
-        <div class="use-case-box"><p><strong>Livrable :</strong> Rapport Power BI complet — connexion, transformation, modèle, DAX, dashboard narratif, automatisation — présenté à l'oral</p></div>
+        <div class="use-case-box"><p><strong>Livrable :</strong> Rapport Power BI complet sur l'une des 3 entités au choix (ADA Assurance Vie, Oméga Assurance ou SigmaRé) — connexion, transformation, modèle, DAX, dashboard narratif, automatisation — présenté à l'oral</p></div>
       </div>
     </div>
   </div>
@@ -681,6 +750,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div id="result-block"></div>
     <div class="btn-row">
       <button class="btn-nav" onclick="goModSec(5)"><i class="fa-solid fa-arrow-left"></i> Retour au QCM</button>
+      <button class="btn-nav" onclick="retakeFinalQCM()"><i class="fa-solid fa-rotate-right"></i> Refaire l'évaluation (nouvel ordre)</button>
       <button class="btn-nav primary" onclick="closeModule()"><i class="fa-solid fa-house"></i> Retour à l'accueil</button>
     </div>
   </div>
@@ -718,158 +788,158 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 var ALL_QCM = {
   1:{
     q1:[
-      {q:"Quel pilier d'une Data Office s'occupe de la qualité, la fiabilité et la conformité des données ?",opts:["Engineering","Gouvernance","Monitoring","BI"],ans:1,exp:"La gouvernance de la donnée couvre la qualité, la fiabilité, la sécurité et la conformité réglementaire."},
-      {q:"Quelle est la différence principale entre un Data Lake et un Data Warehouse (DWH) ?",opts:["Aucune, ce sont des synonymes","Le Data Lake stocke des données brutes non structurées, le DWH des données structurées et modélisées","Le DWH est toujours plus récent","Le Data Lake ne peut pas stocker de CSV"],ans:1,exp:"Le Data Lake stocke tout type de données brutes (structurées ou non), le DWH stocke des données déjà nettoyées et modélisées pour l'analyse."},
-      {q:"Un DataMart est :",opts:["Un DWH complet de l'entreprise","Un sous-ensemble d'un DWH dédié à un métier spécifique","Un outil de visualisation","Un langage de requête"],ans:1,exp:"Le DataMart cible un périmètre métier précis (ex: ventes, RH), contrairement au DWH qui couvre toute l'entreprise."},
-      {q:"Le pilier 'Engineering' d'une Data Office concerne principalement :",opts:["Les tableaux de bord","Les flux ETL/ELT et l'orchestration","La formation des utilisateurs","Le choix des couleurs des graphiques"],ans:1,exp:"L'engineering couvre la construction des flux ETL/ELT et l'orchestration des traitements de données (DataOps)."}
+      {q:"Quel est le port par défaut sur lequel PostgreSQL écoute les connexions ?",opts:["8080","1433","5432","3306"],ans:2,exp:"PostgreSQL utilise par défaut le port 5432 (à distinguer du 3306 de MySQL ou du 1433 de SQL Server)."},
+      {q:"Quelle est la différence principale entre un Data Lake et un Data Warehouse (DWH) ?",opts:["Le Data Lake stocke des données brutes non structurées, le DWH des données structurées et modélisées","Le Data Lake ne peut pas stocker de CSV","Aucune, ce sont des synonymes","Le DWH est toujours plus récent"],ans:0,exp:"Le Data Lake stocke tout type de données brutes (structurées ou non), le DWH stocke des données déjà nettoyées et modélisées pour l'analyse."},
+      {q:"Un DataMart est :",opts:["Un DWH complet de l'entreprise","Un sous-ensemble d'un DWH dédié à un métier spécifique","Un langage de requête","Un outil de visualisation"],ans:1,exp:"Le DataMart cible un périmètre métier précis (ex: branche Vie), contrairement au DWH qui couvre toute l'entreprise."},
+      {q:"DBeaver sert principalement à :",opts:["Écrire du code Python","Créer des rapports Power BI","Se connecter à des bases de données et exécuter du SQL via une interface graphique","Orchestrer des workflows"],ans:2,exp:"DBeaver est un client SQL universel permettant de se connecter à PostgreSQL (et d'autres SGBD) pour explorer et interroger les données."}
     ],
     q2:[
-      {q:"Que signifie ETL ?",opts:["Extract Transform Load","Every Table Loaded","Extract Test Load","External Table Link"],ans:0,exp:"ETL = Extract, Transform, Load : extraire les données, les transformer, puis les charger dans la cible."},
-      {q:"Quelle différence entre ETL et ELT ?",opts:["Aucune différence","Dans l'ELT, la transformation se fait après le chargement dans la cible","L'ELT n'existe pas","L'ETL charge sans transformer"],ans:1,exp:"ELT charge d'abord les données brutes dans l'entrepôt cible, puis les transforme sur place (souvent en SQL)."},
-      {q:"Le monitoring des données sert à :",opts:["Créer des rapports Power BI","Surveiller la qualité et la disponibilité des flux via logs et alerting","Modéliser des tables","Écrire du DAX"],ans:1,exp:"Le monitoring assure l'observabilité des pipelines : détection d'échecs, alertes, suivi des SLA."},
-      {q:"Dans une Data Office, la BI (Business Intelligence) a pour rôle de :",opts:["Nettoyer les fichiers CSV","Transformer les données en KPIs et visualisations exploitables","Sécuriser le réseau","Orchestrer les workflows"],ans:1,exp:"La BI valorise les données déjà collectées et gouvernées en indicateurs et visualisations pour la prise de décision."}
+      {q:"Que signifie ETL ?",opts:["External Table Link","Every Table Loaded","Extract Test Load","Extract Transform Load"],ans:3,exp:"ETL = Extract, Transform, Load : extraire les données, les transformer, puis les charger dans la cible."},
+      {q:"Quelle différence entre ETL et ELT ?",opts:["Aucune différence","L'ELT n'existe pas","L'ETL charge sans transformer","Dans l'ELT, la transformation se fait après le chargement dans la cible"],ans:3,exp:"ELT charge d'abord les données brutes dans l'entrepôt cible, puis les transforme sur place (souvent en SQL)."},
+      {q:"Dans une Data Office, qui est principalement responsable de la construction des pipelines ETL/ELT ?",opts:["Le Data Engineer","Le Chief Data Officer","Le DPO","Le Data Analyst"],ans:0,exp:"Le Data Engineer construit et maintient les pipelines de données (Talend, Python, SQL) — c'est le rôle exercé aux Modules 2 et 3 de cette formation."},
+      {q:"Power BI Desktop est nativement disponible sur :",opts:["macOS uniquement","Linux uniquement","Tous les systèmes d'exploitation de façon identique","Windows uniquement"],ans:3,exp:"Power BI Desktop est un logiciel Windows ; sur macOS/Linux il faut passer par une VM Windows ou un poste distant."}
     ],
     qf:[
-      {q:"Les 5 piliers d'une Data Office moderne sont :",opts:["Architecture, Gouvernance, Engineering, BI, Monitoring","Marketing, Vente, RH, Finance, IT","Extract, Transform, Load, Clean, Store","Python, SQL, R, Excel, Power BI"],ans:0,exp:"Architecture, Gouvernance, Engineering, BI et Monitoring forment les 5 piliers structurants d'une Data Office."},
-      {q:"Un Data Lake stocke typiquement :",opts:["Uniquement des tableaux Excel","Des données brutes de tout type (structurées, semi-structurées, non structurées)","Uniquement des rapports Power BI","Des sauvegardes de code"],ans:1,exp:"Le Data Lake est conçu pour ingérer tout type de données brutes sans schéma imposé au départ."},
-      {q:"Pourquoi la gouvernance des données est-elle critique dans une banque ?",opts:["Ce n'est pas critique","Pour la conformité réglementaire, la sécurité et la fiabilité des rapports financiers","Uniquement pour la couleur des dashboards","Cela ralentit toujours les projets sans bénéfice"],ans:1,exp:"Dans un secteur régulé comme la banque, la gouvernance garantit conformité, traçabilité et fiabilité des données utilisées pour les décisions et le reporting réglementaire."},
-      {q:"Le DataOps s'inspire des pratiques :",opts:["Du DevOps appliquées aux données","Du marketing digital","De la comptabilité analytique","Du design graphique"],ans:0,exp:"Le DataOps applique les principes d'automatisation, de tests et de collaboration du DevOps aux pipelines de données."},
-      {q:"Un KPI (indicateur clé de performance) est construit typiquement à l'étape :",opts:["Gouvernance","Monitoring","BI / Analyse et Visualisation","Architecture"],ans:2,exp:"Les KPIs sont définis et calculés dans le pilier BI, à partir de données déjà gouvernées et fiabilisées."},
-      {q:"Quel outil a été cité comme exemple pour l'orchestration dans le pilier Engineering ?",opts:["n8n","Word","PowerPoint","Photoshop"],ans:0,exp:"n8n est un outil d'orchestration de workflows utilisé pour automatiser les flux de données."},
-      {q:"La sécurité des données fait partie de :",opts:["L'Engineering uniquement","La Gouvernance","Le Monitoring uniquement","Aucun des piliers"],ans:1,exp:"La sécurité (accès, chiffrement, conformité) est un des axes centraux de la gouvernance de la donnée."},
-      {q:"Un DataMart 'Ventes' contiendrait typiquement :",opts:["Toutes les données de l'entreprise sans filtre","Les données ciblées et modélisées pour l'analyse des ventes uniquement","Uniquement des logs serveurs","Le code source de l'application web"],ans:1,exp:"Le DataMart est un sous-ensemble métier du DWH, ici centré sur les ventes."},
-      {q:"L'observabilité d'un pipeline de données permet de :",opts:["Améliorer le design des rapports","Détecter rapidement les anomalies et pannes dans les flux","Remplacer la gouvernance","Créer des mesures DAX"],ans:1,exp:"L'observabilité (logs, métriques, alertes) permet de détecter et diagnostiquer rapidement les problèmes dans les pipelines."},
-      {q:"Dans le cas d'usage du module, la Data Office est conçue pour :",opts:["Une PME de e-commerce","Une Banque","Un hôpital","Une école"],ans:1,exp:"Le cas d'usage du module 1 porte sur le design d'une Data Office de bout en bout dans une Banque."}
+      {q:"Les 5 piliers d'une Data Office moderne sont :",opts:["Python, SQL, R, Excel, Power BI","Architecture, Gouvernance, Engineering, BI, Monitoring","Extract, Transform, Load, Clean, Store","Marketing, Vente, RH, Finance, IT"],ans:1,exp:"Architecture, Gouvernance, Engineering, BI et Monitoring forment les 5 piliers structurants d'une Data Office."},
+      {q:"Un Data Lake stocke typiquement :",opts:["Uniquement des rapports Power BI","Des sauvegardes de code","Des données brutes de tout type (structurées, semi-structurées, non structurées)","Uniquement des tableaux Excel"],ans:2,exp:"Le Data Lake est conçu pour ingérer tout type de données brutes sans schéma imposé au départ."},
+      {q:"Pourquoi la gouvernance des données est-elle critique pour des compagnies d'assurance comme ADA Assurance Vie, Oméga Assurance ou SigmaRé ?",opts:["Cela ralentit toujours les projets sans bénéfice","Uniquement pour la couleur des dashboards","Ce n'est pas critique","Pour la conformité réglementaire, la sécurité et la fiabilité des calculs de provisions et du reporting"],ans:3,exp:"Dans un secteur régulé comme l'assurance, la gouvernance garantit conformité, traçabilité et fiabilité des données utilisées pour les provisions et les décisions."},
+      {q:"Le DataOps s'inspire des pratiques :",opts:["Du marketing digital","Du design graphique","Du DevOps appliquées aux données","De la comptabilité analytique"],ans:2,exp:"Le DataOps applique les principes d'automatisation, de tests et de collaboration du DevOps aux pipelines de données."},
+      {q:"Un KPI (indicateur clé de performance) est construit typiquement à l'étape :",opts:["Monitoring","BI / Analyse et Visualisation","Architecture","Gouvernance"],ans:1,exp:"Les KPIs sont définis et calculés dans le pilier BI, à partir de données déjà gouvernées et fiabilisées."},
+      {q:"n8n peut être installé via :",opts:["Uniquement en achetant une licence Windows","Uniquement depuis le Microsoft Store","npm ou Docker uniquement","Il ne peut pas être installé, seulement utilisé en ligne"],ans:2,exp:"n8n s'installe soit via npm (npm install n8n -g), soit via une image Docker officielle."},
+      {q:"Une matrice RACI dans un projet data sert à :",opts:["Clarifier qui est Responsable, Approbateur, Consulté et Informé sur chaque décision","Calculer le ratio S/P","Remplacer le catalogue de données","Chiffrer le budget IT"],ans:0,exp:"La matrice RACI clarifie les rôles et évite les zones de flou sur qui décide, qui exécute et qui doit être informé dans un projet data."},
+      {q:"Un DataMart 'Réassurance' contiendrait typiquement :",opts:["Le code source de l'application web","Les données ciblées et modélisées pour l'analyse des traités cédés et acceptés uniquement","Uniquement des logs serveurs","Toutes les données de l'entreprise sans filtre"],ans:1,exp:"Le DataMart est un sous-ensemble métier du DWH, ici centré sur la branche Réassurance."},
+      {q:"L'observabilité d'un pipeline de données permet de :",opts:["Détecter rapidement les anomalies et pannes dans les flux","Remplacer la gouvernance","Améliorer le design des rapports","Créer des mesures DAX"],ans:0,exp:"L'observabilité (logs, métriques, alertes) permet de détecter et diagnostiquer rapidement les problèmes dans les pipelines."},
+      {q:"Le fil rouge utilisé dans tous les modules de cette formation repose sur les SI de :",opts:["ADA Assurance Vie, Oméga Assurance et SigmaRé","Une seule banque généraliste","Un hôpital et une école","Aucune entreprise, uniquement des données publiques"],ans:0,exp:"Tous les exercices s'appuient sur les systèmes d'information d'ADA Assurance Vie (Vie), Oméga Assurance (Non-Vie/IARD) et SigmaRé (Réassurance)."}
     ]
   },
   2:{
     q1:[
-      {q:"Dans Talend Open Studio, un 'Job' représente :",opts:["Un utilisateur du logiciel","Un flux de traitement de données (ETL) construit visuellement","Un rapport Power BI","Une base de données"],ans:1,exp:"Un Job Talend est un flux ETL visuel composé de composants connectés (source, transformations, cible)."},
-      {q:"Le composant tMap dans Talend sert à :",opts:["Se connecter à une API REST","Mapper et transformer des colonnes entre entrée et sortie","Supprimer un job","Afficher une carte géographique"],ans:1,exp:"tMap est le composant central de transformation : il mappe les colonnes source vers la sortie et permet des expressions de transformation."},
-      {q:"Pour appeler une API REST dans Talend, on utilise :",opts:["tFileInputDelimited","tRestClient","tMap","tLogRow"],ans:1,exp:"tRestClient est le composant Talend dédié aux appels d'API REST (GET, POST, etc.)."},
-      {q:"tFilterRow permet de :",opts:["Trier les colonnes","Filtrer les lignes selon une condition","Charger les données dans PostgreSQL","Créer une jointure"],ans:1,exp:"tFilterRow filtre les lignes d'un flux selon une ou plusieurs conditions logiques."}
+      {q:"Dans Talend Open Studio, un 'Job' représente :",opts:["Un rapport Power BI","Un flux de traitement de données (ETL) construit visuellement","Une base de données","Un utilisateur du logiciel"],ans:1,exp:"Un Job Talend est un flux ETL visuel composé de composants connectés (source, transformations, cible)."},
+      {q:"Le composant tMap dans Talend sert à :",opts:["Supprimer un job","Mapper et transformer des colonnes entre entrée et sortie","Afficher une carte géographique","Se connecter à une API REST"],ans:1,exp:"tMap est le composant central de transformation : il mappe les colonnes source vers la sortie et permet des expressions de transformation."},
+      {q:"Pour appeler une API REST dans Talend, on utilise :",opts:["tRestClient","tFileInputDelimited","tLogRow","tMap"],ans:0,exp:"tRestClient est le composant Talend dédié aux appels d'API REST (GET, POST, etc.)."},
+      {q:"tFilterRow permet de :",opts:["Créer une jointure","Filtrer les lignes selon une condition","Charger les données dans PostgreSQL","Trier les colonnes"],ans:1,exp:"tFilterRow filtre les lignes d'un flux selon une ou plusieurs conditions logiques."}
     ],
     q2:[
-      {q:"En SQL, quelle clause permet de filtrer les lignes avant l'agrégation ?",opts:["HAVING","WHERE","GROUP BY","ORDER BY"],ans:1,exp:"WHERE filtre les lignes avant le regroupement ; HAVING filtre après l'agrégation (sur les résultats groupés)."},
-      {q:"Quelle jointure retourne uniquement les lignes ayant une correspondance dans les deux tables ?",opts:["LEFT JOIN","RIGHT JOIN","INNER JOIN","FULL JOIN"],ans:2,exp:"INNER JOIN ne retourne que les lignes où la condition de jointure est vérifiée dans les deux tables."},
-      {q:"COALESCE(colonne, 0) sert à :",opts:["Trier une colonne","Remplacer les valeurs NULL par une valeur par défaut (ici 0)","Supprimer les doublons","Créer un index"],ans:1,exp:"COALESCE() retourne la première valeur non NULL de sa liste d'arguments — pratique pour gérer les valeurs manquantes."},
-      {q:"CASE WHEN en SQL sert à :",opts:["Créer une boucle","Exprimer une logique conditionnelle (si/alors/sinon) dans une requête","Supprimer une table","Créer un index"],ans:1,exp:"CASE WHEN ... THEN ... ELSE ... END permet d'exprimer des conditions directement dans une requête SQL."}
+      {q:"En SQL, quelle clause permet de filtrer les lignes avant l'agrégation ?",opts:["WHERE","GROUP BY","ORDER BY","HAVING"],ans:0,exp:"WHERE filtre les lignes avant le regroupement ; HAVING filtre après l'agrégation (sur les résultats groupés)."},
+      {q:"Quelle jointure retourne uniquement les lignes ayant une correspondance dans les deux tables ?",opts:["RIGHT JOIN","INNER JOIN","LEFT JOIN","FULL JOIN"],ans:1,exp:"INNER JOIN ne retourne que les lignes où la condition de jointure est vérifiée dans les deux tables."},
+      {q:"COALESCE(colonne, 0) sert à :",opts:["Créer un index","Trier une colonne","Supprimer les doublons","Remplacer les valeurs NULL par une valeur par défaut (ici 0)"],ans:3,exp:"COALESCE() retourne la première valeur non NULL de sa liste d'arguments — pratique pour gérer les valeurs manquantes."},
+      {q:"CASE WHEN en SQL sert à :",opts:["Créer un index","Exprimer une logique conditionnelle (si/alors/sinon) dans une requête","Créer une boucle","Supprimer une table"],ans:1,exp:"CASE WHEN ... THEN ... ELSE ... END permet d'exprimer des conditions directement dans une requête SQL."}
     ],
     qf:[
-      {q:"Quel composant Talend charge les données transformées dans une base PostgreSQL ?",opts:["tInput","tOutput / tPostgresqlOutput","tMap","tLogRow"],ans:1,exp:"Les composants tOutput/tPostgresqlOutput écrivent le flux de données transformé dans la base cible."},
-      {q:"En SQL, GROUP BY ... HAVING COUNT(*) > 5 permet de :",opts:["Filtrer les groupes ayant plus de 5 lignes","Trier les résultats","Supprimer les doublons","Créer une vue"],ans:0,exp:"HAVING filtre les groupes après agrégation — ici on ne garde que les groupes de plus de 5 lignes."},
-      {q:"pandas.read_csv() sert à :",opts:["Écrire un fichier CSV","Charger un fichier CSV dans un DataFrame","Se connecter à PostgreSQL","Créer un graphique"],ans:1,exp:"read_csv() importe un fichier CSV et le charge sous forme de DataFrame Pandas."},
-      {q:"En Pandas, pour supprimer les doublons d'un DataFrame df, on utilise :",opts:["df.dropna()","df.drop_duplicates()","df.fillna()","df.unique()"],ans:1,exp:"drop_duplicates() supprime les lignes dupliquées d'un DataFrame."},
-      {q:"df.groupby('region')['ventes'].sum() calcule :",opts:["La moyenne globale des ventes","La somme des ventes par région","Le nombre de régions","Le maximum des ventes"],ans:1,exp:"groupby() + sum() agrège les ventes par valeur de la colonne region — équivalent d'un GROUP BY SQL."},
-      {q:"Pour gérer les valeurs manquantes dans une colonne numérique Pandas, on peut utiliser :",opts:["df.fillna(valeur)","df.to_csv()","df.head()","df.columns"],ans:0,exp:"fillna() remplace les valeurs manquantes (NaN) par une valeur choisie (moyenne, médiane, 0, etc.)."},
-      {q:"Une vue SQL (VIEW) est :",opts:["Une copie physique permanente des données","Une requête SQL enregistrée qu'on peut interroger comme une table","Un fichier CSV","Un composant Talend"],ans:1,exp:"Une vue est une requête stockée réutilisable, sans dupliquer physiquement les données."},
-      {q:"Quel type de jointure garde toutes les lignes de la table de gauche même sans correspondance ?",opts:["INNER JOIN","LEFT JOIN","CROSS JOIN uniquement","Aucune"],ans:1,exp:"LEFT JOIN conserve toutes les lignes de la table de gauche, avec NULL si pas de correspondance à droite."},
-      {q:"df.to_sql('table', engine) en Pandas permet de :",opts:["Lire une table SQL","Exporter un DataFrame vers une base de données","Créer un graphique","Supprimer une table"],ans:1,exp:"to_sql() écrit le contenu d'un DataFrame directement dans une table de base de données."},
-      {q:"Dans un pipeline d'ingestion CSV + API → PostgreSQL, l'étape de nettoyage sert avant tout à :",opts:["Accélérer le réseau","Garantir la fiabilité et la cohérence des données avant chargement","Remplacer PostgreSQL","Générer des rapports"],ans:1,exp:"Le nettoyage (doublons, types, valeurs manquantes) garantit que les données chargées en base sont fiables et exploitables."}
+      {q:"Quel composant Talend charge les données transformées dans une base PostgreSQL ?",opts:["tMap","tOutput / tPostgresqlOutput","tLogRow","tInput"],ans:1,exp:"Les composants tOutput/tPostgresqlOutput écrivent le flux de données transformé dans la base cible."},
+      {q:"En SQL, GROUP BY ... HAVING COUNT(*) > 5 permet de :",opts:["Créer une vue","Supprimer les doublons","Filtrer les groupes ayant plus de 5 lignes","Trier les résultats"],ans:2,exp:"HAVING filtre les groupes après agrégation — ici on ne garde que les groupes de plus de 5 lignes."},
+      {q:"pandas.read_csv() sert à :",opts:["Charger un fichier CSV dans un DataFrame","Écrire un fichier CSV","Se connecter à PostgreSQL","Créer un graphique"],ans:0,exp:"read_csv() importe un fichier CSV et le charge sous forme de DataFrame Pandas."},
+      {q:"En Pandas, pour supprimer les doublons d'un DataFrame df, on utilise :",opts:["df.dropna()","df.unique()","df.drop_duplicates()","df.fillna()"],ans:2,exp:"drop_duplicates() supprime les lignes dupliquées d'un DataFrame."},
+      {q:"df.groupby('region')['ventes'].sum() calcule :",opts:["Le maximum des ventes","La somme des ventes par région","La moyenne globale des ventes","Le nombre de régions"],ans:1,exp:"groupby() + sum() agrège les ventes par valeur de la colonne region — équivalent d'un GROUP BY SQL."},
+      {q:"Pour gérer les valeurs manquantes dans une colonne numérique Pandas, on peut utiliser :",opts:["df.to_csv()","df.head()","df.fillna(valeur)","df.columns"],ans:2,exp:"fillna() remplace les valeurs manquantes (NaN) par une valeur choisie (moyenne, médiane, 0, etc.)."},
+      {q:"Une vue SQL (VIEW) est :",opts:["Une copie physique permanente des données","Un composant Talend","Une requête SQL enregistrée qu'on peut interroger comme une table","Un fichier CSV"],ans:2,exp:"Une vue est une requête stockée réutilisable, sans dupliquer physiquement les données."},
+      {q:"Quel type de jointure garde toutes les lignes de la table de gauche même sans correspondance ?",opts:["LEFT JOIN","INNER JOIN","CROSS JOIN uniquement","Aucune"],ans:0,exp:"LEFT JOIN conserve toutes les lignes de la table de gauche, avec NULL si pas de correspondance à droite."},
+      {q:"df.to_sql('table', engine) en Pandas permet de :",opts:["Supprimer une table","Exporter un DataFrame vers une base de données","Lire une table SQL","Créer un graphique"],ans:1,exp:"to_sql() écrit le contenu d'un DataFrame directement dans une table de base de données."},
+      {q:"Dans un pipeline d'ingestion CSV + API → PostgreSQL, l'étape de nettoyage sert avant tout à :",opts:["Générer des rapports","Garantir la fiabilité et la cohérence des données avant chargement","Remplacer PostgreSQL","Accélérer le réseau"],ans:1,exp:"Le nettoyage (doublons, types, valeurs manquantes) garantit que les données chargées en base sont fiables et exploitables."}
     ]
   },
   3:{
     q1:[
-      {q:"Dans Data Vault 2.0, un Hub contient :",opts:["Les mesures numériques uniquement","La liste des clés métier uniques d'une entité","Les relations entre entités","Les rapports Power BI"],ans:1,exp:"Un Hub stocke les clés métier uniques (business keys) d'une entité, comme les identifiants clients."},
-      {q:"Un Link dans Data Vault représente :",opts:["Une colonne calculée","Une relation entre deux ou plusieurs Hubs","Un rapport","Un index de base de données"],ans:1,exp:"Un Link matérialise une relation (souvent many-to-many) entre plusieurs Hubs."},
-      {q:"Un Satellite dans Data Vault stocke :",opts:["Les clés métier uniquement","Les attributs descriptifs et leur historique dans le temps","Les rapports finaux","Les jobs Talend"],ans:1,exp:"Le Satellite porte les attributs (descriptifs) liés à un Hub ou un Link, avec horodatage pour l'historisation."},
-      {q:"Le Raw Vault, par opposition au Business Vault, contient :",opts:["Des données déjà transformées pour le métier","Les données brutes chargées telles quelles depuis les sources","Uniquement des KPIs","Des données supprimées"],ans:1,exp:"Le Raw Vault reçoit les données sources sans transformation métier ; le Business Vault applique les règles de gestion."}
+      {q:"Dans Data Vault 2.0, un Hub contient :",opts:["Les relations entre entités","Les mesures numériques uniquement","Les rapports Power BI","La liste des clés métier uniques d'une entité"],ans:3,exp:"Un Hub stocke les clés métier uniques (business keys) d'une entité, comme les identifiants clients."},
+      {q:"Un Link dans Data Vault représente :",opts:["Un index de base de données","Un rapport","Une relation entre deux ou plusieurs Hubs","Une colonne calculée"],ans:2,exp:"Un Link matérialise une relation (souvent many-to-many) entre plusieurs Hubs."},
+      {q:"Un Satellite dans Data Vault stocke :",opts:["Les jobs Talend","Les rapports finaux","Les attributs descriptifs et leur historique dans le temps","Les clés métier uniquement"],ans:2,exp:"Le Satellite porte les attributs (descriptifs) liés à un Hub ou un Link, avec horodatage pour l'historisation."},
+      {q:"Le Raw Vault, par opposition au Business Vault, contient :",opts:["Des données supprimées","Uniquement des KPIs","Les données brutes chargées telles quelles depuis les sources","Des données déjà transformées pour le métier"],ans:2,exp:"Le Raw Vault reçoit les données sources sans transformation métier ; le Business Vault applique les règles de gestion."}
     ],
     q2:[
-      {q:"Un avantage du Data Vault par rapport au modèle en étoile est :",opts:["Il est toujours plus rapide à interroger","Il est plus flexible pour intégrer de nouvelles sources sans casser l'existant","Il ne nécessite jamais de SQL","Il remplace complètement Power BI"],ans:1,exp:"Le Data Vault découple les entités (Hubs), leurs relations (Links) et leurs attributs (Satellites), facilitant l'ajout de nouvelles sources sans remodéliser l'existant."},
-      {q:"L'étape 'staging' dans un chargement Data Vault sert à :",opts:["Stocker les rapports finaux","Accueillir temporairement les données brutes avant leur traitement","Supprimer les tables Satellites","Créer les mesures DAX"],ans:1,exp:"Le staging est une zone tampon où les données brutes sont déposées avant d'être chargées dans le Raw Vault."},
-      {q:"L'historisation dans un Satellite permet de :",opts:["Supprimer l'historique","Conserver la trace des changements de valeur d'un attribut dans le temps","Accélérer les requêtes DAX","Remplacer les Hubs"],ans:1,exp:"Chaque changement de valeur d'un attribut crée une nouvelle ligne horodatée dans le Satellite, préservant l'historique complet."},
-      {q:"La gestion des clés dans Data Vault repose typiquement sur :",opts:["Des clés métier (business keys) et des clés de hachage (hash keys)","Uniquement des identifiants auto-incrémentés","Aucune clé n'est nécessaire","Des mots de passe"],ans:0,exp:"Data Vault combine business keys (identifiants métier) et souvent des hash keys pour garantir l'intégrité et la performance des jointures."}
+      {q:"Un avantage du Data Vault par rapport au modèle en étoile est :",opts:["Il est toujours plus rapide à interroger","Il ne nécessite jamais de SQL","Il remplace complètement Power BI","Il est plus flexible pour intégrer de nouvelles sources sans casser l'existant"],ans:3,exp:"Le Data Vault découple les entités (Hubs), leurs relations (Links) et leurs attributs (Satellites), facilitant l'ajout de nouvelles sources sans remodéliser l'existant."},
+      {q:"L'étape 'staging' dans un chargement Data Vault sert à :",opts:["Stocker les rapports finaux","Créer les mesures DAX","Supprimer les tables Satellites","Accueillir temporairement les données brutes avant leur traitement"],ans:3,exp:"Le staging est une zone tampon où les données brutes sont déposées avant d'être chargées dans le Raw Vault."},
+      {q:"L'historisation dans un Satellite permet de :",opts:["Remplacer les Hubs","Supprimer l'historique","Accélérer les requêtes DAX","Conserver la trace des changements de valeur d'un attribut dans le temps"],ans:3,exp:"Chaque changement de valeur d'un attribut crée une nouvelle ligne horodatée dans le Satellite, préservant l'historique complet."},
+      {q:"La gestion des clés dans Data Vault repose typiquement sur :",opts:["Uniquement des identifiants auto-incrémentés","Aucune clé n'est nécessaire","Des mots de passe","Des clés métier (business keys) et des clés de hachage (hash keys)"],ans:3,exp:"Data Vault combine business keys (identifiants métier) et souvent des hash keys pour garantir l'intégrité et la performance des jointures."}
     ],
     qf:[
-      {q:"Les trois types de tables fondamentaux du Data Vault 2.0 sont :",opts:["Hubs, Links, Satellites","Fact, Dimension, Bridge","Staging, Raw, Business","Rows, Columns, Cells"],ans:0,exp:"Hubs (clés), Links (relations) et Satellites (attributs/historique) forment la base du modèle Data Vault 2.0."},
-      {q:"Pourquoi sépare-t-on les clés métier (Hub) des attributs descriptifs (Satellite) ?",opts:["Pour compliquer inutilement le modèle","Pour permettre l'évolution indépendante des attributs sans casser les clés et les relations","Ce n'est pas une pratique recommandée","Pour éviter d'utiliser SQL"],ans:1,exp:"Cette séparation rend le modèle très résilient aux changements de schéma source et facilite l'ajout de nouveaux attributs."},
-      {q:"Le Business Vault, par rapport au Raw Vault, ajoute :",opts:["De nouvelles sources brutes uniquement","Des règles de transformation et de calcul orientées métier","Des rapports Power BI directement","Des mots de passe utilisateurs"],ans:1,exp:"Le Business Vault applique la logique métier (calculs, règles de gestion) sur les données du Raw Vault."},
-      {q:"Un Link entre un Hub 'Client' et un Hub 'Commande' représente :",opts:["Un attribut du client","La relation entre un client et ses commandes","Une erreur de modélisation","Une vue SQL"],ans:1,exp:"Le Link matérialise la relation entre les deux entités métier (client et commande)."},
-      {q:"Dans un mini-DWH clients & ventes en Data Vault, le Hub 'Client' contiendrait typiquement :",opts:["Le chiffre d'affaires total","L'identifiant unique du client (ex: id_client)","La date de la dernière commande uniquement","Le nom du commercial"],ans:1,exp:"Le Hub stocke la clé métier unique — ici l'identifiant client — sans les attributs descriptifs."},
-      {q:"Un des risques d'un modèle en étoile classique que Data Vault cherche à limiter est :",opts:["La lenteur du réseau","La nécessité de remodéliser fortement le schéma à chaque nouvelle source","Le coût du stockage cloud","L'absence de sécurité"],ans:1,exp:"Le modèle en étoile est souvent plus rigide : ajouter une nouvelle source peut nécessiter de revoir les dimensions et faits existants, ce que Data Vault évite grâce à sa modularité."},
-      {q:"La création d'une table Satellite en SQL nécessite généralement une colonne pour :",opts:["La couleur du graphique","L'horodatage du chargement (load date) permettant l'historisation","Le mot de passe de connexion","Le nom du rapport Power BI"],ans:1,exp:"Une colonne de date de chargement (load date) est indispensable pour tracer l'évolution des attributs dans le temps."},
-      {q:"Charger les données par étapes staging → raw → business permet de :",opts:["Ralentir volontairement le pipeline","Séparer clairement l'ingestion brute, le stockage historisé, et la logique métier","Éviter d'utiliser PostgreSQL","Remplacer le besoin de gouvernance"],ans:1,exp:"Cette séparation en couches rend le pipeline plus traçable, plus robuste et plus facile à maintenir."},
-      {q:"Un Link peut relier :",opts:["Seulement deux Hubs, jamais plus","Deux Hubs ou plus, selon la relation métier à modéliser","Uniquement des Satellites entre eux","Des rapports Power BI"],ans:1,exp:"Un Link peut être binaire (2 Hubs) ou multi-Hubs si la relation métier l'exige (ex: relation ternaire)."},
-      {q:"Le principal objectif pédagogique du module 3 est de :",opts:["Apprendre à créer des slicers Power BI","Concevoir un entrepôt de données modulaire avec Data Vault 2.0","Automatiser des workflows avec n8n","Créer des mesures DAX avancées"],ans:1,exp:"Le module 3 est centré sur la modélisation et le stockage des données via la méthode Data Vault 2.0."}
+      {q:"Les trois types de tables fondamentaux du Data Vault 2.0 sont :",opts:["Fact, Dimension, Bridge","Rows, Columns, Cells","Staging, Raw, Business","Hubs, Links, Satellites"],ans:3,exp:"Hubs (clés), Links (relations) et Satellites (attributs/historique) forment la base du modèle Data Vault 2.0."},
+      {q:"Pourquoi sépare-t-on les clés métier (Hub) des attributs descriptifs (Satellite) ?",opts:["Pour éviter d'utiliser SQL","Ce n'est pas une pratique recommandée","Pour compliquer inutilement le modèle","Pour permettre l'évolution indépendante des attributs sans casser les clés et les relations"],ans:3,exp:"Cette séparation rend le modèle très résilient aux changements de schéma source et facilite l'ajout de nouveaux attributs."},
+      {q:"Le Business Vault, par rapport au Raw Vault, ajoute :",opts:["Des rapports Power BI directement","De nouvelles sources brutes uniquement","Des mots de passe utilisateurs","Des règles de transformation et de calcul orientées métier"],ans:3,exp:"Le Business Vault applique la logique métier (calculs, règles de gestion) sur les données du Raw Vault."},
+      {q:"Un Link entre un Hub 'Client' et un Hub 'Commande' représente :",opts:["Une erreur de modélisation","La relation entre un client et ses commandes","Un attribut du client","Une vue SQL"],ans:1,exp:"Le Link matérialise la relation entre les deux entités métier (client et commande)."},
+      {q:"Dans un mini-DWH clients & ventes en Data Vault, le Hub 'Client' contiendrait typiquement :",opts:["Le nom du commercial","La date de la dernière commande uniquement","Le chiffre d'affaires total","L'identifiant unique du client (ex: id_client)"],ans:3,exp:"Le Hub stocke la clé métier unique — ici l'identifiant client — sans les attributs descriptifs."},
+      {q:"Un des risques d'un modèle en étoile classique que Data Vault cherche à limiter est :",opts:["La nécessité de remodéliser fortement le schéma à chaque nouvelle source","Le coût du stockage cloud","La lenteur du réseau","L'absence de sécurité"],ans:0,exp:"Le modèle en étoile est souvent plus rigide : ajouter une nouvelle source peut nécessiter de revoir les dimensions et faits existants, ce que Data Vault évite grâce à sa modularité."},
+      {q:"La création d'une table Satellite en SQL nécessite généralement une colonne pour :",opts:["L'horodatage du chargement (load date) permettant l'historisation","Le mot de passe de connexion","La couleur du graphique","Le nom du rapport Power BI"],ans:0,exp:"Une colonne de date de chargement (load date) est indispensable pour tracer l'évolution des attributs dans le temps."},
+      {q:"Charger les données par étapes staging → raw → business permet de :",opts:["Éviter d'utiliser PostgreSQL","Séparer clairement l'ingestion brute, le stockage historisé, et la logique métier","Remplacer le besoin de gouvernance","Ralentir volontairement le pipeline"],ans:1,exp:"Cette séparation en couches rend le pipeline plus traçable, plus robuste et plus facile à maintenir."},
+      {q:"Un Link peut relier :",opts:["Des rapports Power BI","Deux Hubs ou plus, selon la relation métier à modéliser","Uniquement des Satellites entre eux","Seulement deux Hubs, jamais plus"],ans:1,exp:"Un Link peut être binaire (2 Hubs) ou multi-Hubs si la relation métier l'exige (ex: relation ternaire)."},
+      {q:"Le principal objectif pédagogique du module 3 est de :",opts:["Automatiser des workflows avec n8n","Créer des mesures DAX avancées","Apprendre à créer des slicers Power BI","Concevoir un entrepôt de données modulaire avec Data Vault 2.0"],ans:3,exp:"Le module 3 est centré sur la modélisation et le stockage des données via la méthode Data Vault 2.0."}
     ]
   },
   4:{
     q1:[
-      {q:"Dans Power BI, le 'modèle de données' définit principalement :",opts:["La couleur des visuels","Les tables importées et les relations entre elles","Le mot de passe du compte","La langue de l'interface"],ans:1,exp:"Le modèle de données regroupe les tables chargées et les relations (clés) établies entre elles."},
-      {q:"DAX signifie :",opts:["Data Analysis eXpressions","Direct Access eXtension","Data Automation eXport","Dynamic Analytics eXchange"],ans:0,exp:"DAX (Data Analysis eXpressions) est le langage de formules de Power BI pour créer mesures et colonnes calculées."},
-      {q:"Une 'colonne calculée' DAX est évaluée :",opts:["Une fois par ligne de la table, lors du chargement/rafraîchissement","À chaque interaction utilisateur avec un visuel","Jamais, seulement en mémoire cache","Uniquement dans Excel"],ans:0,exp:"Une colonne calculée est calculée ligne par ligne au moment du chargement des données, puis stockée dans le modèle."},
-      {q:"Une 'mesure' DAX, contrairement à une colonne calculée, est :",opts:["Calculée à l'avance et stockée","Calculée dynamiquement selon le contexte de filtre du visuel","Impossible à créer dans Power BI","Réservée aux dates"],ans:1,exp:"Une mesure se recalcule dynamiquement selon le contexte de filtre (slicers, lignes, colonnes) du visuel qui l'affiche."}
+      {q:"Dans Power BI, le 'modèle de données' définit principalement :",opts:["Le mot de passe du compte","La couleur des visuels","Les tables importées et les relations entre elles","La langue de l'interface"],ans:2,exp:"Le modèle de données regroupe les tables chargées et les relations (clés) établies entre elles."},
+      {q:"DAX signifie :",opts:["Data Analysis eXpressions","Dynamic Analytics eXchange","Direct Access eXtension","Data Automation eXport"],ans:0,exp:"DAX (Data Analysis eXpressions) est le langage de formules de Power BI pour créer mesures et colonnes calculées."},
+      {q:"Une 'colonne calculée' DAX est évaluée :",opts:["Jamais, seulement en mémoire cache","À chaque interaction utilisateur avec un visuel","Une fois par ligne de la table, lors du chargement/rafraîchissement","Uniquement dans Excel"],ans:2,exp:"Une colonne calculée est calculée ligne par ligne au moment du chargement des données, puis stockée dans le modèle."},
+      {q:"Une 'mesure' DAX, contrairement à une colonne calculée, est :",opts:["Calculée à l'avance et stockée","Impossible à créer dans Power BI","Calculée dynamiquement selon le contexte de filtre du visuel","Réservée aux dates"],ans:2,exp:"Une mesure se recalcule dynamiquement selon le contexte de filtre (slicers, lignes, colonnes) du visuel qui l'affiche."}
     ],
     q2:[
-      {q:"La fonction DAX SUMX sert à :",opts:["Sommer une colonne simple uniquement","Sommer le résultat d'une expression évaluée ligne par ligne sur une table","Créer un slicer","Supprimer une relation"],ans:1,exp:"SUMX itère sur une table et somme le résultat d'une expression calculée pour chaque ligne — utile pour les calculs comme quantité × prix."},
-      {q:"CALCULATE en DAX permet de :",opts:["Créer un nouveau rapport","Modifier le contexte de filtre d'une expression","Supprimer une mesure","Changer la langue"],ans:1,exp:"CALCULATE() évalue une expression dans un contexte de filtre modifié — c'est la fonction la plus puissante de DAX."},
-      {q:"FILTER en DAX retourne :",opts:["Une valeur numérique unique","Une table filtrée selon une condition","Un graphique","Une chaîne de caractères"],ans:1,exp:"FILTER() retourne une table réduite aux lignes qui vérifient la condition spécifiée, souvent utilisée à l'intérieur de CALCULATE."},
-      {q:"Un calcul YTD (Year To Date) sert à :",opts:["Calculer un cumul depuis le début de l'année jusqu'à la date courante","Supprimer les données de l'année en cours","Créer un slicer temporel","Renommer une colonne"],ans:0,exp:"YTD calcule un cumul progressif depuis le 1er janvier jusqu'à la date sélectionnée — un classique de l'analyse temporelle."}
+      {q:"La fonction DAX SUMX sert à :",opts:["Sommer le résultat d'une expression évaluée ligne par ligne sur une table","Supprimer une relation","Sommer une colonne simple uniquement","Créer un slicer"],ans:0,exp:"SUMX itère sur une table et somme le résultat d'une expression calculée pour chaque ligne — utile pour les calculs comme quantité × prix."},
+      {q:"CALCULATE en DAX permet de :",opts:["Créer un nouveau rapport","Changer la langue","Modifier le contexte de filtre d'une expression","Supprimer une mesure"],ans:2,exp:"CALCULATE() évalue une expression dans un contexte de filtre modifié — c'est la fonction la plus puissante de DAX."},
+      {q:"FILTER en DAX retourne :",opts:["Une chaîne de caractères","Une valeur numérique unique","Une table filtrée selon une condition","Un graphique"],ans:2,exp:"FILTER() retourne une table réduite aux lignes qui vérifient la condition spécifiée, souvent utilisée à l'intérieur de CALCULATE."},
+      {q:"Un calcul YTD (Year To Date) sert à :",opts:["Créer un slicer temporel","Calculer un cumul depuis le début de l'année jusqu'à la date courante","Supprimer les données de l'année en cours","Renommer une colonne"],ans:1,exp:"YTD calcule un cumul progressif depuis le 1er janvier jusqu'à la date sélectionnée — un classique de l'analyse temporelle."}
     ],
     qf:[
-      {q:"Dans Power BI, une relation entre deux tables se définit généralement via :",opts:["Une colonne clé commune entre les deux tables","Une couleur identique","Le même nom de fichier source","Une mesure DAX"],ans:0,exp:"Les relations se créent en liant une colonne clé (souvent un identifiant) présente dans les deux tables."},
-      {q:"Un slicer dans Power BI sert à :",opts:["Trier une table par ordre alphabétique","Filtrer interactivement les visuels d'un rapport selon une valeur choisie","Créer une mesure DAX","Supprimer une relation"],ans:1,exp:"Le slicer est un visuel de filtre interactif que l'utilisateur manipule pour explorer les données du rapport."},
-      {q:"Total Ventes YTD = CALCULATE([Total Ventes], DATESYTD('Date'[Date])) utilise :",opts:["Une simple somme sans contexte","CALCULATE combiné à une fonction d'intelligence temporelle (DATESYTD)","Un slicer obligatoire","Une colonne calculée uniquement"],ans:1,exp:"CALCULATE() modifie le contexte de filtre en utilisant DATESYTD(), une fonction Time Intelligence, pour obtenir le cumul depuis le début de l'année."},
-      {q:"Pourquoi préfère-t-on souvent les mesures aux colonnes calculées pour les agrégations ?",opts:["Les mesures sont toujours plus lentes","Les mesures se recalculent dynamiquement selon le contexte de filtre, sans alourdir le stockage","Les colonnes calculées n'existent pas en DAX","Il n'y a aucune différence"],ans:1,exp:"Les mesures sont calculées à la volée selon le contexte (filtres actifs), sans stocker de valeur par ligne — plus flexible et économe en mémoire."},
-      {q:"Le storytelling dans un tableau de bord Power BI consiste à :",opts:["Ajouter uniquement des couleurs vives","Organiser les visuels pour raconter une histoire claire et guider la lecture des données","Cacher les données sensibles","Éviter les slicers"],ans:1,exp:"Le storytelling structure la mise en page et le choix des visuels pour guider l'utilisateur vers les insights clés."},
-      {q:"Se connecter à une base PostgreSQL depuis Power BI permet de :",opts:["Uniquement visualiser des fichiers Excel","Importer ou interroger en direct les données de la base pour les modéliser dans Power BI","Remplacer SQL par DAX","Supprimer la base de données"],ans:1,exp:"Power BI peut se connecter à PostgreSQL en mode Import ou DirectQuery pour exploiter les données de la base."},
-      {q:"Une mesure DAX 'Marge %' = DIVIDE([Marge], [CA], 0) utilise DIVIDE plutôt que '/' car :",opts:["DIVIDE est plus lent","DIVIDE gère proprement la division par zéro en retournant une valeur par défaut","DIVIDE ne fonctionne pas avec les pourcentages","Il n'y a pas de différence"],ans:1,exp:"DIVIDE(numérateur, dénominateur, valeur_si_zéro) évite les erreurs de division par zéro, contrairement à l'opérateur '/' simple."},
-      {q:"Le rapport ALM (Asset Liability Management) cité en cas d'usage sert typiquement à :",opts:["Gérer les réseaux sociaux","Piloter l'équilibre actif/passif dans un contexte financier/bancaire","Créer des animations vidéo","Gérer les ressources humaines"],ans:1,exp:"L'ALM est un cas d'usage financier/bancaire visant à équilibrer actifs et passifs — un exemple concret de reporting Power BI en entreprise."},
-      {q:"Un modèle de données mal relié dans Power BI entraîne généralement :",opts:["Aucun impact","Des résultats de mesures incorrects ou incohérents entre visuels","Une amélioration automatique des performances","La suppression automatique des données"],ans:1,exp:"Sans relations correctes, les mesures DAX peuvent donner des résultats faux ou incohérents entre les différents visuels du rapport."},
-      {q:"Filtrer temporellement un rapport (mois, trimestre, année) repose souvent sur :",opts:["Une table de dates dédiée et des fonctions Time Intelligence DAX","La suppression des dates du modèle","Un simple copier-coller Excel","Aucun outil particulier"],ans:0,exp:"Une table de dates dédiée (calendrier) associée aux fonctions Time Intelligence (YTD, SAMEPERIODLASTYEAR, etc.) est la bonne pratique standard."}
+      {q:"Dans Power BI, une relation entre deux tables se définit généralement via :",opts:["Le même nom de fichier source","Une mesure DAX","Une couleur identique","Une colonne clé commune entre les deux tables"],ans:3,exp:"Les relations se créent en liant une colonne clé (souvent un identifiant) présente dans les deux tables."},
+      {q:"Un slicer dans Power BI sert à :",opts:["Trier une table par ordre alphabétique","Supprimer une relation","Filtrer interactivement les visuels d'un rapport selon une valeur choisie","Créer une mesure DAX"],ans:2,exp:"Le slicer est un visuel de filtre interactif que l'utilisateur manipule pour explorer les données du rapport."},
+      {q:"Total Ventes YTD = CALCULATE([Total Ventes], DATESYTD('Date'[Date])) utilise :",opts:["CALCULATE combiné à une fonction d'intelligence temporelle (DATESYTD)","Une simple somme sans contexte","Un slicer obligatoire","Une colonne calculée uniquement"],ans:0,exp:"CALCULATE() modifie le contexte de filtre en utilisant DATESYTD(), une fonction Time Intelligence, pour obtenir le cumul depuis le début de l'année."},
+      {q:"Pourquoi préfère-t-on souvent les mesures aux colonnes calculées pour les agrégations ?",opts:["Il n'y a aucune différence","Les mesures sont toujours plus lentes","Les colonnes calculées n'existent pas en DAX","Les mesures se recalculent dynamiquement selon le contexte de filtre, sans alourdir le stockage"],ans:3,exp:"Les mesures sont calculées à la volée selon le contexte (filtres actifs), sans stocker de valeur par ligne — plus flexible et économe en mémoire."},
+      {q:"Le storytelling dans un tableau de bord Power BI consiste à :",opts:["Organiser les visuels pour raconter une histoire claire et guider la lecture des données","Ajouter uniquement des couleurs vives","Cacher les données sensibles","Éviter les slicers"],ans:0,exp:"Le storytelling structure la mise en page et le choix des visuels pour guider l'utilisateur vers les insights clés."},
+      {q:"Se connecter à une base PostgreSQL depuis Power BI permet de :",opts:["Remplacer SQL par DAX","Importer ou interroger en direct les données de la base pour les modéliser dans Power BI","Supprimer la base de données","Uniquement visualiser des fichiers Excel"],ans:1,exp:"Power BI peut se connecter à PostgreSQL en mode Import ou DirectQuery pour exploiter les données de la base."},
+      {q:"Une mesure DAX 'Marge %' = DIVIDE([Marge], [CA], 0) utilise DIVIDE plutôt que '/' car :",opts:["DIVIDE est plus lent","Il n'y a pas de différence","DIVIDE gère proprement la division par zéro en retournant une valeur par défaut","DIVIDE ne fonctionne pas avec les pourcentages"],ans:2,exp:"DIVIDE(numérateur, dénominateur, valeur_si_zéro) évite les erreurs de division par zéro, contrairement à l'opérateur '/' simple."},
+      {q:"Le rapport ALM (Asset Liability Management) cité en cas d'usage sert typiquement à :",opts:["Gérer les réseaux sociaux","Piloter l'équilibre actif/passif dans un contexte financier/bancaire","Gérer les ressources humaines","Créer des animations vidéo"],ans:1,exp:"L'ALM est un cas d'usage financier/bancaire visant à équilibrer actifs et passifs — un exemple concret de reporting Power BI en entreprise."},
+      {q:"Un modèle de données mal relié dans Power BI entraîne généralement :",opts:["La suppression automatique des données","Une amélioration automatique des performances","Aucun impact","Des résultats de mesures incorrects ou incohérents entre visuels"],ans:3,exp:"Sans relations correctes, les mesures DAX peuvent donner des résultats faux ou incohérents entre les différents visuels du rapport."},
+      {q:"Filtrer temporellement un rapport (mois, trimestre, année) repose souvent sur :",opts:["Un simple copier-coller Excel","La suppression des dates du modèle","Une table de dates dédiée et des fonctions Time Intelligence DAX","Aucun outil particulier"],ans:2,exp:"Une table de dates dédiée (calendrier) associée aux fonctions Time Intelligence (YTD, SAMEPERIODLASTYEAR, etc.) est la bonne pratique standard."}
     ]
   },
   5:{
     q1:[
-      {q:"n8n est principalement un outil de :",opts:["Visualisation de données","Orchestration et automatisation de workflows","Modélisation de bases de données","Rédaction de rapports Word"],ans:1,exp:"n8n permet de créer visuellement des workflows automatisés connectant différentes applications et API."},
-      {q:"Dans n8n, un 'node' représente :",opts:["Un utilisateur connecté","Une étape ou une action dans un workflow (ex: appel API, envoi email)","Un rapport Power BI","Une table SQL"],ans:1,exp:"Chaque node est un bloc fonctionnel du workflow : déclencheur, appel API, transformation, envoi de notification, etc."},
-      {q:"Pour extraire des données depuis une API externe dans n8n, on utilise typiquement :",opts:["Un node HTTP Request","Un node Power BI Desktop","Un node Excel uniquement","Aucun node particulier"],ans:0,exp:"Le node HTTP Request permet d'appeler des API REST externes ou internes pour récupérer des données."},
-      {q:"L'automatisation de traitements de données a pour bénéfice principal de :",opts:["Remplacer entièrement les data engineers","Réduire les tâches manuelles répétitives et les erreurs humaines","Supprimer le besoin de gouvernance","Ralentir les pipelines"],ans:1,exp:"L'automatisation fiabilise et accélère les traitements répétitifs, en réduisant les interventions manuelles sources d'erreurs."}
+      {q:"n8n est principalement un outil de :",opts:["Orchestration et automatisation de workflows","Modélisation de bases de données","Rédaction de rapports Word","Visualisation de données"],ans:0,exp:"n8n permet de créer visuellement des workflows automatisés connectant différentes applications et API."},
+      {q:"Dans n8n, un 'node' représente :",opts:["Un rapport Power BI","Un utilisateur connecté","Une étape ou une action dans un workflow (ex: appel API, envoi email)","Une table SQL"],ans:2,exp:"Chaque node est un bloc fonctionnel du workflow : déclencheur, appel API, transformation, envoi de notification, etc."},
+      {q:"Pour extraire des données depuis une API externe dans n8n, on utilise typiquement :",opts:["Un node Excel uniquement","Un node Power BI Desktop","Un node HTTP Request","Aucun node particulier"],ans:2,exp:"Le node HTTP Request permet d'appeler des API REST externes ou internes pour récupérer des données."},
+      {q:"L'automatisation de traitements de données a pour bénéfice principal de :",opts:["Remplacer entièrement les data engineers","Supprimer le besoin de gouvernance","Réduire les tâches manuelles répétitives et les erreurs humaines","Ralentir les pipelines"],ans:2,exp:"L'automatisation fiabilise et accélère les traitements répétitifs, en réduisant les interventions manuelles sources d'erreurs."}
     ],
     q2:[
-      {q:"Le node 'Execute Command' dans n8n permet de :",opts:["Envoyer un email uniquement","Exécuter une commande système, par exemple un script Python","Créer un rapport Power BI","Supprimer un workflow"],ans:1,exp:"Execute Command permet de lancer des commandes shell, comme l'exécution d'un script Python, directement depuis n8n."},
-      {q:"Déclencher un traitement ETL automatiquement depuis n8n permet de :",opts:["Nécessiter une intervention manuelle à chaque fois","Programmer et automatiser l'exécution régulière du pipeline sans intervention humaine","Remplacer complètement Talend","Supprimer les besoins de tests"],ans:1,exp:"n8n peut planifier ou déclencher (sur événement) l'exécution automatique de jobs ETL, sans action manuelle."},
-      {q:"Le rafraîchissement d'un dataset dans Power BI Service sert à :",opts:["Changer la langue du rapport","Mettre à jour les données du rapport avec les dernières données de la source","Supprimer le rapport","Créer une nouvelle mesure DAX"],ans:1,exp:"Le rafraîchissement (refresh) recharge les données depuis les sources connectées pour que le rapport reflète les données les plus récentes."},
-      {q:"Une alerte email/Teams déclenchée après un rafraîchissement Power BI sert à :",opts:["Remplacer le rapport","Notifier automatiquement les utilisateurs du succès ou de l'échec de l'actualisation","Supprimer les anciennes données","Créer un nouveau modèle de données"],ans:1,exp:"Les alertes automatiques informent les équipes du statut du rafraîchissement, permettant une réaction rapide en cas d'échec."}
+      {q:"Le node 'Execute Command' dans n8n permet de :",opts:["Supprimer un workflow","Exécuter une commande système, par exemple un script Python","Envoyer un email uniquement","Créer un rapport Power BI"],ans:1,exp:"Execute Command permet de lancer des commandes shell, comme l'exécution d'un script Python, directement depuis n8n."},
+      {q:"Déclencher un traitement ETL automatiquement depuis n8n permet de :",opts:["Supprimer les besoins de tests","Programmer et automatiser l'exécution régulière du pipeline sans intervention humaine","Remplacer complètement Talend","Nécessiter une intervention manuelle à chaque fois"],ans:1,exp:"n8n peut planifier ou déclencher (sur événement) l'exécution automatique de jobs ETL, sans action manuelle."},
+      {q:"Le rafraîchissement d'un dataset dans Power BI Service sert à :",opts:["Supprimer le rapport","Mettre à jour les données du rapport avec les dernières données de la source","Créer une nouvelle mesure DAX","Changer la langue du rapport"],ans:1,exp:"Le rafraîchissement (refresh) recharge les données depuis les sources connectées pour que le rapport reflète les données les plus récentes."},
+      {q:"Une alerte email/Teams déclenchée après un rafraîchissement Power BI sert à :",opts:["Supprimer les anciennes données","Créer un nouveau modèle de données","Remplacer le rapport","Notifier automatiquement les utilisateurs du succès ou de l'échec de l'actualisation"],ans:3,exp:"Les alertes automatiques informent les équipes du statut du rafraîchissement, permettant une réaction rapide en cas d'échec."}
     ],
     qf:[
-      {q:"Le workflow complet cité dans le module 5 est :",opts:["Source → Power BI → Python → PostgreSQL","Source → Traitement Python → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email","Power BI → Talend → n8n → Excel","Aucun workflow n'est cité"],ans:1,exp:"Ce workflow illustre une chaîne complète automatisée, de la source de données jusqu'à la notification finale."},
-      {q:"Pourquoi orchestrer un pipeline avec n8n plutôt que de tout faire manuellement ?",opts:["Pour rendre le processus plus lent","Pour fiabiliser, planifier et automatiser l'enchaînement des étapes sans intervention humaine répétée","Cela n'apporte aucun bénéfice","Pour remplacer la gouvernance des données"],ans:1,exp:"L'orchestration automatisée réduit les erreurs humaines, garantit la régularité d'exécution et libère du temps pour les équipes data."},
-      {q:"Exécuter un script Python via n8n (Execute Command) peut servir à :",opts:["Uniquement envoyer des emails","Lancer un nettoyage ou une transformation de données personnalisée non couverte par les nodes standards","Remplacer PostgreSQL","Créer des visuels Power BI"],ans:1,exp:"Cela permet d'intégrer une logique métier ou un traitement Python spécifique directement dans le workflow d'automatisation."},
-      {q:"Planifier un rafraîchissement Power BI Service à heure fixe chaque jour permet de :",opts:["Garantir que le rapport reflète des données à jour sans action manuelle quotidienne","Supprimer le dataset chaque jour","Remplacer le besoin de sources de données","Créer automatiquement de nouvelles mesures"],ans:0,exp:"La planification garantit la fraîcheur des données du rapport sans intervention manuelle répétée."},
-      {q:"Un appel API pour extraire des données ouvertes ou internes correspond, dans le pipeline ETL, à l'étape :",opts:["Load","Transform","Extract","Monitoring"],ans:2,exp:"L'appel API pour récupérer des données correspond à l'étape Extract du pipeline ETL/ELT."},
-      {q:"Le déclenchement automatique d'un nettoyage de données après réception d'un nouveau fichier illustre :",opts:["Un pipeline manuel classique","Un pipeline événementiel automatisé (event-driven)","L'absence totale d'automatisation","Une erreur de conception"],ans:1,exp:"Un déclenchement basé sur un événement (arrivée d'un fichier) illustre une architecture orientée événements, automatisée de bout en bout."},
-      {q:"Une notification Teams en cas d'échec de rafraîchissement Power BI permet surtout de :",opts:["Réduire le temps de détection et de réaction à un incident","Remplacer le monitoring","Supprimer les logs","Créer un nouveau modèle de données"],ans:0,exp:"Une alerte immédiate en cas d'échec permet à l'équipe de réagir rapidement, réduisant l'impact sur les utilisateurs du rapport."},
-      {q:"Le pilier 'Monitoring' vu au module 1 est directement mis en pratique au module 5 via :",opts:["Les mesures DAX","Les alertes email/Teams sur les rafraîchissements et jobs","La modélisation Data Vault","Le nettoyage Pandas"],ans:1,exp:"Les alertes automatiques sur les rafraîchissements et l'exécution des jobs concrétisent le pilier Monitoring introduit au module 1."},
+      {q:"Le workflow complet cité dans le module 5 est :",opts:["Source → Power BI → Python → PostgreSQL","Source → Traitement Python → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email","Aucun workflow n'est cité","Power BI → Talend → n8n → Excel"],ans:1,exp:"Ce workflow illustre une chaîne complète automatisée, de la source de données jusqu'à la notification finale."},
+      {q:"Pourquoi orchestrer un pipeline avec n8n plutôt que de tout faire manuellement ?",opts:["Pour rendre le processus plus lent","Pour fiabiliser, planifier et automatiser l'enchaînement des étapes sans intervention humaine répétée","Pour remplacer la gouvernance des données","Cela n'apporte aucun bénéfice"],ans:1,exp:"L'orchestration automatisée réduit les erreurs humaines, garantit la régularité d'exécution et libère du temps pour les équipes data."},
+      {q:"Exécuter un script Python via n8n (Execute Command) peut servir à :",opts:["Créer des visuels Power BI","Remplacer PostgreSQL","Uniquement envoyer des emails","Lancer un nettoyage ou une transformation de données personnalisée non couverte par les nodes standards"],ans:3,exp:"Cela permet d'intégrer une logique métier ou un traitement Python spécifique directement dans le workflow d'automatisation."},
+      {q:"Planifier un rafraîchissement Power BI Service à heure fixe chaque jour permet de :",opts:["Remplacer le besoin de sources de données","Garantir que le rapport reflète des données à jour sans action manuelle quotidienne","Créer automatiquement de nouvelles mesures","Supprimer le dataset chaque jour"],ans:1,exp:"La planification garantit la fraîcheur des données du rapport sans intervention manuelle répétée."},
+      {q:"Un appel API pour extraire des données ouvertes ou internes correspond, dans le pipeline ETL, à l'étape :",opts:["Extract","Transform","Monitoring","Load"],ans:0,exp:"L'appel API pour récupérer des données correspond à l'étape Extract du pipeline ETL/ELT."},
+      {q:"Le déclenchement automatique d'un nettoyage de données après réception d'un nouveau fichier illustre :",opts:["Un pipeline événementiel automatisé (event-driven)","L'absence totale d'automatisation","Une erreur de conception","Un pipeline manuel classique"],ans:0,exp:"Un déclenchement basé sur un événement (arrivée d'un fichier) illustre une architecture orientée événements, automatisée de bout en bout."},
+      {q:"Une notification Teams en cas d'échec de rafraîchissement Power BI permet surtout de :",opts:["Remplacer le monitoring","Réduire le temps de détection et de réaction à un incident","Créer un nouveau modèle de données","Supprimer les logs"],ans:1,exp:"Une alerte immédiate en cas d'échec permet à l'équipe de réagir rapidement, réduisant l'impact sur les utilisateurs du rapport."},
+      {q:"Le pilier 'Monitoring' vu au module 1 est directement mis en pratique au module 5 via :",opts:["La modélisation Data Vault","Les alertes email/Teams sur les rafraîchissements et jobs","Les mesures DAX","Le nettoyage Pandas"],ans:1,exp:"Les alertes automatiques sur les rafraîchissements et l'exécution des jobs concrétisent le pilier Monitoring introduit au module 1."},
       {q:"Automatiser un pipeline de bout en bout nécessite généralement de combiner :",opts:["Uniquement Power BI","Plusieurs outils : extraction/API, traitement (Python/SQL), stockage, orchestration (n8n), et reporting (Power BI)","Uniquement Excel","Aucun outil, tout se fait manuellement"],ans:1,exp:"Un pipeline automatisé de bout en bout orchestre généralement plusieurs briques technologiques complémentaires."},
-      {q:"Le bénéfice principal de l'industrialisation d'un pipeline de données est :",opts:["Rendre le processus plus complexe sans raison","Le rendre reproductible, fiable et scalable dans le temps","Supprimer le besoin de tests","Réduire la qualité des données"],ans:1,exp:"L'industrialisation vise à rendre un pipeline reproductible, robuste et capable de monter en charge, au-delà d'un simple script ponctuel."}
+      {q:"Le bénéfice principal de l'industrialisation d'un pipeline de données est :",opts:["Supprimer le besoin de tests","Le rendre reproductible, fiable et scalable dans le temps","Réduire la qualité des données","Rendre le processus plus complexe sans raison"],ans:1,exp:"L'industrialisation vise à rendre un pipeline reproductible, robuste et capable de monter en charge, au-delà d'un simple script ponctuel."}
     ]
   },
   6:{
     q1:[
-      {q:"Dans le projet individuel, la première exigence listée est :",opts:["La présentation orale","La connexion à une ou plusieurs sources de données","Le workflow automatisé","Le tableau de bord narratif"],ans:1,exp:"Le projet démarre logiquement par la connexion aux sources de données, base de tout le pipeline."},
-      {q:"La 'transformation des données' dans le projet final correspond à :",opts:["La présentation orale uniquement","Le nettoyage, la mise en forme et l'enrichissement des données avant modélisation","La création de la présentation PowerPoint","La sécurité du compte Power BI"],ans:1,exp:"La transformation prépare les données brutes (nettoyage, typage, enrichissement) avant leur modélisation dans Power BI."},
-      {q:"La 'modélisation relationnelle' exigée dans le projet consiste à :",opts:["Créer des relations pertinentes entre les tables du modèle Power BI","Supprimer toutes les relations","Utiliser uniquement une seule table","Écrire uniquement du DAX sans données"],ans:0,exp:"La modélisation relationnelle établit les bonnes relations entre les tables pour que les mesures DAX soient cohérentes."},
-      {q:"Le 'DAX personnalisé' attendu dans le projet doit inclure :",opts:["Uniquement des colonnes copiées d'Excel","Des mesures et colonnes calculées spécifiques au projet","Aucune formule","Uniquement des couleurs de graphiques"],ans:1,exp:"Le projet exige la création de mesures et colonnes calculées DAX adaptées à la problématique choisie."}
+      {q:"Dans le projet individuel, la première exigence listée est :",opts:["Le workflow automatisé","La présentation orale","La connexion à une ou plusieurs sources de données","Le tableau de bord narratif"],ans:2,exp:"Le projet démarre logiquement par la connexion aux sources de données, base de tout le pipeline."},
+      {q:"La 'transformation des données' dans le projet final correspond à :",opts:["La présentation orale uniquement","La sécurité du compte Power BI","La création de la présentation PowerPoint","Le nettoyage, la mise en forme et l'enrichissement des données avant modélisation"],ans:3,exp:"La transformation prépare les données brutes (nettoyage, typage, enrichissement) avant leur modélisation dans Power BI."},
+      {q:"La 'modélisation relationnelle' exigée dans le projet consiste à :",opts:["Écrire uniquement du DAX sans données","Créer des relations pertinentes entre les tables du modèle Power BI","Supprimer toutes les relations","Utiliser uniquement une seule table"],ans:1,exp:"La modélisation relationnelle établit les bonnes relations entre les tables pour que les mesures DAX soient cohérentes."},
+      {q:"Le 'DAX personnalisé' attendu dans le projet doit inclure :",opts:["Uniquement des colonnes copiées d'Excel","Aucune formule","Uniquement des couleurs de graphiques","Des mesures et colonnes calculées spécifiques au projet"],ans:3,exp:"Le projet exige la création de mesures et colonnes calculées DAX adaptées à la problématique choisie."}
     ],
     q2:[
-      {q:"Un 'tableau de bord narratif' dans le projet final signifie :",opts:["Un tableau Excel basique sans mise en forme","Un dashboard organisé pour raconter une histoire claire à partir des données (storytelling)","Un document Word","Un fichier CSV brut"],ans:1,exp:"Le tableau de bord narratif structure les visuels pour guider la lecture et mettre en évidence les insights clés, dans l'esprit du storytelling vu au module 4."},
-      {q:"Le 'workflow automatisé' exigé dans le projet peut s'appuyer sur les compétences vues au module :",opts:["Module 1 uniquement","Module 5 (n8n / automatisation)","Module 3 uniquement","Aucun module précédent"],ans:1,exp:"L'automatisation du workflow s'appuie directement sur les compétences n8n et Power BI Service vues au module 5."},
-      {q:"La présentation orale de 5 minutes attendue en fin de projet vise à :",opts:["Remplacer le livrable technique","Communiquer clairement les résultats, choix de modélisation et insights à un public","Uniquement lire le code SQL","Présenter un CV"],ans:1,exp:"La présentation orale évalue la capacité à communiquer les résultats et choix techniques de façon claire et synthétique."},
-      {q:"Pourquoi combiner connexion, transformation, modélisation, DAX, dashboard et automatisation dans un seul projet ?",opts:["Pour compliquer inutilement l'évaluation","Pour valider de bout en bout l'ensemble du pipeline de données vu pendant la formation","Ce n'est pas nécessaire, un seul élément suffit","Pour éviter d'utiliser Power BI"],ans:1,exp:"Le projet final synthétise l'ensemble des compétences acquises sur les 5 modules précédents, de la donnée brute à la présentation."}
+      {q:"Un 'tableau de bord narratif' dans le projet final signifie :",opts:["Un dashboard organisé pour raconter une histoire claire à partir des données (storytelling)","Un tableau Excel basique sans mise en forme","Un fichier CSV brut","Un document Word"],ans:0,exp:"Le tableau de bord narratif structure les visuels pour guider la lecture et mettre en évidence les insights clés, dans l'esprit du storytelling vu au module 4."},
+      {q:"Le 'workflow automatisé' exigé dans le projet peut s'appuyer sur les compétences vues au module :",opts:["Aucun module précédent","Module 3 uniquement","Module 5 (n8n / automatisation)","Module 1 uniquement"],ans:2,exp:"L'automatisation du workflow s'appuie directement sur les compétences n8n et Power BI Service vues au module 5."},
+      {q:"La présentation orale de 5 minutes attendue en fin de projet vise à :",opts:["Uniquement lire le code SQL","Présenter un CV","Remplacer le livrable technique","Communiquer clairement les résultats, choix de modélisation et insights à un public"],ans:3,exp:"La présentation orale évalue la capacité à communiquer les résultats et choix techniques de façon claire et synthétique."},
+      {q:"Pourquoi combiner connexion, transformation, modélisation, DAX, dashboard et automatisation dans un seul projet ?",opts:["Pour éviter d'utiliser Power BI","Pour valider de bout en bout l'ensemble du pipeline de données vu pendant la formation","Ce n'est pas nécessaire, un seul élément suffit","Pour compliquer inutilement l'évaluation"],ans:1,exp:"Le projet final synthétise l'ensemble des compétences acquises sur les 5 modules précédents, de la donnée brute à la présentation."}
     ],
     qf:[
-      {q:"Les exigences du projet final couvrent, dans l'ordre logique du pipeline :",opts:["Connexion → Transformation → Modélisation → DAX → Dashboard → Automatisation → Présentation","Présentation → Connexion → DAX → Automatisation","DAX → Connexion → Transformation","Automatisation → Présentation uniquement"],ans:0,exp:"L'ordre logique suit le cycle de vie de la donnée : de la connexion à la source jusqu'à la présentation finale des résultats."},
-      {q:"Le projet individuel mobilise principalement les compétences des modules :",opts:["Uniquement le module 4","L'ensemble des modules 1 à 5 (Data Office, collecte, modélisation, Power BI, automatisation)","Uniquement le module 1","Aucun module, c'est un sujet totalement nouveau"],ans:1,exp:"Le projet est conçu comme une synthèse pratique de toutes les compétences vues dans les modules précédents."},
-      {q:"Un dashboard narratif efficace évite généralement de :",opts:["Utiliser des slicers","Surcharger l'écran avec trop de visuels sans hiérarchie claire","Utiliser des couleurs cohérentes","Structurer les KPIs principaux en haut"],ans:1,exp:"Un bon dashboard hiérarchise l'information et évite la surcharge visuelle qui nuit à la lisibilité."},
-      {q:"La modélisation relationnelle du projet doit avant tout garantir :",opts:["Un maximum de tables sans lien","Des relations cohérentes permettant des mesures DAX exactes","L'absence totale de relations","Une seule grande table à plat obligatoirement"],ans:1,exp:"Des relations bien construites sont indispensables pour que les mesures DAX retournent des résultats corrects selon le contexte de filtre."},
-      {q:"Automatiser une partie du pipeline du projet (ex: rafraîchissement) démontre la maîtrise du module :",opts:["Module 2","Module 5 (Industrialisation & Automatisation)","Module 3","Module 6 uniquement"],ans:1,exp:"L'automatisation du workflow renvoie directement aux compétences n8n / Power BI Service développées au module 5."},
-      {q:"La qualité des données transformées (module 2) impacte directement :",opts:["Uniquement la présentation orale","La fiabilité du modèle Power BI et des mesures DAX du projet final","Rien du tout","Uniquement la couleur des graphiques"],ans:1,exp:"Des données mal nettoyées en amont (module 2) produisent des modèles et mesures DAX peu fiables en aval, dans le projet final."},
-      {q:"Le livrable attendu à l'issue du module 6 est :",opts:["Un simple fichier Excel","Un rapport Power BI complet accompagné d'une présentation orale de 5 minutes","Un script Python isolé","Une base PostgreSQL vide"],ans:1,exp:"Le livrable final combine le rapport Power BI opérationnel et sa présentation orale devant un public."},
-      {q:"Choisir un jeu de données pertinent pour le projet final est important car :",opts:["Cela n'a aucune importance","Cela permet de démontrer des cas d'usage concrets de connexion, transformation et storytelling","Le jeu de données n'est jamais utilisé en pratique","Il faut toujours utiliser des données aléatoires"],ans:1,exp:"Un bon jeu de données permet de mettre en valeur l'ensemble du pipeline (connexion → dashboard) sur un cas concret et parlant."},
-      {q:"Le DAX personnalisé du projet doit être justifié par :",opts:["Aucune raison particulière","La problématique métier et les indicateurs pertinents pour le dashboard narratif","Le hasard","La copie de mesures d'un autre projet sans adaptation"],ans:1,exp:"Les mesures DAX doivent répondre à une problématique métier claire pour être pertinentes dans le dashboard final."},
-      {q:"La présentation orale de 5 minutes doit avant tout permettre d'évaluer :",opts:["La vitesse de frappe au clavier","La capacité à synthétiser et communiquer clairement le travail réalisé","Le nombre de lignes de code écrites","La couleur du fond d'écran"],ans:1,exp:"L'exercice évalue la clarté de communication et la capacité à synthétiser un travail technique pour un public, compétence clé en entreprise."}
+      {q:"Les exigences du projet final couvrent, dans l'ordre logique du pipeline :",opts:["DAX → Connexion → Transformation","Présentation → Connexion → DAX → Automatisation","Automatisation → Présentation uniquement","Connexion → Transformation → Modélisation → DAX → Dashboard → Automatisation → Présentation"],ans:3,exp:"L'ordre logique suit le cycle de vie de la donnée : de la connexion à la source jusqu'à la présentation finale des résultats."},
+      {q:"Le projet individuel mobilise principalement les compétences des modules :",opts:["Uniquement le module 1","L'ensemble des modules 1 à 5 (Data Office, collecte, modélisation, Power BI, automatisation)","Uniquement le module 4","Aucun module, c'est un sujet totalement nouveau"],ans:1,exp:"Le projet est conçu comme une synthèse pratique de toutes les compétences vues dans les modules précédents."},
+      {q:"Un dashboard narratif efficace évite généralement de :",opts:["Surcharger l'écran avec trop de visuels sans hiérarchie claire","Structurer les KPIs principaux en haut","Utiliser des slicers","Utiliser des couleurs cohérentes"],ans:0,exp:"Un bon dashboard hiérarchise l'information et évite la surcharge visuelle qui nuit à la lisibilité."},
+      {q:"La modélisation relationnelle du projet doit avant tout garantir :",opts:["Des relations cohérentes permettant des mesures DAX exactes","Une seule grande table à plat obligatoirement","Un maximum de tables sans lien","L'absence totale de relations"],ans:0,exp:"Des relations bien construites sont indispensables pour que les mesures DAX retournent des résultats corrects selon le contexte de filtre."},
+      {q:"Automatiser une partie du pipeline du projet (ex: rafraîchissement) démontre la maîtrise du module :",opts:["Module 3","Module 6 uniquement","Module 2","Module 5 (Industrialisation & Automatisation)"],ans:3,exp:"L'automatisation du workflow renvoie directement aux compétences n8n / Power BI Service développées au module 5."},
+      {q:"La qualité des données transformées (module 2) impacte directement :",opts:["La fiabilité du modèle Power BI et des mesures DAX du projet final","Rien du tout","Uniquement la présentation orale","Uniquement la couleur des graphiques"],ans:0,exp:"Des données mal nettoyées en amont (module 2) produisent des modèles et mesures DAX peu fiables en aval, dans le projet final."},
+      {q:"Le livrable attendu à l'issue du module 6 est :",opts:["Un script Python isolé","Un rapport Power BI complet accompagné d'une présentation orale de 5 minutes","Une base PostgreSQL vide","Un simple fichier Excel"],ans:1,exp:"Le livrable final combine le rapport Power BI opérationnel et sa présentation orale devant un public."},
+      {q:"Choisir un jeu de données pertinent pour le projet final est important car :",opts:["Il faut toujours utiliser des données aléatoires","Le jeu de données n'est jamais utilisé en pratique","Cela permet de démontrer des cas d'usage concrets de connexion, transformation et storytelling","Cela n'a aucune importance"],ans:2,exp:"Un bon jeu de données permet de mettre en valeur l'ensemble du pipeline (connexion → dashboard) sur un cas concret et parlant."},
+      {q:"Le DAX personnalisé du projet doit être justifié par :",opts:["La copie de mesures d'un autre projet sans adaptation","La problématique métier et les indicateurs pertinents pour le dashboard narratif","Le hasard","Aucune raison particulière"],ans:1,exp:"Les mesures DAX doivent répondre à une problématique métier claire pour être pertinentes dans le dashboard final."},
+      {q:"La présentation orale de 5 minutes doit avant tout permettre d'évaluer :",opts:["La couleur du fond d'écran","Le nombre de lignes de code écrites","La vitesse de frappe au clavier","La capacité à synthétiser et communiquer clairement le travail réalisé"],ans:3,exp:"L'exercice évalue la clarté de communication et la capacité à synthétiser un travail technique pour un public, compétence clé en entreprise."}
     ]
   }
 };
@@ -878,11 +948,296 @@ var ALL_QCM = {
 var MOD_CONTENT = {
   1:{
     c1:`<div class="mod-section-tag">Module 1 · Cours 1/3</div>
-<div class="mod-section-title">Qu'est-ce qu'une Data Office moderne ?</div>
-<div class="mod-section-desc">Une Data Office structure la façon dont une organisation collecte, gouverne, transforme et valorise ses données. Elle repose sur 5 piliers complémentaires qui s'articulent du bas (données brutes) vers le haut (décision).</div>
+<div class="mod-section-title">Installer son environnement — Partie 1 : PostgreSQL, DBeaver, Python</div>
+<div class="mod-section-desc">Avant toute chose, on installe les outils utilisés pendant toute la formation. Chaque étape est expliquée en détail, sans présupposer de connaissances techniques avancées. Tous les exercices s'appuieront sur les systèmes d'information de trois compagnies d'assurance distinctes : <strong>ADA Assurance Vie</strong>, <strong>Oméga Assurance</strong> (Non-Vie/IARD) et <strong>SigmaRé</strong> (Réassurance).</div>
+<div class="info-box"><i class="fa-solid fa-language"></i><div><strong>À propos de la langue :</strong> si Windows est configuré en français, plusieurs installeurs affichent leurs boutons en français (ex : <strong>Suivant</strong> / <strong>Terminer</strong> / <strong>Installer</strong> / <strong>Fermer</strong>). D'autres (DBeaver, Talend, Docker Desktop) restent souvent en anglais même sur un poste français. Dans les deux cas, la position des boutons et la logique des écrans restent identiques — les mini-aperçus ci-dessous montrent le résultat attendu pour t'aider à t'y repérer. <em>Ce sont des schémas simplifiés reconstitués pour la formation, pas des captures d'écran réelles des logiciels — l'agencement exact peut varier légèrement selon la version installée.</em></div></div>
+
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-sitemap" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Les 5 piliers</div><div class="nc-title-sm">Architecture · Gouvernance · Engineering · BI · Monitoring</div></div></div>
-<div class="nc-body">Chaque pilier répond à une question différente :</div>
+<div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-database" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Étape 1 — Installer PostgreSQL</div><div class="nc-title-sm">La base de données qui hébergera les entrepôts des 3 compagnies</div></div></div>
+<ul class="nc-list">
+<li><strong>1.1 — Télécharger l'installeur :</strong> aller sur <strong>postgresql.org/download</strong>, cliquer sur ton système (Windows, macOS ou Linux) puis sur le lien <strong>"Download the installer"</strong> proposé par EDB (l'éditeur de l'installeur officiel). Choisir la dernière version stable proposée</li>
+<li><strong>1.2 — Lancer l'installeur :</strong> double-cliquer sur le fichier téléchargé (ex : <code>postgresql-16.x-windows-x64.exe</code>). Si Windows affiche un avertissement de sécurité, cliquer sur "Exécuter quand même"</li>
+<li><strong>1.3 — Suivre l'assistant :</strong> cliquer sur <strong>"Suivant"</strong> (ou "Next" si l'installeur est resté en anglais) à l'écran de bienvenue, garder le <strong>dossier d'installation par défaut</strong> proposé, cliquer à nouveau "Suivant"</li>
+<li><strong>1.4 — Composants à installer :</strong> laisser toutes les cases cochées (PostgreSQL Server, pgAdmin 4, Stack Builder, Command Line Tools) puis "Suivant"</li>
+<li><strong>1.5 — Dossier des données :</strong> garder le chemin par défaut, "Next"</li>
+<li><strong>1.6 — Mot de passe du super-utilisateur :</strong> saisir un mot de passe pour l'utilisateur <code>postgres</code> (ex : <code>postgres2026</code>) et le <strong>noter quelque part</strong> — il sera redemandé à chaque connexion, notamment depuis DBeaver, Talend et Power BI</li>
+<li><strong>1.7 — Port :</strong> laisser <strong>5432</strong> (proposé par défaut), "Suivant"</li>
+<li><strong>1.8 — Locale :</strong> laisser "Default locale", "Suivant" puis "Suivant" à nouveau pour lancer l'installation (2 à 5 minutes)</li>
+<li><strong>1.9 — Fin de l'installation :</strong> à la dernière fenêtre, <strong>décocher</strong> "Stack Builder" (outil optionnel non nécessaire ici) puis cliquer <strong>"Terminer"</strong></li>
+<li><strong>1.10 — Vérifier que ça fonctionne avec pgAdmin 4 (recommandé, sans terminal) :</strong> pgAdmin 4 a été installé automatiquement avec PostgreSQL. Menu Démarrer → taper <code>pgAdmin 4</code> → l'ouvrir (il s'ouvre dans le navigateur, c'est normal)</li>
+<li><strong>1.11 — Se connecter au serveur :</strong> dans l'arborescence à gauche, déplier <strong>Servers → PostgreSQL</strong> (le numéro affiché, ex : 16, 17 ou 18, dépend de la version téléchargée à l'étape 1.1) — le mot de passe défini à l'étape 1.6 est demandé (cocher "Save Password" pour ne pas le ressaisir). Si la connexion s'ouvre et affiche des dossiers (Databases, Login/Group Roles...), PostgreSQL fonctionne correctement</li>
+<li><strong>1.12 — Créer les 3 bases, une par compagnie :</strong> clic droit sur <strong>Databases</strong> → <strong>Create → Database...</strong> → dans le champ "Database", taper <code>ada_vie_dwh</code> → "Save". Répéter deux fois pour créer <code>omega_assurance_dwh</code> et <code>sigmare_dwh</code></li>
+</ul>
+<div class="screenshot-box">
+  <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — résultat attendu dans pgAdmin après l'étape 1.12</div>
+  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+    <rect x="0" y="0" width="520" height="210" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
+    <rect x="0" y="0" width="520" height="26" rx="8" fill="#2c2f33"/>
+    <rect x="0" y="14" width="520" height="12" fill="#2c2f33"/>
+    <circle cx="14" cy="13" r="4" fill="#ff5f57"/><circle cx="28" cy="13" r="4" fill="#febc2e"/><circle cx="42" cy="13" r="4" fill="#28c840"/>
+    <text x="260" y="17" text-anchor="middle" font-family="Arial" font-size="10" fill="#cfd3d6">pgAdmin 4</text>
+    <g font-family="Consolas,monospace" font-size="12" fill="#333">
+      <text x="14" y="46">▾ Servers</text>
+      <text x="30" y="66" fill="#185FA5">🖥 PostgreSQL 18</text>
+      <circle cx="180" cy="62" r="4" fill="#3B6D11"/>
+      <text x="46" y="86">▾ Databases</text>
+      <text x="62" y="106">🗄 ada_vie_dwh</text><circle cx="200" cy="102" r="4" fill="#3B6D11"/>
+      <text x="62" y="126">🗄 omega_assurance_dwh</text><circle cx="248" cy="122" r="4" fill="#3B6D11"/>
+      <text x="62" y="146">🗄 sigmare_dwh</text><circle cx="200" cy="142" r="4" fill="#3B6D11"/>
+      <text x="62" y="166" fill="#888">🗄 postgres (base système)</text>
+    </g>
+    <text x="14" y="196" font-family="Arial" font-size="10" fill="#3B6D11">✓ 3 bases visibles = installation réussie</text>
+  </svg>
+</div>
+<ul class="nc-list">
+<div class="info-box"><i class="fa-solid fa-circle-check"></i><div>Cette méthode 100% graphique (pgAdmin) suffit pour toute la suite de la formation. Le terminal et les commandes <code>pg_isready</code>/<code>psql</code> ci-dessous restent utiles si tu es à l'aise avec, mais ne sont <strong>pas obligatoires</strong>.</div></div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Optionnel — équivalent en ligne de commande de ce qu'on vient de faire dans pgAdmin</span>
+pg_isready -h localhost -p 5432
+
+psql -U postgres -h localhost -p 5432
+<span class="r-cm"># Une fois connecté (invite "postgres=#") :</span>
+<span class="r-kw">CREATE DATABASE</span> ada_vie_dwh;
+<span class="r-kw">CREATE DATABASE</span> omega_assurance_dwh;
+<span class="r-kw">CREATE DATABASE</span> sigmare_dwh;
+<span class="r-cm"># Pour sortir de psql :</span>
+\\q</pre></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Problèmes fréquents :</strong>
+<br>— <em>"pg_isready n'est pas reconnu"</em> (erreur PowerShell "CommandNotFoundException") → c'est normal, l'installeur Windows n'ajoute pas <code>pg_isready</code>/<code>psql</code> au PATH automatiquement. <strong>Pas besoin de corriger ça</strong> : utilise pgAdmin 4 (étapes 1.10 à 1.12 ci-dessus), qui ne nécessite aucun terminal
+<br>— <em>Mot de passe refusé dans pgAdmin</em> → mot de passe mal saisi (vérifier majuscules/minuscules) ; si oublié, il faudra réinitialiser via un mot de passe maître ou réinstaller PostgreSQL
+<br>— <em>pgAdmin ne s'ouvre pas / erreur au lancement</em> → vérifier dans "Services" (Windows, taper "services.msc") qu'un service nommé "postgresql-x64-XX" (XX = ton numéro de version) est bien sur "En cours d'exécution", sinon clic droit → Démarrer</div></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-plug" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Étape 2 — Installer DBeaver et se connecter à PostgreSQL</div><div class="nc-title-sm">Le client SQL universel utilisé pendant toute la formation</div></div></div>
+<ul class="nc-list">
+<li><strong>2.1 — Télécharger :</strong> aller sur <strong>dbeaver.io</strong>, cliquer sur "Download" puis choisir l'installeur correspondant à ton système (ex : "Installer for Windows (64 bit)")</li>
+<li><strong>2.2 — Installer :</strong>
+  <br>&nbsp;&nbsp;— Sur <strong>Windows</strong> : double-cliquer le fichier <code>.exe</code> téléchargé, cliquer "Next" à chaque écran en gardant les options par défaut, puis "Install" et "Finish"
+  <br>&nbsp;&nbsp;— Sur <strong>macOS</strong> : ouvrir le fichier <code>.dmg</code> téléchargé, puis glisser l'icône DBeaver dans le dossier "Applications"</li>
+<li><strong>2.3 — Lancer DBeaver</strong> depuis le menu Démarrer (Windows) ou Launchpad (macOS)</li>
+<li><strong>2.4 — Créer une nouvelle connexion :</strong> cliquer sur l'icône <i class="fa-solid fa-plug"></i> "New Database Connection" en haut à gauche (ou menu Base de données → Nouvelle Connexion)</li>
+<li><strong>2.5 — Choisir le type :</strong> sélectionner <strong>PostgreSQL</strong> dans la liste, cliquer "Next"</li>
+<li><strong>2.6 — Renseigner la connexion :</strong> <strong>Host: localhost</strong>, <strong>Port: 5432</strong>, <strong>Database: ada_vie_dwh</strong>, <strong>Username: postgres</strong>, <strong>Password:</strong> celui défini à l'étape 1.6 (cocher "Save password" pour ne pas le ressaisir à chaque fois)</li>
+<li><strong>2.7 — Tester :</strong> cliquer sur "Test Connection..." en bas de la fenêtre — DBeaver propose de télécharger automatiquement le driver PostgreSQL manquant lors de la toute première connexion : cliquer "Download"</li>
+<li><strong>2.8 — Valider :</strong> un message "Connected" doit apparaître ; cliquer "Finish"</li>
+<li><strong>2.9 — Répéter pour les 2 autres bases :</strong> refaire les étapes 2.4 à 2.8 en changeant uniquement le champ Database (<code>omega_assurance_dwh</code>, puis <code>sigmare_dwh</code>) — on obtient au final 3 connexions distinctes dans le panneau de gauche</li>
+</ul>
+<div class="screenshot-box">
+  <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — panneau DBeaver après l'étape 2.9</div>
+  <svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+    <rect x="0" y="0" width="520" height="190" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
+    <rect x="0" y="0" width="520" height="26" rx="8" fill="#2c2f33"/>
+    <rect x="0" y="14" width="520" height="12" fill="#2c2f33"/>
+    <circle cx="14" cy="13" r="4" fill="#ff5f57"/><circle cx="28" cy="13" r="4" fill="#febc2e"/><circle cx="42" cy="13" r="4" fill="#28c840"/>
+    <text x="260" y="17" text-anchor="middle" font-family="Arial" font-size="10" fill="#cfd3d6">DBeaver — Database Navigator</text>
+    <g font-family="Consolas,monospace" font-size="12" fill="#333">
+      <text x="14" y="50">🐘 ada_vie_dwh</text><circle cx="150" cy="46" r="4" fill="#3B6D11"/>
+      <text x="14" y="74">🐘 omega_assurance_dwh</text><circle cx="200" cy="70" r="4" fill="#3B6D11"/>
+      <text x="14" y="98">🐘 sigmare_dwh</text><circle cx="150" cy="94" r="4" fill="#3B6D11"/>
+    </g>
+    <rect x="14" y="116" width="492" height="26" rx="5" fill="#EAF3DE" stroke="#C0DD97"/>
+    <text x="26" y="133" font-family="Arial" font-size="11" fill="#27500A">✓ Connected — driver PostgreSQL chargé automatiquement</text>
+    <text x="14" y="172" font-family="Arial" font-size="10" fill="#3B6D11">✓ 3 connexions actives (points verts) = tu peux passer à l'étape 3</text>
+  </svg>
+</div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>"Connection refused"</strong> à l'étape 2.7 → PostgreSQL n'est pas démarré (revoir étape 1.10) ou le port saisi est incorrect.</div></div>
+</div>
+
+<div class="notion-card" style="border:2px solid #B5D4F4">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-cloud-arrow-down" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Étape 3 — Charger les dumps des 3 SI</div><div class="nc-title-sm">Peupler d'un coup les bases avec des volumes réalistes</div></div></div>
+<div class="nc-body">Plutôt que de repartir de tables vides, on charge directement un <strong>dump</strong> (export complet prêt à l'emploi) pour chaque compagnie. Chaque dump crée toutes les tables du SI (agences, intermédiaires, clients, produits, garanties, polices, sinistres, etc.) et les remplit avec des dizaines de milliers de lignes réalistes.</div>
+<ul class="nc-list">
+<li><strong>3.1 — Télécharger les 3 fichiers</strong> depuis la page d'accueil de la formation (section "Données à télécharger") : <code>omega_assurance_dwh_dump.sql.gz</code>, <code>ada_vie_dwh_dump.sql.gz</code>, <code>sigmare_dwh_dump.sql.gz</code></li>
+<li><strong>3.2 — Décompresser</strong> chaque fichier <code>.gz</code> : sous Windows, installer 7-Zip (7-zip.org) si besoin, puis clic droit sur le fichier → 7-Zip → Extraire ici. Sous macOS, double-clic suffit généralement. On obtient 3 fichiers <code>.sql</code></li>
+<li><strong>3.3 — Charger chaque dump</strong> dans sa base correspondante, au choix :</li>
+</ul>
+<div class="info-box"><i class="fa-solid fa-terminal"></i><div><strong>Option A — en ligne de commande</strong> (rapide, recommandé si le fichier est volumineux).</div></div>
+<ul class="nc-list">
+<li><strong>3.3a — Se positionner dans le dossier des dumps</strong> avec la commande <code>cd</code> ("change directory"), en donnant le chemin exact où tu as décompressé les 3 fichiers <code>.sql</code> à l'étape 3.2 (adapte le chemin ci-dessous au tien) :</li>
+</ul>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>cd "C:\\Users\\hendrick\\Desktop\\Desktop"
+<span class="r-cm"># → l'invite doit maintenant afficher ce chemin, par ex. :
+# PS C:\\Users\\hendrick\\Desktop\\Desktop&gt;</span></pre></div>
+<ul class="nc-list">
+<li><strong>3.3b — Une fois dans ce dossier</strong>, exécuter les 3 commandes ci-dessous <strong>telles quelles</strong> (sans chemin devant le nom du fichier, puisque le terminal est déjà positionné au bon endroit) :</li>
+</ul>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>psql -U postgres -h localhost -p 5432 -d omega_assurance_dwh -f omega_assurance_dwh_dump.sql
+psql -U postgres -h localhost -p 5432 -d ada_vie_dwh       -f ada_vie_dwh_dump.sql
+psql -U postgres -h localhost -p 5432 -d sigmare_dwh       -f sigmare_dwh_dump.sql</pre></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>"psql n'est pas reconnu" (CommandNotFoundException) :</strong> comme pour <code>pg_isready</code> (Étape 1), c'est normal si <code>psql</code> n'a pas été ajouté au PATH. Deux cas de figure :
+<br><br><strong>1. Tu ne connais pas le numéro de version installé</strong> (16, 17, 18...) : dans le terminal, taper la commande ci-dessous pour le découvrir automatiquement.
+<div class="code-block" style="margin:.5rem 0"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>Get-ChildItem "C:\\Program Files\\PostgreSQL" -Directory
+<span class="r-cm"># → affiche par ex. "18" : c'est ton numéro de version à utiliser ci-dessous</span></pre></div>
+<strong>2. Utiliser le chemin complet vers psql.exe</strong>, en remplaçant <code>18</code> par le numéro trouvé. <strong>Reste bien positionné dans le dossier des dumps</strong> (étape 3.3a) : c'est ce qui permet de garder <code>-f</code> avec juste le nom du fichier (<code>.\</code> = "dossier courant") au lieu de devoir retaper tout le chemin du dump :</div></div>
+<div class="code-block" style="margin:.5rem 0"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>&amp; "C:\\Program Files\\PostgreSQL\\18\\bin\\psql.exe" -U postgres -h localhost -p 5432 -d omega_assurance_dwh -f .\\omega_assurance_dwh_dump.sql</pre></div>
+<div class="info-box"><i class="fa-solid fa-circle-info"></i><div>Le <code>&amp;</code> au début et les guillemets autour du chemin sont nécessaires dans PowerShell dès que le chemin contient des espaces (ici "Program Files"). Si jamais tu n'es <strong>pas</strong> dans le dossier des dumps, remplace <code>.\omega_assurance_dwh_dump.sql</code> par le chemin complet du fichier (ex : <code>C:\\Users\\hendrick\\Desktop\\Desktop\\omega_assurance_dwh_dump.sql</code>).</div></div>
+<div class="info-box"><i class="fa-solid fa-computer-mouse"></i><div><strong>Option B — depuis DBeaver</strong> (sans terminal, recommandé si tu n'es pas à l'aise avec la ligne de commande) : dans l'arborescence à gauche, clic droit sur la connexion (ex : <code>omega_assurance_dwh</code>) → <strong>Tools → Execute SQL Script</strong> → cliquer sur les "..." pour parcourir et sélectionner le fichier <code>.sql</code> correspondant → bouton "Start" en bas à droite. Une barre de progression s'affiche (peut prendre 1 à 2 minutes pour les gros fichiers)</div></div>
+<ul class="nc-list">
+<li><strong>3.4 — Vérifier le chargement</strong> : dans DBeaver, clic droit sur chaque connexion → "Refresh", puis déplier Databases → [nom] → Schemas → public → Tables pour compter les tables — Oméga doit en avoir 13, ADA Vie 11, SigmaRé 9. Un rapide clic droit sur la table <code>polices</code> → "View Data" doit afficher 100 000 lignes pour Oméga et 60 000 pour ADA Vie</li>
+</ul>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Charge bien chaque dump dans <strong>sa propre base</strong> (le dump Oméga dans <code>omega_assurance_dwh</code>, etc.) — les 3 SI restent volontairement des bases séparées, comme 3 compagnies distinctes.</div></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-python" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Étape 4 — Installer Python (installeur classique, sans Install Manager)</div><div class="nc-title-sm">Interpréteur + bibliothèques data (Pandas, SQLAlchemy)</div></div></div>
+<div class="info-box"><i class="fa-solid fa-circle-info"></i><div>Le bouton principal de <strong>python.org/downloads</strong> renvoie désormais vers le nouvel outil "Python Install Manager". L'installeur classique (.exe, avec la case "Add Python to PATH") existe toujours — il faut juste passer par la page des releases Windows plutôt que par le bouton principal. C'est la méthode suivie ci-dessous.</div></div>
+<ul class="nc-list">
+<li><strong>4.1 — Aller sur la page des releases Windows :</strong> dans le navigateur, ouvrir <strong>python.org/downloads/windows</strong> (et non la page d'accueil "Downloads")</li>
+<li><strong>4.2 — Choisir une version stable récente :</strong> repérer une ligne "Python 3.13.x" (éviter les versions "pre-release"/alpha), et cliquer sur le lien de cette version (pas sur "Python install manager 26.x" affiché juste au-dessus, qui est l'autre outil)</li>
+<li><strong>4.3 — Descendre jusqu'à "Files" :</strong> sur la page de la release, faire défiler jusqu'au tableau des fichiers, repérer la ligne <strong>"Windows installer (64-bit)"</strong> et cliquer sur le lien pour télécharger le <code>.exe</code></li>
+<li><strong>4.4 — Lancer l'installeur :</strong> double-cliquer le fichier téléchargé. <strong style="color:#A32D2D">Étape cruciale :</strong> cocher impérativement la case <strong>"Add python.exe to PATH"</strong> (ou "Add Python to PATH") tout en bas de la première fenêtre, avant de cliquer sur quoi que ce soit d'autre</li>
+<li><strong>4.5 — Installer :</strong> cliquer sur "Install Now", patienter 1 à 2 minutes, puis "Close"</li>
+<li><strong>4.6 — Vérifier l'installation :</strong> ouvrir un nouveau terminal (fermer l'ancien s'il était déjà ouvert) et taper <code>python --version</code> — la version installée doit s'afficher</li>
+<li><strong>4.7 — Installer les bibliothèques nécessaires</strong> à la formation via <code>pip</code> (l'installeur de paquets Python, inclus automatiquement). <strong style="color:#A32D2D">Attention :</strong> cette commande s'exécute dans le <strong>terminal</strong> (PowerShell), <strong>pas</strong> dans l'interpréteur Python (l'écran qui s'ouvre si tu as tapé <code>python</code> seul et qui affiche <code>>>></code> ou <code>&lt;python-input-1&gt;</code>). Si tu es dans l'interpréteur Python, tape d'abord <code>exit()</code> puis Entrée pour en sortir et revenir à l'invite normale <code>PS C:\...&gt;</code></li>
+</ul>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>python -m pip install --upgrade pip
+pip install pandas sqlalchemy psycopg2-binary jupyterlab</pre></div>
+<li class="nc-list" style="list-style:none"><strong>4.8 — Vérifier Jupyter Lab</strong> (l'environnement de notebook utilisé au Module 2) : taper <code>jupyter lab</code> dans le terminal — un onglet doit s'ouvrir automatiquement dans le navigateur</li>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>psycopg2-binary est le driver PostgreSQL pour Python — indispensable pour que Pandas puisse lire/écrire directement dans nos 3 bases via SQLAlchemy (vu au Module 2).</div></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>"python n'est pas reconnu comme une commande"</strong> → la case de l'étape 4.4 n'a pas été cochée. Solution : désinstaller Python (Panneau de configuration → Programmes), puis recommencer l'installation en cochant bien "Add python.exe to PATH".
+<br><br><strong>Je ne trouve pas "Windows installer (64-bit)" sur la page de la release :</strong> certaines pages de version très récente ne proposent que le Python Install Manager. Dans ce cas, choisir une version un peu plus ancienne dans la liste (ex : la version précédente, toujours stable et suffisante pour la formation) — les releases un peu antérieures conservent presque toujours le lien vers l'installeur classique.
+<br><br><strong>"SyntaxError: invalid syntax" en tapant la commande pip</strong> (avec un repère du type <code>&lt;python-input-2&gt;</code>) → tu es actuellement <strong>dans l'interpréteur Python</strong> et pas dans le terminal. C'est normal : Python essaie d'interpréter <code>python -m pip install...</code> comme du code Python, ce qui échoue. Tape <code>exit()</code> puis Entrée pour sortir de l'interpréteur, tu retrouves l'invite <code>PS C:\...&gt;</code>, et c'est là qu'il faut retaper la commande.</div></div>
+</div>`,
+
+    c2:`<div class="mod-section-tag">Module 1 · Cours 2/3</div>
+<div class="mod-section-title">Installer son environnement — Partie 2 : Talend, Power BI, n8n</div>
+<div class="mod-section-desc">On termine l'installation de l'environnement avec les outils d'intégration (Talend), de restitution (Power BI) et d'orchestration (n8n). Chaque étape est détaillée pour ne rien laisser au hasard.</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-diagram-project" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Étape 5 — Installer Talend Open Studio</div><div class="nc-title-sm">L'ETL visuel utilisé au Module 2</div></div></div>
+<ul class="nc-list">
+<li><strong>5.1 — Vérifier le prérequis Java :</strong> Talend nécessite un JDK (Java Development Kit). Ouvrir un terminal et taper <code>java -version</code> — si une version 11 ou supérieure s'affiche, c'est bon. Sinon, télécharger et installer un JDK gratuit sur <strong>adoptium.net</strong> (choisir la version LTS la plus récente, ex. JDK 17) avant de continuer</li>
+<li><strong>5.2 — Télécharger Talend Open Studio for Data Integration :</strong> l'édition Community gratuite est disponible via le dépôt d'archives officiel de Talend (rechercher "Talend Open Studio for Data Integration download" — le fichier se présente sous forme d'archive <code>.zip</code> d'environ 1 Go)</li>
+<li><strong>5.3 — Extraire l'archive :</strong> clic droit sur le fichier <code>.zip</code> téléchargé → "Extraire tout..." (Windows) ou double-clic (macOS), dans un dossier facile à retrouver (ex : <code>C:\\Talend</code>)</li>
+<li><strong>5.4 — Lancer Talend :</strong> ouvrir le dossier extrait et double-cliquer sur l'exécutable <code>TOS_DI-win-x86_64.exe</code> (Windows) ou <code>TOS_DI-macosx-cocoa.app</code> (macOS) — aucune installation "classique" n'est nécessaire, Talend Open Studio est portable</li>
+<li><strong>5.5 — Premier lancement :</strong> accepter la licence, puis à l'écran "Connect to a Talend Cloud Studio" cliquer sur <strong>"Continue without login"</strong> (ou équivalent) pour rester en local</li>
+<li><strong>5.6 — Créer le projet :</strong> à l'écran de sélection de projet, cliquer sur "Create a new project", nommer le projet <code>Formation_Assurance</code>, cliquer "Finish"</li>
+<li><strong>5.7 — Patienter :</strong> le premier chargement de l'espace de travail (workspace) peut prendre 1 à 3 minutes — c'est normal</li>
+<li><strong>5.8 — Repérer l'interface :</strong> une fois chargé, on distingue 3 zones principales : le panneau <strong>Repository</strong> à gauche (arborescence des Jobs), le canevas <strong>Designer</strong> au centre (où l'on construit les Jobs), et la <strong>Palette</strong> à droite (liste des composants comme tFileInputExcel, tMap, etc.)</li>
+</ul>
+<div class="screenshot-box">
+  <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — interface Talend Open Studio attendue après l'étape 5.8</div>
+  <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+    <rect x="0" y="0" width="520" height="200" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
+    <rect x="0" y="0" width="520" height="22" fill="#2c2f33"/>
+    <text x="260" y="15" text-anchor="middle" font-family="Arial" font-size="9" fill="#cfd3d6">Formation_Assurance — Talend Open Studio</text>
+    <rect x="0" y="22" width="130" height="178" fill="#f7f6f2" stroke="#e0ddd5"/>
+    <text x="10" y="38" font-family="Arial" font-size="9" font-weight="bold" fill="#534AB7">Repository</text>
+    <text x="14" y="54" font-family="Consolas,monospace" font-size="9" fill="#555">▾ Job Designs</text>
+    <text x="26" y="68" font-family="Consolas,monospace" font-size="9" fill="#185FA5">Charger_Polices_Omega</text>
+    <rect x="130" y="22" width="270" height="178" fill="#ffffff" stroke="#e0ddd5" stroke-dasharray="4 3"/>
+    <text x="265" y="108" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Designer (canevas)</text>
+    <rect x="400" y="22" width="120" height="178" fill="#f7f6f2" stroke="#e0ddd5"/>
+    <text x="410" y="38" font-family="Arial" font-size="9" font-weight="bold" fill="#854F0B">Palette</text>
+    <text x="410" y="54" font-family="Consolas,monospace" font-size="8" fill="#555">tFileInputExcel</text>
+    <text x="410" y="68" font-family="Consolas,monospace" font-size="8" fill="#555">tFilterRow</text>
+    <text x="410" y="82" font-family="Consolas,monospace" font-size="8" fill="#555">tMap</text>
+    <text x="410" y="96" font-family="Consolas,monospace" font-size="8" fill="#555">tPostgresqlOutput</text>
+  </svg>
+</div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Talend Open Studio est gourmand en mémoire (prévoir au moins 4 Go de RAM disponible) et peut mettre 1 à 2 minutes à démarrer à chaque lancement — c'est normal, pas la peine de forcer la fermeture.</div></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-chart-pie" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Étape 6 — Installer Power BI Desktop</div><div class="nc-title-sm">Gratuit, réservé à Windows</div></div></div>
+<ul class="nc-list">
+<li><strong>6.1 — Vérifier le système :</strong> Power BI Desktop nécessite Windows 10 ou 11 (64 bits). Sur macOS/Linux, il faudra utiliser une machine virtuelle Windows ou un poste distant — Power BI Desktop n'existe pas en version native pour ces systèmes</li>
+<li><strong>6.2 — Méthode recommandée : Microsoft Store</strong> — ouvrir l'application "Microsoft Store" (icône sac de courses dans la barre des tâches), taper <code>Power BI Desktop</code> dans la barre de recherche, cliquer sur le résultat officiel "Microsoft Power BI Desktop", puis sur le bouton <strong>"Obtenir"</strong> ou <strong>"Installer"</strong></li>
+<li><strong>6.3 — Alternative — téléchargement direct :</strong> si le Store n'est pas accessible (poste d'entreprise restreint), aller sur <strong>powerbi.microsoft.com/desktop</strong>, cliquer "Télécharger gratuitement", puis exécuter le fichier <code>.msi</code> téléchargé et suivre l'assistant (Next → Next → Install → Finish)</li>
+<li><strong>6.4 — Premier lancement :</strong> ouvrir "Power BI Desktop" depuis le menu Démarrer. Une fenêtre "Bienvenue" propose de se connecter avec un compte Microsoft — c'est <strong>facultatif</strong> pour un usage local, on peut cliquer sur la croix pour fermer et arriver directement sur le canevas de travail vide</li>
+<li><strong>6.5 — Fermer l'écran d'accueil :</strong> fermer la fenêtre "Get Data" / "Prise en main" qui peut s'ouvrir automatiquement, pour arriver sur la zone de rapport vierge — nous nous en servirons à partir du Module 4</li>
+</ul>
+<div class="screenshot-box">
+  <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — canevas Power BI attendu après l'étape 6.5</div>
+  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+    <rect x="0" y="0" width="520" height="210" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
+    <rect x="0" y="0" width="520" height="26" fill="#F2C811"/>
+    <text x="12" y="17" font-family="Arial" font-size="10" fill="#333">Fichier   Accueil   Insertion   Modélisation   Affichage</text>
+    <rect x="0" y="26" width="520" height="34" fill="#faf9f8"/>
+    <rect x="10" y="32" width="60" height="22" rx="3" fill="#fff" stroke="#d3d1c7"/><text x="24" y="46" font-family="Arial" font-size="9" fill="#555">Obtenir</text>
+    <rect x="76" y="32" width="70" height="22" rx="3" fill="#fff" stroke="#d3d1c7"/><text x="88" y="46" font-family="Arial" font-size="9" fill="#555">Transformer</text>
+    <rect x="352" y="60" width="158" height="140" fill="#faf9f8" stroke="#e0ddd5"/>
+    <text x="431" y="76" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Champs</text>
+    <rect x="18" y="60" width="326" height="140" fill="#ffffff" stroke="#e0ddd5" stroke-dasharray="4 3"/>
+    <text x="181" y="134" text-anchor="middle" font-family="Arial" font-size="11" fill="#aaa">Canevas de rapport vide</text>
+    <text x="181" y="150" text-anchor="middle" font-family="Arial" font-size="9" fill="#bbb">(prêt pour le Module 4)</text>
+  </svg>
+</div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Si le Microsoft Store est désactivé par une politique d'entreprise (poste professionnel), utilise l'étape 6.3 (téléchargement direct) — elle ne nécessite pas de droits administrateur particuliers dans la plupart des cas.</div></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-gears" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Étape 7 — Installer n8n</div><div class="nc-title-sm">Guide pas à pas pour débutants — méthode Docker Desktop recommandée</div></div></div>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div><strong>C'est quoi, Docker ?</strong> Docker est un logiciel qui fait tourner des applications toutes prêtes ("conteneurs"), sans avoir à les installer manuellement avec toutes leurs dépendances. On installe Docker Desktop une seule fois, puis on lui demande de "lancer" n8n en une seule commande — pas besoin de comprendre son fonctionnement interne pour l'utiliser.</div></div>
+<ul class="nc-list">
+<li><strong>7.1 — Télécharger Docker Desktop :</strong> aller sur <strong>docker.com/products/docker-desktop</strong>, cliquer sur le bouton de téléchargement correspondant à ton système (Windows ou macOS)</li>
+<li><strong>7.2 — Installer Docker Desktop :</strong> double-cliquer sur le fichier téléchargé et suivre l'assistant (cliquer "Suivant"/"Install" jusqu'à la fin). Un redémarrage de l'ordinateur peut être demandé — l'accepter si c'est le cas</li>
+<li><strong>7.3 — Lancer Docker Desktop :</strong> ouvrir l'application "Docker Desktop" depuis le menu Démarrer (Windows) ou le Launchpad (macOS). Attendre que la petite icône de baleine 🐳 en bas à droite (Windows) ou en haut (macOS) devienne fixe et n'indique plus "starting..." — cela peut prendre 1 à 2 minutes la première fois</li>
+<li><strong>7.4 — Ouvrir un terminal :</strong>
+  <br>&nbsp;&nbsp;— Sur <strong>Windows</strong> : cliquer sur le menu Démarrer, taper <code>PowerShell</code>, puis appuyer sur Entrée
+  <br>&nbsp;&nbsp;— Sur <strong>macOS</strong> : ouvrir l'application "Terminal" (via Spotlight : Cmd+Espace puis taper "Terminal")</li>
+<li><strong>7.5 — Copier-coller la commande ci-dessous</strong> dans le terminal, puis appuyer sur Entrée (clic droit → Coller, ou Ctrl+V / Cmd+V)</li>
+</ul>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Cette commande télécharge puis démarre n8n automatiquement
+# (la 1ère exécution prend 1 à 2 min le temps de télécharger l'image)</span>
+docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre></div>
+<ul class="nc-list">
+<li><strong>7.6 — Vérifier que ça fonctionne :</strong> quand le terminal affiche une ligne du type <code>Editor is now accessible via: http://localhost:5678</code>, n8n est prêt</li>
+<li><strong>7.7 — Ouvrir n8n dans le navigateur :</strong> ouvrir Chrome/Edge/Firefox et taper dans la barre d'adresse <strong>http://localhost:5678</strong>, puis appuyer sur Entrée</li>
+<li><strong>7.8 — Créer ton compte local :</strong> au premier accès, n8n demande de créer un compte "owner" (email + mot de passe) — ce compte reste uniquement sur ton ordinateur, aucune donnée n'est envoyée à l'extérieur</li>
+<li><strong>7.9 — Pour arrêter n8n :</strong> retourner dans le terminal où la commande tourne et appuyer sur <code>Ctrl+C</code>. Pour le relancer plus tard, il suffit de retaper la même commande (7.5) dans un terminal</li>
+</ul>
+<div class="screenshot-box">
+  <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — terminal (étape 7.6) puis navigateur (étape 7.7-7.8)</div>
+  <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+    <rect x="0" y="0" width="520" height="100" rx="8" fill="#1e1e2e"/>
+    <circle cx="14" cy="14" r="4" fill="#ff5f57"/><circle cx="28" cy="14" r="4" fill="#febc2e"/><circle cx="42" cy="14" r="4" fill="#28c840"/>
+    <text x="260" y="18" text-anchor="middle" font-family="Arial" font-size="10" fill="#8a8fa3">PowerShell</text>
+    <g font-family="Consolas,monospace" font-size="11" fill="#a6e3a1">
+      <text x="14" y="42">Initializing n8n process</text>
+      <text x="14" y="58">n8n ready on 0.0.0.0, port 5678</text>
+      <text x="14" y="74" fill="#89b4fa">Editor is now accessible via:</text>
+      <text x="14" y="90" fill="#f9e2af">http://localhost:5678</text>
+    </g>
+    <rect x="0" y="112" width="520" height="118" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
+    <rect x="0" y="112" width="520" height="26" fill="#f0ede5"/>
+    <circle cx="14" cy="125" r="4" fill="#ff5f57"/><circle cx="28" cy="125" r="4" fill="#febc2e"/><circle cx="42" cy="125" r="4" fill="#28c840"/>
+    <rect x="70" y="118" width="220" height="16" rx="8" fill="#fff" stroke="#d3d1c7"/>
+    <text x="80" y="130" font-family="Arial" font-size="9" fill="#555">localhost:5678</text>
+    <text x="150" y="168" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">Set up owner account</text>
+    <rect x="150" y="180" width="220" height="14" rx="3" fill="#f7f6f2" stroke="#d3d1c7"/>
+    <text x="158" y="190" font-family="Arial" font-size="9" fill="#888">Email</text>
+    <rect x="150" y="200" width="220" height="14" rx="3" fill="#f7f6f2" stroke="#d3d1c7"/>
+    <text x="158" y="210" font-family="Arial" font-size="9" fill="#888">Mot de passe</text>
+    <rect x="380" y="180" width="120" height="34" rx="6" fill="#185FA5"/>
+    <text x="440" y="201" text-anchor="middle" font-family="Arial" font-size="10" fill="#fff">Créer le compte</text>
+  </svg>
+</div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Problèmes fréquents :</strong>
+<br>— <em>"docker: command not found"</em> → Docker Desktop n'est pas lancé, ou l'ordinateur n'a pas encore redémarré après l'installation
+<br>— <em>Le terminal reste bloqué sans rien afficher</em> → c'est normal la première fois, le téléchargement de l'image n8n (environ 1 Go) est en cours
+<br>— <em>"port is already allocated"</em> → une autre application utilise déjà le port 5678 ; fermer cette application ou redémarrer l'ordinateur</div></div>
+<div class="notion-card" style="background:#f7f6f2;border:1px dashed #d3d1c7">
+<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-code" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Alternative pour les plus à l'aise avec le code</div><div class="nc-title-sm">Installation via npm (nécessite Node.js)</div></div></div>
+<ul class="nc-list">
+<li>Installer Node.js depuis <strong>nodejs.org</strong> (choisir la version "LTS")</li>
+<li>Ouvrir un terminal (voir étape 7.4) puis taper les commandes suivantes</li>
+</ul>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Installer n8n globalement (une seule fois)</span>
+npm install n8n -g
+
+<span class="r-cm"># Démarrer n8n (à refaire à chaque fois qu'on veut l'utiliser)</span>
+n8n start
+<span class="r-cm"># → interface accessible sur http://localhost:5678, comme avec Docker</span></pre></div>
+</div>
+<div class="info-box"><i class="fa-solid fa-circle-info"></i><div>n8n sera utilisé au Module 5 pour orchestrer automatiquement les pipelines des 3 compagnies : extraction, nettoyage, chargement PostgreSQL et rafraîchissement Power BI. Il suffira de relancer la commande de l'étape 7.5 (ou <code>n8n start</code>) à chaque nouvelle session de travail.</div></div>
+</div>`,
+
+    c3:`<div class="mod-section-tag">Module 1 · Cours 3/3</div>
+<div class="mod-section-title">Les 5 piliers · Les 3 compagnies · RH et organisation</div>
+<div class="mod-section-desc">Environnement installé — on prend maintenant du recul sur les 5 piliers d'une Data Office, on découvre les 3 entités fil rouge de la formation, puis on termine par un aspect souvent oublié : quelles compétences et quelle organisation humaine faut-il réunir pour qu'une Data Office fonctionne vraiment ?</div>
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-sitemap" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Les 5 piliers d'une Data Office</div><div class="nc-title-sm">Architecture · Gouvernance · Engineering · BI · Monitoring</div></div></div>
 <ul class="nc-list">
 <li><strong>Architecture</strong> — Où et comment stocke-t-on les données ? (Data Lake, DWH, DataMart)</li>
 <li><strong>Gouvernance</strong> — Peut-on faire confiance à ces données ? (qualité, sécurité, conformité)</li>
@@ -890,73 +1245,101 @@ var MOD_CONTENT = {
 <li><strong>BI</strong> — Comment transforme-t-on la donnée en décision ? (KPIs, dashboards)</li>
 <li><strong>Monitoring</strong> — Comment sait-on que tout fonctionne correctement ? (logs, alerting)</li>
 </ul>
-<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Ces 5 piliers ne sont pas indépendants : une mauvaise gouvernance rend l'engineering fragile, et un mauvais monitoring rend la BI peu fiable. C'est leur articulation qui fait la robustesse d'une Data Office.</div></div>
+<div class="use-case-box"><p><strong>Application pratique :</strong> PostgreSQL héberge les 3 DWH (Architecture) · Talend/Python nettoient et chargent les données de chaque compagnie (Engineering) · Power BI restitue les KPIs (BI) · n8n orchestre et surveille l'ensemble (Engineering/Monitoring).</p></div>
 </div>
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-database" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Architecture — Où stocker la donnée ?</div><div class="nc-title-sm">Data Lake, Data Warehouse, DataMart</div></div></div>
+<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-heart-pulse" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">ADA Assurance Vie</div><div class="nc-title-sm">Épargne, prévoyance — spécificités de son SI</div></div></div>
 <ul class="nc-list">
-<li><strong>Data Lake</strong> — Stocke des données brutes, de tout type (fichiers, JSON, logs, images...), sans structure imposée à l'entrée. Flexible mais nécessite discipline pour ne pas devenir un "data swamp".</li>
-<li><strong>Data Warehouse (DWH)</strong> — Stocke des données déjà nettoyées et modélisées, organisées pour l'analyse (souvent en schéma en étoile ou en Data Vault).</li>
-<li><strong>DataMart</strong> — Sous-ensemble d'un DWH, ciblé sur un métier précis (ventes, RH, finance) pour des besoins d'analyse spécifiques.</li>
+<li>Contrats d'<strong>épargne</strong> (capitalisation) et de <strong>prévoyance</strong> (décès, invalidité) avec des durées d'engagement longues (parfois plusieurs décennies)</li>
+<li>SI centré sur le <strong>cycle de vie du contrat</strong> : souscription, versements, rachats partiels/totaux, arbitrages, décès de l'assuré</li>
+<li>Données clés : capital assuré, valeur de rachat, bénéficiaires désignés, âge et santé de l'assuré à la souscription</li>
+<li>Enjeu spécifique : les provisions mathématiques (engagements futurs actualisés), très différentes des provisions IARD</li>
 </ul>
-<div class="use-case-box"><p><strong>Exemple bancaire :</strong> le Data Lake reçoit les relevés bruts de toutes les agences ; le DWH consolide les comptes clients nettoyés ; le DataMart "Risque Crédit" n'expose que les données utiles à l'équipe risque.</p></div>
-</div>`,
+</div>
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-car-burst" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Oméga Assurance</div><div class="nc-title-sm">Auto, Habitation, RC — spécificités de son SI</div></div></div>
+<ul class="nc-list">
+<li>Contrats <strong>Non-Vie / IARD</strong> à engagement court (annuel, renouvelable) : Auto, Habitation, Responsabilité Civile</li>
+<li>SI centré sur le <strong>cycle du sinistre</strong> : déclaration, expertise, garages partenaires, indemnisation, recours</li>
+<li>Données clés : garanties souscrites, franchise, bonus-malus, historique de sinistralité, statut du sinistre (déclaré/en cours/réglé)</li>
+<li>Enjeu spécifique : la fréquence élevée de sinistres nécessite des flux de données à haute volumétrie et un suivi fin par garantie</li>
+</ul>
+</div>
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-building-shield" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">SigmaRé</div><div class="nc-title-sm">Réassurance — spécificités de son SI</div></div></div>
+<ul class="nc-list">
+<li>SigmaRé ne traite pas directement avec les assurés : elle <strong>réassure</strong> des cédantes comme <strong>ADA Assurance Vie</strong> et <strong>Oméga Assurance</strong> via des <strong>traités</strong> (quote-part, excédent de plein, excess of loss)</li>
+<li>SI centré sur le <strong>traité de réassurance</strong> : taux de cession, rétention de la cédante, plafond de garantie, sinistres cédés reçus des SI d'ADA et Oméga</li>
+<li>Données clés : identifiant du traité, cédante, taux de cession, primes cédées, sinistres cédés, résultat technique du traité</li>
+<li>Enjeu spécifique : consolider des données venant de SI tiers (ADA, Oméga) avec des formats et référentiels parfois différents</li>
+</ul>
 
-    c2:`<div class="mod-section-tag">Module 1 · Cours 2/3</div>
-<div class="mod-section-title">Gouvernance et Engineering</div>
-<div class="mod-section-desc">La gouvernance garantit la confiance dans la donnée ; l'engineering garantit qu'elle circule correctement d'un système à l'autre. Ce sont les fondations invisibles mais critiques de toute Data Office.</div>
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-shield-halved" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Gouvernance de la donnée</div><div class="nc-title-sm">Qualité, fiabilité, sécurité, conformité</div></div></div>
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-users" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Ressources humaines d'une Data Office</div><div class="nc-title-sm">Les métiers clés, au-delà des outils</div></div></div>
+<div class="nc-body">Une Data Office n'est pas qu'un empilement d'outils : c'est avant tout une équipe. Voici les profils que l'on retrouve, à des degrés divers, dans une Data Office fonctionnelle :</div>
 <ul class="nc-list">
-<li><strong>Qualité</strong> — Les données sont-elles complètes, exactes, à jour ? (taux de valeurs manquantes, doublons)</li>
-<li><strong>Fiabilité</strong> — Peut-on faire confiance à la source et au pipeline qui l'a produite ?</li>
-<li><strong>Sécurité</strong> — Qui a accès à quoi ? Les données sensibles sont-elles protégées (chiffrement, anonymisation) ?</li>
-<li><strong>Conformité</strong> — Respecte-t-on les réglementations applicables (RGPD, exigences sectorielles bancaires/assurance) ?</li>
+<li><strong>Chief Data Officer (CDO)</strong> — pilote la stratégie data de l'entreprise, arbitre les priorités et porte le sujet au niveau de la direction générale</li>
+<li><strong>Data Architect</strong> — conçoit l'architecture cible (Data Lake, DWH, DataMart, flux) et les standards techniques à respecter</li>
+<li><strong>Data Engineer</strong> — construit et maintient les pipelines ETL/ELT (Talend, Python, SQL) — le rôle que nous exerçons principalement aux Modules 2 et 3</li>
+<li><strong>DBA (administrateur de bases de données)</strong> — garantit la performance, la sauvegarde et la sécurité des bases PostgreSQL</li>
+<li><strong>Data Analyst / BI Developer</strong> — transforme la donnée en rapports et KPIs exploitables (Power BI) — le rôle du Module 4</li>
+<li><strong>Data Steward / Chargé de gouvernance</strong> — définit et fait respecter les règles de qualité, de nommage et de propriété des données (data ownership)</li>
+<li><strong>DPO (Data Protection Officer)</strong> — s'assure de la conformité réglementaire (protection des données personnelles des assurés, secret des affaires sur les traités de réassurance)</li>
 </ul>
-<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Dans un secteur régulé (banque, assurance), l'absence de gouvernance n'est pas qu'un risque technique : c'est un risque réglementaire et réputationnel majeur.</div></div>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Dans une petite structure, une même personne peut cumuler plusieurs de ces casquettes (ex : un Data Engineer qui fait aussi de la BI). Dans une grande compagnie, ce sont des équipes dédiées à chaque rôle.</div></div>
 </div>
-<div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-gears" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Engineering — Faire circuler la donnée</div><div class="nc-title-sm">ETL/ELT, orchestration, DataOps</div></div></div>
-<ul class="nc-list">
-<li><strong>ETL</strong> (Extract – Transform – Load) — on transforme la donnée avant de la charger dans la cible</li>
-<li><strong>ELT</strong> (Extract – Load – Transform) — on charge d'abord la donnée brute, puis on la transforme dans l'entrepôt cible (souvent en SQL)</li>
-<li><strong>Orchestration</strong> — enchaîner et planifier les traitements dans le bon ordre, avec gestion des dépendances et des erreurs (ex : n8n, Airflow)</li>
-<li><strong>DataOps</strong> — appliquer les pratiques du DevOps (automatisation, tests, versioning) aux pipelines de données</li>
-</ul>
-<div class="info-box"><i class="fa-solid fa-circle-info"></i><div>Ces notions seront mises en pratique concrètement au Module 2 (Talend, SQL, Python) et au Module 5 (n8n).</div></div>
-</div>`,
 
-    c3:`<div class="mod-section-tag">Module 1 · Cours 3/3</div>
-<div class="mod-section-title">BI et Monitoring — Valoriser et surveiller</div>
-<div class="mod-section-desc">Une fois les données stockées, gouvernées et bien reliées, deux piliers permettent d'en tirer de la valeur en continu : la BI (analyse et décision) et le Monitoring (fiabilité opérationnelle).</div>
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-chart-column" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Analyse et Visualisation</div><div class="nc-title-sm">Transformer la donnée en KPIs actionnables</div></div></div>
+<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-diagram-project" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Organisation pratique à mettre en place</div><div class="nc-title-sm">Comités, processus, documentation</div></div></div>
 <ul class="nc-list">
-<li>Un <strong>KPI</strong> (indicateur clé de performance) traduit un objectif métier en une mesure suivable dans le temps (ex : taux de sinistralité, chiffre d'affaires mensuel)</li>
-<li>Les outils comme <strong>Power BI</strong> ou <strong>Tableau</strong> permettent de connecter les données du DWH/DataMart et de construire des rapports interactifs</li>
-<li>La valeur d'un rapport ne vient pas du nombre de graphiques, mais de sa capacité à répondre à une vraie question métier</li>
+<li><strong>Comité de gouvernance des données</strong> — réunion mensuelle ou trimestrielle réunissant CDO, métiers et IT pour arbitrer les priorités, valider les définitions de KPIs et traiter les incidents de qualité de données</li>
+<li><strong>Matrice RACI</strong> par projet data — qui est Responsable, qui est Approbateur, qui est Consulté, qui est Informé, pour éviter les zones de flou sur "qui décide quoi"</li>
+<li><strong>Cycle de vie d'un projet data</strong> — recueil du besoin métier → conception → développement (Talend/SQL/Python) → recette avec le métier → mise en production → monitoring (n8n)</li>
+<li><strong>Catalogue / dictionnaire de données</strong> — document ou outil recensant chaque table, chaque colonne, sa définition métier et son propriétaire (data owner) — indispensable dès que le nombre de tables dépasse la mémoire d'une seule personne</li>
+<li><strong>Versioning</strong> — les Jobs Talend, scripts Python et scripts SQL doivent être sauvegardés dans un outil de gestion de versions (Git), pas seulement sur le poste d'un développeur</li>
+<li><strong>SLA (Service Level Agreement)</strong> — engagement formel sur la fraîcheur des rapports (ex : "le rapport Direction est rafraîchi chaque matin avant 8h") et sur le délai de résolution des incidents</li>
 </ul>
-<div class="use-case-box"><p><strong>Exemple :</strong> un rapport ALM (Asset Liability Management) dans une banque suit en continu l'équilibre entre actifs et passifs — nous construirons ce type de rapport au Module 4.</p></div>
+<div class="use-case-box"><p><strong>Dimensionnement chez SigmaRé, ADA et Oméga :</strong> avec un portefeuille de 100 000 polices, Oméga justifie une petite équipe dédiée (1 Data Engineer + 1 Data Analyst à temps plein). ADA Assurance Vie, avec des enjeux réglementaires plus lourds (provisions mathématiques), ajoute un profil de gouvernance. SigmaRé, plus petite en volume mais à forte valeur unitaire par traité, mutualise souvent ces rôles avec sa maison mère ou un prestataire externe.</p></div>
 </div>
-<div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#E1F5EE"><i class="fa-solid fa-heart-pulse" style="color:#085041"></i></div><div><div class="nc-label" style="color:#085041">Monitoring des données</div><div class="nc-title-sm">Logs, alerting, observabilité</div></div></div>
-<ul class="nc-list">
-<li><strong>Logs</strong> — traces d'exécution des pipelines (succès, échecs, durée) permettant de diagnostiquer un problème</li>
-<li><strong>Alerting</strong> — notification automatique (email, Teams) en cas d'anomalie ou d'échec d'un traitement</li>
-<li><strong>Observabilité</strong> — capacité globale à comprendre l'état d'un système de données à tout instant, sans devoir tout inspecter manuellement</li>
-</ul>
-<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Le Monitoring est souvent le pilier le plus négligé — jusqu'au jour où un rapport diffuse des chiffres faux sans que personne ne le sache. Nous verrons comment le mettre en pratique avec n8n et Power BI Service au Module 5.</div></div>
+
+<div class="use-case-box"><p><strong>Cas d'usage du module :</strong> installer l'environnement technique complet (PostgreSQL, DBeaver, Python, Talend, Power BI, n8n), puis explorer les spécificités métier et SI d'ADA Assurance Vie, d'Oméga Assurance et de SigmaRé — ainsi que l'organisation humaine nécessaire pour faire vivre leur Data Office.</p></div>
 </div>`
   },
   2:{
     c1:`<div class="mod-section-tag">Module 2 · Cours 1/3</div>
 <div class="mod-section-title">Talend — Concevoir des flux ETL visuellement</div>
 <div class="mod-section-desc">Talend Open Studio permet de construire des flux ETL par glisser-déposer de composants, sans écrire de code bas niveau pour chaque connexion. Un <strong>Job</strong> Talend représente un flux complet : source → transformations → cible.</div>
+
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-diagram-project" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Interface et connexions</div><div class="nc-title-sm">Projets, Jobs, métadonnées, sources de données</div></div></div>
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI d'Oméga Assurance</div><div class="nc-title-sm">Table PostgreSQL dans la base omega_assurance_dwh</div></div></div>
+<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>omega_assurance_dwh</code> créée au Module 1, ouvre un nouvel éditeur SQL et exécute ce script pour créer les 2 tables du SI d'Oméga Assurance :</div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> polices (
+  id_police       <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
+  nom_assure      <span class="r-kw">VARCHAR</span>(100),
+  branche         <span class="r-kw">VARCHAR</span>(20),   <span class="r-cm">-- Auto, Habitation, RC</span>
+  region          <span class="r-kw">VARCHAR</span>(50),
+  date_effet      <span class="r-kw">DATE</span>,
+  prime_annuelle  <span class="r-kw">NUMERIC</span>(12,2),
+  statut          <span class="r-kw">VARCHAR</span>(20)
+);
+
+<span class="r-kw">CREATE TABLE</span> sinistres (
+  id_sinistre      <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
+  id_police        <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">REFERENCES</span> polices(id_police),
+  date_sinistre    <span class="r-kw">DATE</span>,
+  type_sinistre    <span class="r-kw">VARCHAR</span>(30),
+  garantie         <span class="r-kw">VARCHAR</span>(30),
+  montant_sinistre <span class="r-kw">NUMERIC</span>(12,2),
+  statut           <span class="r-kw">VARCHAR</span>(20)
+);</pre></div>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Clique sur l'icône <i class="fa-solid fa-play"></i> "Execute SQL Script" de DBeaver (ou Ctrl+Entrée sur chaque requête) pour exécuter le script. Rafraîchis l'arborescence à gauche pour voir apparaître les 2 nouvelles tables — c'est le SI d'Oméga Assurance, encore vide, prêt à être alimenté par le Job Talend.</div></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-diagram-project" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Interface et connexions Talend</div><div class="nc-title-sm">Projets, Jobs, métadonnées, sources de données</div></div></div>
 <ul class="nc-list">
 <li>Un <strong>projet</strong> Talend regroupe l'ensemble des Jobs et métadonnées (connexions réutilisables) d'un périmètre</li>
-<li><strong>tFileInputDelimited</strong> — lit un fichier CSV en entrée du flux</li>
+<li><strong>tFileInputExcel</strong> — lit un fichier Excel (.xlsx) en entrée du flux</li>
 <li><strong>tRestClient</strong> — appelle une API REST externe (ex : API météo, API interne)</li>
 <li>Les métadonnées de connexion (base PostgreSQL, API) sont déclarées une fois et réutilisées dans plusieurs Jobs</li>
 </ul>
@@ -964,96 +1347,166 @@ var MOD_CONTENT = {
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-filter" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Transformations</div><div class="nc-title-sm">tFilterRow, tMap, tReplace</div></div></div>
 <ul class="nc-list">
-<li><strong>tFilterRow</strong> — filtre les lignes selon une ou plusieurs conditions (ex : ne garder que les clients actifs)</li>
+<li><strong>tFilterRow</strong> — filtre les lignes selon une ou plusieurs conditions (ex : ne garder que les polices actives)</li>
 <li><strong>tMap</strong> — le composant central : mappe les colonnes source vers la sortie, applique des expressions, gère les jointures entre flux</li>
 <li><strong>tReplace</strong> — remplace des valeurs ou motifs dans une colonne (nettoyage de texte)</li>
 <li><strong>tOutput / tPostgresqlOutput</strong> — charge le flux transformé dans la base PostgreSQL cible</li>
 </ul>
 <div class="info-box"><i class="fa-solid fa-circle-info"></i><div>Le monitoring d'un Job Talend (logs d'exécution, gestion des erreurs via tLogRow / tDie) prépare directement les notions vues au Module 5 sur l'automatisation.</div></div>
 </div>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Construire un Job qui lit un fichier CSV clients, enrichit chaque ligne avec la météo du jour via une API REST (tRestClient), nettoie les champs texte, puis charge le résultat dans PostgreSQL.</p></div>`,
+
+<div class="notion-card" style="border:2px solid #B5D4F4">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-list-check" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">TP guidé — Oméga Assurance, étape par étape</div><div class="nc-title-sm">Fichier requis : polices_omega.xlsx (151 lignes)</div></div></div>
+<ul class="nc-list">
+<li><strong>1.</strong> Dans Talend, clic droit sur "Job Designs" → <strong>New Job</strong> → nommer <code>Charger_Polices_Omega</code></li>
+<li><strong>2.</strong> Glisser un composant <strong>tFileInputExcel</strong> sur le canevas, double-cliquer dessus, dans "Basic settings" renseigner le chemin vers <code>polices_omega.xlsx</code> et cliquer sur <strong>"Guess Schema"</strong> pour que Talend détecte automatiquement les 7 colonnes (id_police, nom_assure, branche, region, date_effet, prime_annuelle, statut)</li>
+<li><strong>3.</strong> Glisser un composant <strong>tFilterRow</strong>, le relier au tFileInputExcel (clic droit sur le composant source → Row → Main → cliquer sur tFilterRow), puis configurer la condition <code>statut == "Actif"</code> pour ne garder que les polices actives</li>
+<li><strong>4.</strong> Glisser un composant <strong>tMap</strong>, le relier à la sortie "Filter" du tFilterRow, double-cliquer dessus : dans la fenêtre tMap, faire glisser chaque colonne d'entrée vers une nouvelle table de sortie, et ajouter une expression pour nettoyer la région, par ex. : <code>region.trim().toUpperCase()</code> (supprime les espaces et harmonise la casse — utile car le fichier contient volontairement quelques valeurs "abidjan " et "ABIDJAN")</li>
+<li><strong>5.</strong> Glisser un composant <strong>tPostgresqlOutput</strong>, le relier à la sortie du tMap : renseigner Host <code>localhost</code>, Port <code>5432</code>, Database <code>omega_assurance_dwh</code>, User <code>postgres</code>, mot de passe défini au Module 1, Table <code>polices</code>, Action on data : <strong>"Insert"</strong></li>
+<li><strong>6.</strong> Cliquer sur l'onglet <strong>"Run"</strong> puis sur le bouton <strong>▶ Run</strong> : la console affiche le nombre de lignes traitées</li>
+<li><strong>7.</strong> Dans DBeaver, exécuter <code>SELECT * FROM polices;</code> sur <code>omega_assurance_dwh</code> pour vérifier que les lignes sont bien arrivées</li>
+</ul>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Si le Job échoue avec une erreur de connexion PostgreSQL, vérifie que le service PostgreSQL est démarré (Module 1) et que le mot de passe saisi dans tPostgresqlOutput est correct.</div></div>
+<div class="use-case-box"><p><strong>Pour aller plus loin :</strong> répéter les étapes 1-2-6-7 avec <code>sinistres_omega.xlsx</code> et la table <code>sinistres</code>, puis ajouter un <strong>tRestClient</strong> entre le tFileInputExcel et le tMap pour enrichir chaque sinistre avec la météo du jour via une API REST publique — utile pour l'analyse des sinistres climatiques (tempêtes, inondations).</p></div>
+</div>`,
 
     c2:`<div class="mod-section-tag">Module 2 · Cours 2/3</div>
 <div class="mod-section-title">SQL — Interroger et transformer des données structurées</div>
 <div class="mod-section-desc">SQL reste le langage universel pour interroger une base relationnelle. Il est indispensable aussi bien pour explorer des données que pour construire des vues réutilisables dans un pipeline.</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI d'ADA Assurance Vie</div><div class="nc-title-sm">Table PostgreSQL dans la base ada_vie_dwh</div></div></div>
+<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>ada_vie_dwh</code> et exécute ce script pour créer la table du SI d'ADA Assurance Vie :</div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> polices (
+  id_police         <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
+  nom_assure        <span class="r-kw">VARCHAR</span>(100),
+  produit           <span class="r-kw">VARCHAR</span>(30),  <span class="r-cm">-- Épargne, Prévoyance, Retraite</span>
+  date_souscription <span class="r-kw">DATE</span>,
+  capital_assure    <span class="r-kw">NUMERIC</span>(14,2),
+  prime_annuelle    <span class="r-kw">NUMERIC</span>(12,2),
+  region            <span class="r-kw">VARCHAR</span>(50),
+  beneficiaire      <span class="r-kw">VARCHAR</span>(100),
+  statut            <span class="r-kw">VARCHAR</span>(20)
+);</pre></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-file-import" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Importer polices_ada_vie.xlsx dans PostgreSQL via DBeaver</div><div class="nc-title-sm">Sans écrire une ligne de code</div></div></div>
+<ul class="nc-list">
+<li><strong>1.</strong> Dans l'arborescence DBeaver, clic droit sur la table <code>polices</code> (base ada_vie_dwh) → <strong>Import Data</strong></li>
+<li><strong>2.</strong> Choisir la source <strong>"Excel"</strong>, cliquer sur "Browse" et sélectionner <code>polices_ada_vie.xlsx</code></li>
+<li><strong>3.</strong> À l'écran "Column mapping", vérifier que chaque colonne du fichier est bien associée à la colonne PostgreSQL correspondante (id_police → id_police, nom_assure → nom_assure, etc.) — DBeaver les associe automatiquement si les noms correspondent</li>
+<li><strong>4.</strong> Cliquer sur "Proceed" puis "Start" — DBeaver affiche une barre de progression puis un résumé (150 lignes importées)</li>
+</ul>
+</div>
+
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-magnifying-glass" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Requêtes de base</div><div class="nc-title-sm">SELECT, WHERE, ORDER BY, agrégations</div></div></div>
 <div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- Sélection filtrée et triée</span>
-<span class="r-kw">SELECT</span> id_client, nom, ville
-<span class="r-kw">FROM</span> clients
-<span class="r-kw">WHERE</span> ville = <span class="r-st">'Abidjan'</span>
-<span class="r-kw">ORDER BY</span> nom <span class="r-kw">ASC</span>;
+<span class="r-kw">SELECT</span> id_police, nom_assure, region
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> region = <span class="r-st">'Abidjan'</span>
+<span class="r-kw">ORDER BY</span> nom_assure <span class="r-kw">ASC</span>;
 
 <span class="r-cm">-- Agrégations de base</span>
-<span class="r-kw">SELECT</span> region, <span class="r-kw">COUNT</span>(*) <span class="r-kw">AS</span> nb_clients, <span class="r-kw">SUM</span>(montant) <span class="r-kw">AS</span> total_ventes
-<span class="r-kw">FROM</span> ventes
-<span class="r-kw">GROUP BY</span> region
+<span class="r-kw">SELECT</span> produit, <span class="r-kw">COUNT</span>(*) <span class="r-kw">AS</span> nb_polices, <span class="r-kw">SUM</span>(prime_annuelle) <span class="r-kw">AS</span> total_primes
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">GROUP BY</span> produit
 <span class="r-kw">HAVING COUNT</span>(*) > 5
-<span class="r-kw">ORDER BY</span> total_ventes <span class="r-kw">DESC</span>;</pre></div>
+<span class="r-kw">ORDER BY</span> total_primes <span class="r-kw">DESC</span>;</pre></div>
 </div>
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-link" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Jointures et logique conditionnelle</div><div class="nc-title-sm">INNER/LEFT/RIGHT/FULL JOIN, CASE WHEN, COALESCE</div></div></div>
-<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- LEFT JOIN : tous les clients, même sans vente</span>
-<span class="r-kw">SELECT</span> c.nom, <span class="r-kw">COALESCE</span>(<span class="r-kw">SUM</span>(v.montant), 0) <span class="r-kw">AS</span> total
-<span class="r-kw">FROM</span> clients c
-<span class="r-kw">LEFT JOIN</span> ventes v <span class="r-kw">ON</span> v.id_client = c.id_client
-<span class="r-kw">GROUP BY</span> c.nom;
+<div class="nc-header"><div class="nc-icon" style="background:#EAF3DE"><i class="fa-solid fa-link" style="color:#3B6D11"></i></div><div><div class="nc-label" style="color:#3B6D11">Logique conditionnelle</div><div class="nc-title-sm">CASE WHEN, COALESCE, vues</div></div></div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- Gérer les capitaux manquants (le fichier en contient volontairement)</span>
+<span class="r-kw">SELECT</span> id_police, <span class="r-kw">COALESCE</span>(capital_assure, 0) <span class="r-kw">AS</span> capital_assure
+<span class="r-kw">FROM</span> polices;
 
-<span class="r-cm">-- CASE WHEN : classification conditionnelle</span>
-<span class="r-kw">SELECT</span> id_client,
-  <span class="r-kw">CASE WHEN</span> total_ventes > 1000000 <span class="r-kw">THEN</span> <span class="r-st">'Grand compte'</span>
-       <span class="r-kw">WHEN</span> total_ventes > 200000  <span class="r-kw">THEN</span> <span class="r-st">'Compte standard'</span>
-       <span class="r-kw">ELSE</span> <span class="r-st">'Petit compte'</span>
+<span class="r-cm">-- CASE WHEN : segmentation des polices par capital</span>
+<span class="r-kw">SELECT</span> id_police,
+  <span class="r-kw">CASE WHEN</span> capital_assure > 15000000 <span class="r-kw">THEN</span> <span class="r-st">'Gros capital'</span>
+       <span class="r-kw">WHEN</span> capital_assure > 5000000  <span class="r-kw">THEN</span> <span class="r-st">'Capital moyen'</span>
+       <span class="r-kw">ELSE</span> <span class="r-st">'Petit capital'</span>
   <span class="r-kw">END AS</span> segment
-<span class="r-kw">FROM</span> clients_ventes;
+<span class="r-kw">FROM</span> polices;
 
-<span class="r-cm">-- Vue réutilisable</span>
-<span class="r-kw">CREATE VIEW</span> top_clients_region <span class="r-kw">AS</span>
-<span class="r-kw">SELECT</span> region, nom, total_ventes
-<span class="r-kw">FROM</span> clients_ventes
-<span class="r-kw">ORDER BY</span> total_ventes <span class="r-kw">DESC</span>;</pre></div>
+<span class="r-cm">-- Vue réutilisable : Top polices par région</span>
+<span class="r-kw">CREATE VIEW</span> top_polices_region <span class="r-kw">AS</span>
+<span class="r-kw">SELECT</span> region, nom_assure, prime_annuelle
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">ORDER BY</span> prime_annuelle <span class="r-kw">DESC</span>;</pre></div>
 <div class="info-box"><i class="fa-solid fa-lightbulb"></i><div><strong>WHERE vs HAVING :</strong> WHERE filtre les lignes avant l'agrégation, HAVING filtre les groupes après l'agrégation.</div></div>
 </div>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Identifier le Top 10 des meilleurs clients par région à partir des tables ventes/clients, avec jointure, agrégation et tri.</p></div>`,
+<div class="use-case-box"><p><strong>TP guidé — ADA Assurance Vie :</strong> à partir de la table <code>polices</code> importée, écrire la requête qui donne le Top 10 des polices Vie les plus rentables (<code>prime_annuelle</code> la plus élevée) par région, triées par région puis par prime décroissante.</p></div>`,
 
     c3:`<div class="mod-section-tag">Module 2 · Cours 3/3</div>
 <div class="mod-section-title">Python / Pandas — Charger, nettoyer, transformer</div>
 <div class="mod-section-desc">Pandas est la bibliothèque de référence en Python pour manipuler des données tabulaires. Elle complète Talend et SQL pour des traitements plus flexibles ou plus complexes.</div>
+
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-file-import" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Chargement et connexion</div><div class="nc-title-sm">read_csv, read_json, read_sql</div></div></div>
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI de SigmaRé</div><div class="nc-title-sm">Tables PostgreSQL dans la base sigmare_dwh</div></div></div>
+<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>sigmare_dwh</code> et exécute ce script pour créer les 2 tables du SI de SigmaRé :</div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> traites (
+  id_traite     <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
+  cedante       <span class="r-kw">VARCHAR</span>(50),   <span class="r-cm">-- ADA Assurance Vie / Oméga Assurance</span>
+  type_traite   <span class="r-kw">VARCHAR</span>(30),   <span class="r-cm">-- Quote-part, Excédent de plein, Excess of Loss</span>
+  taux_cession  <span class="r-kw">NUMERIC</span>(5,2),
+  prime_cedee   <span class="r-kw">NUMERIC</span>(14,2),
+  date_effet    <span class="r-kw">DATE</span>
+);
+
+<span class="r-kw">CREATE TABLE</span> sinistres_cedes (
+  id_sinistre_cede <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
+  id_traite        <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">REFERENCES</span> traites(id_traite),
+  cedante          <span class="r-kw">VARCHAR</span>(50),
+  date_sinistre    <span class="r-kw">DATE</span>,
+  montant_cede     <span class="r-kw">NUMERIC</span>(14,2),
+  statut           <span class="r-kw">VARCHAR</span>(20)
+);</pre></div>
+</div>
+
+<div class="notion-card">
+<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-file-import" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">Chargement d'un fichier Excel multi-feuilles</div><div class="nc-title-sm">read_excel, sheet_name, connexion PostgreSQL</div></div></div>
 <div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">import</span> pandas <span class="r-kw">as</span> pd
 <span class="r-kw">from</span> sqlalchemy <span class="r-kw">import</span> create_engine
 
-<span class="r-cm"># Chargement depuis différentes sources</span>
-df_csv  = pd.read_csv(<span class="r-st">"sinistres.csv"</span>)
-df_json = pd.read_json(<span class="r-st">"clients.json"</span>)
+<span class="r-cm"># traites_sigmare.xlsx contient 2 feuilles : "traites" et "sinistres_cedes"</span>
+df_traites = pd.read_excel(<span class="r-st">"traites_sigmare.xlsx"</span>, sheet_name=<span class="r-st">"traites"</span>)
+df_sin_ced = pd.read_excel(<span class="r-st">"traites_sigmare.xlsx"</span>, sheet_name=<span class="r-st">"sinistres_cedes"</span>)
 
-<span class="r-cm"># Connexion PostgreSQL</span>
-engine = create_engine(<span class="r-st">"postgresql://user:pwd@localhost:5432/data_office"</span>)
-df_sql = pd.read_sql(<span class="r-st">"SELECT * FROM ventes"</span>, engine)</pre></div>
+<span class="r-cm"># Connexion à la base sigmare_dwh (SI de SigmaRé)</span>
+engine = create_engine(<span class="r-st">"postgresql://postgres:MOT_DE_PASSE@localhost:5432/sigmare_dwh"</span>)</pre></div>
 </div>
 <div class="notion-card">
-<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-broom" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Nettoyage et transformation</div><div class="nc-title-sm">Doublons, valeurs manquantes, groupby, export</div></div></div>
-<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Nettoyage</span>
-df = df_csv.drop_duplicates()
-df[<span class="r-st">"montant"</span>] = df[<span class="r-st">"montant"</span>].fillna(0)
-df = df.rename(columns={<span class="r-st">"reg"</span>: <span class="r-st">"region"</span>})
-df[<span class="r-st">"date_sinistre"</span>] = pd.to_datetime(df[<span class="r-st">"date_sinistre"</span>])
+<div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-broom" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Nettoyage et chargement</div><div class="nc-title-sm">Doublons, valeurs manquantes, groupby, to_sql</div></div></div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Nettoyage — le fichier contient volontairement un montant_cede manquant</span>
+df_sin_ced = df_sin_ced.drop_duplicates()
+df_sin_ced[<span class="r-st">"montant_cede"</span>] = df_sin_ced[<span class="r-st">"montant_cede"</span>].fillna(0)
+df_sin_ced[<span class="r-st">"date_sinistre"</span>] = pd.to_datetime(df_sin_ced[<span class="r-st">"date_sinistre"</span>])
 
-<span class="r-cm"># Transformation : agrégation par région et type</span>
-resume = df.groupby([<span class="r-st">"region"</span>, <span class="r-st">"type_sinistre"</span>])[<span class="r-st">"montant"</span>].agg(
-    nb=<span class="r-st">"count"</span>, total=<span class="r-st">"sum"</span>, moyenne=<span class="r-st">"mean"</span>
-).reset_index()
+<span class="r-cm"># Transformation : agrégation par cédante et type de traité</span>
+resume = df_traites.merge(df_sin_ced, on=<span class="r-st">"id_traite"</span>, how=<span class="r-st">"left"</span>) \\
+    .groupby([<span class="r-st">"cedante_x"</span>, <span class="r-st">"type_traite"</span>])[<span class="r-st">"montant_cede"</span>].agg(
+        nb=<span class="r-st">"count"</span>, total_cede=<span class="r-st">"sum"</span>
+    ).reset_index()
 
-<span class="r-cm"># Jointure entre DataFrames</span>
-df_final = df.merge(df_json, on=<span class="r-st">"id_client"</span>, how=<span class="r-st">"left"</span>)
-
-<span class="r-cm"># Export</span>
-resume.to_csv(<span class="r-st">"resume_region_type.csv"</span>, index=<span class="r-kw">False</span>)
-df_final.to_sql(<span class="r-st">"sinistres_clean"</span>, engine, if_exists=<span class="r-st">"replace"</span>, index=<span class="r-kw">False</span>)</pre></div>
+<span class="r-cm"># Chargement dans le SI PostgreSQL de SigmaRé</span>
+df_traites.to_sql(<span class="r-st">"traites"</span>, engine, if_exists=<span class="r-st">"append"</span>, index=<span class="r-kw">False</span>)
+df_sin_ced.to_sql(<span class="r-st">"sinistres_cedes"</span>, engine, if_exists=<span class="r-st">"append"</span>, index=<span class="r-kw">False</span>)</pre></div>
 <div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Toujours vérifier les types (<code>df.dtypes</code>) et les valeurs manquantes (<code>df.isna().sum()</code>) avant toute transformation — la majorité des bugs viennent de données mal typées.</div></div>
 </div>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Nettoyer un jeu de données de sinistres (doublons, valeurs manquantes, dates), puis exporter un résumé agrégé par région et type de sinistre.</p></div>`
+
+<div class="notion-card" style="border:2px solid #B5D4F4">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-list-check" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">TP guidé — SigmaRé, étape par étape</div><div class="nc-title-sm">Fichier requis : traites_sigmare.xlsx (feuilles traites + sinistres_cedes)</div></div></div>
+<ul class="nc-list">
+<li><strong>1.</strong> Ouvrir Jupyter Lab (installé au Module 1) et créer un nouveau notebook Python 3</li>
+<li><strong>2.</strong> Charger les 2 feuilles du fichier avec <code>pd.read_excel(..., sheet_name=...)</code> comme montré ci-dessus</li>
+<li><strong>3.</strong> Vérifier la qualité des données : <code>df_sin_ced.isna().sum()</code> doit révéler un montant_cede manquant à corriger</li>
+<li><strong>4.</strong> Nettoyer (doublons, valeurs manquantes, types de dates) comme montré ci-dessus</li>
+<li><strong>5.</strong> Calculer le résumé agrégé par cédante et type de traité (montant total cédé, nombre de sinistres)</li>
+<li><strong>6.</strong> Charger <code>df_traites</code> et <code>df_sin_ced</code> nettoyés dans les tables <code>traites</code> et <code>sinistres_cedes</code> de la base <code>sigmare_dwh</code> avec <code>to_sql()</code></li>
+<li><strong>7.</strong> Vérifier dans DBeaver avec <code>SELECT cedante, COUNT(*) FROM sinistres_cedes GROUP BY cedante;</code></li>
+</ul>
+</div>`
   },
   3:{
     c1:`<div class="mod-section-tag">Module 3 · Cours 1/3</div>
@@ -1116,7 +1569,7 @@ df_final.to_sql(<span class="r-st">"sinistres_clean"</span>, engine, if_exists=<
 <li><strong>Raw Vault</strong> — les données du staging sont hashées et insérées dans Hubs/Links/Satellites, sans transformation métier</li>
 <li><strong>Business Vault</strong> — des vues ou tables dérivées appliquent les règles métier (segmentation, calculs) au-dessus du Raw Vault</li>
 </ul>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Construire un mini-DWH en Data Vault à partir de données clients &amp; ventes, avec Hub Client, Hub Vente, Link, et Satellites historisés.</p></div>
+<div class="use-case-box"><p><strong>TP guidé :</strong> Construire un mini-DWH groupe en Data Vault à partir des polices d'ADA Assurance Vie et d'Oméga Assurance, avec Hub Client, Hub Police, Link, et Satellites historisés — prêt à recevoir les traités SigmaRé en Link additionnel.</p></div>
 </div>`,
 
     c3:`<div class="mod-section-tag">Module 3 · Cours 3/3</div>
@@ -1175,7 +1628,7 @@ df_final.to_sql(<span class="r-st">"sinistres_clean"</span>, engine, if_exists=<
 </ul>
 <div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Un modèle mal relié (relations manquantes, mauvais sens de filtrage) entraîne des mesures DAX incorrectes, même si la formule est juste.</div></div>
 </div>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Connecter Power BI aux vues "flat" du Data Vault construites au Module 3 (clients, commandes), et établir un modèle en étoile propre avec table de dates.</p></div>`,
+<div class="use-case-box"><p><strong>TP guidé :</strong> Connecter Power BI aux vues "flat" du Data Vault groupe construites au Module 3 (clients, polices ADA/Oméga), et établir un modèle en étoile propre avec table de dates.</p></div>`,
 
     c2:`<div class="mod-section-tag">Module 4 · Cours 2/3</div>
 <div class="mod-section-title">DAX — colonnes calculées, mesures et CALCULATE</div>
@@ -1230,7 +1683,7 @@ Ventes YTD = <span class="r-kw">CALCULATE</span>([Total Ventes], <span class="r-
 <li>Les <strong>interactions entre visuels</strong> sont paramétrables : cliquer sur une barre peut filtrer, surligner, ou n'avoir aucun effet sur un autre visuel</li>
 <li>Les <strong>bookmarks</strong> permettent de sauvegarder un état de filtre pour créer une navigation guidée (ex : bouton "Vue Direction")</li>
 </ul>
-<div class="use-case-box"><p><strong>Cas d'usage :</strong> tableau de bord des ventes avec filtres temporels et indicateurs personnalisés · rapport ALM (Asset Liability Management) suivant l'équilibre actif/passif en continu.</p></div>
+<div class="use-case-box"><p><strong>Cas d'usage :</strong> tableau de bord comparant le ratio S/P d'ADA Assurance Vie, d'Oméga Assurance et de SigmaRé avec filtres temporels · rapport ALM (Asset Liability Management) pour ADA Assurance Vie suivant l'équilibre actif/passif en continu.</p></div>
 </div>`
   },
   5:{
@@ -1254,7 +1707,7 @@ Ventes YTD = <span class="r-kw">CALCULATE</span>([Total Ventes], <span class="r-
 <li>Les données JSON reçues sont automatiquement disponibles pour les nodes suivants du workflow</li>
 <li>Cette étape correspond au <strong>E (Extract)</strong> du pipeline ETL/ELT vu au Module 1</li>
 </ul>
-<div class="use-case-box"><p><strong>Exemple :</strong> un trigger planifié appelle chaque nuit une API interne de ventes, récupère les nouvelles transactions du jour, prêtes à être traitées par les nodes suivants.</p></div>
+<div class="use-case-box"><p><strong>Exemple :</strong> un trigger planifié appelle chaque nuit l'API interne d'Oméga Assurance, récupère les nouvelles polices et sinistres IARD du jour, prêts à être traités par les nodes suivants.</p></div>
 </div>`,
 
     c2:`<div class="mod-section-tag">Module 5 · Cours 2/3</div>
@@ -1277,7 +1730,7 @@ python3 /scripts/nettoyage_ventes.py --date $(date +%Y-%m-%d)
 <li>Chaque node peut être configuré pour gérer les erreurs : continuer, réessayer, ou notifier immédiatement en cas d'échec</li>
 <li>Un workflow bien conçu isole chaque étape critique pour localiser rapidement une panne</li>
 </ul>
-<div class="use-case-box"><p><strong>TP guidé :</strong> Construire un workflow n8n qui appelle une API, exécute un script Python de nettoyage, puis déclenche le chargement en base — avec gestion des erreurs à chaque étape.</p></div>
+<div class="use-case-box"><p><strong>TP guidé :</strong> Construire un workflow n8n qui appelle l'API d'Oméga Assurance, exécute un script Python de nettoyage des sinistres IARD, puis déclenche le chargement en base — avec gestion des erreurs à chaque étape.</p></div>
 </div>`,
 
     c3:`<div class="mod-section-tag">Module 5 · Cours 3/3</div>
@@ -1300,7 +1753,7 @@ python3 /scripts/nettoyage_ventes.py --date $(date +%Y-%m-%d)
 </ul>
 <div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Sans alerte sur échec de rafraîchissement, un rapport peut afficher des données obsolètes pendant des jours sans que personne ne s'en aperçoive — le Monitoring (Module 1) prend ici tout son sens.</div></div>
 </div>
-<div class="use-case-box"><p><strong>Workflow complet du module :</strong> Source → Traitement Python → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email.</p></div>`
+<div class="use-case-box"><p><strong>Workflow complet du module :</strong> API Oméga Assurance → Traitement Python (nettoyage sinistres IARD) → Chargement PostgreSQL → Rafraîchissement Power BI → Notification email.</p></div>`
   },
   6:{
     c1:`<div class="mod-section-tag">Module 6 · Cours 1/3</div>
@@ -1379,7 +1832,7 @@ python3 /scripts/nettoyage_ventes.py --date $(date +%Y-%m-%d)
 <li>Montrer le dashboard en direct plutôt que des captures d'écran statiques si possible</li>
 <li>Anticiper 1 à 2 questions probables du jury sur les choix de modélisation ou de DAX</li>
 </ul>
-<div class="use-case-box"><p><strong>Livrable final :</strong> Rapport Power BI complet — connexion, transformation, modèle, DAX, dashboard narratif, automatisation — présenté à l'oral en 5 minutes.</p></div>
+<div class="use-case-box"><p><strong>Livrable final :</strong> Rapport Power BI complet sur l'une des 3 entités (ADA Assurance Vie, Oméga Assurance ou SigmaRé) — connexion, transformation, modèle, DAX, dashboard narratif, automatisation — présenté à l'oral en 5 minutes.</p></div>
 </div>`
   }
 };
@@ -1433,11 +1886,11 @@ function markStep(secNum){
 }
 
 /* ══ SAUVEGARDER QCM INTERMÉDIAIRE ══ */
-function saveQCMStep(qcmNum, score, correct, states){
+function saveQCMStep(qcmNum, total, correct, states, order){
   var mp=getModProg(currentMod);
   var key = "qcm"+qcmNum;
   var stepIdx = qcmNum===1 ? 1 : 3;
-  mp[key]={done:true, score:score, correct:correct, states:states};
+  mp[key]={done:true, score:total, correct:correct, states:states, order:order};
   if(stepIdx > mp.step) mp.step=stepIdx;
   setModProg(currentMod,mp);
   updateStepDots(currentMod);
@@ -1447,15 +1900,15 @@ function saveQCMStep(qcmNum, score, correct, states){
     module:"Data Engineering & Power BI — Module "+currentMod,
     step:stepIdx, step_label:"QCM Intermédiaire "+qcmNum,
     type:"qcm_intermediaire",
-    score:Math.round(score/correct*100)||0,
-    correct:correct, total:score
+    score:Math.round(correct/total*100)||0,
+    correct:correct, total:total
   });
 }
 
 /* ══ SAUVEGARDER QCM FINAL ══ */
-function saveFinalProg(validated, pct, score, states){
+function saveFinalProg(validated, pct, score, states, order){
   var mp=getModProg(currentMod);
-  mp.qcmf={done:true, pct:pct, score:score, validated:validated, states:states};
+  mp.qcmf={done:true, pct:pct, score:score, validated:validated, states:states, order:order};
   mp.step=6; mp.validated=validated; mp.date=new Date().toISOString();
   setModProg(currentMod,mp);
   updateStepDots(currentMod);
@@ -1470,7 +1923,7 @@ function saveFinalProg(validated, pct, score, states){
   if(validated&&currentMod===6) checkAttestation(loadProg());
 }
 
-/* ══ INDICATEUR ÉTAPES (DOTS) ══ */
+/* ══ INDICATEUR ÉTAPES (DOTS) — cliquables pour naviguer directement ══ */
 var STEP_LABELS=["Cours 1","QCM 1","Cours 2","QCM 2","Cours 3","Éval. finale","Résultats"];
 function updateStepDots(m){
   var el=document.getElementById("mod-steps-dots"); if(!el) return;
@@ -1479,10 +1932,14 @@ function updateStepDots(m){
   for(var i=0;i<6;i++){
     var dot=document.createElement("div");
     var done=isStepDone(mp,i);
-    dot.style.cssText="width:8px;height:8px;border-radius:50%;transition:background .3s;"+(
+    dot.style.cssText="width:8px;height:8px;border-radius:50%;cursor:pointer;transition:background .3s,transform .15s;"+(
       done?"background:#185FA5":"background:#e0ddd5"
     );
-    dot.title=STEP_LABELS[i]+(done?" ✓":"");
+    dot.title=STEP_LABELS[i]+(done?" ✓":"")+" — cliquer pour y aller";
+    dot.dataset.step=i;
+    dot.onmouseenter=function(){this.style.transform="scale(1.4)";};
+    dot.onmouseleave=function(){this.style.transform="scale(1)";};
+    dot.onclick=function(){goModSec(parseInt(this.dataset.step));};
     el.appendChild(dot);
   }
 }
@@ -1678,9 +2135,21 @@ function toggleModule(n){
 /* ══ ÉTAT MODULE ══ */
 var currentMod=1;
 var q1State={},q2State={},qfState={},qfDone=0;
+var q1Order=[],q2Order=[],qfOrder=[];
+var q1Data=[],q2Data=[],qfData=[];
 var MOD_TITLES={1:"Introduction à la Data Office",2:"Collecte et Manipulation des Données",
   3:"Modélisation et Stockage avec Data Vault",4:"Visualisation et Reporting avec Power BI",
   5:"Industrialisation & Automatisation",6:"Projet Individuel — Reporting Power BI"};
+
+/* ══ MÉLANGE ALÉATOIRE (Fisher-Yates) — ordre des questions à chaque nouvelle tentative ══ */
+function shuffledOrder(len){
+  var a=[]; for(var i=0;i<len;i++)a.push(i);
+  for(var i=a.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=a[i];a[i]=a[j];a[j]=tmp;
+  }
+  return a;
+}
 
 /* ══ OUVRIR MODULE ══ */
 function openModule(n,e){
@@ -1719,6 +2188,26 @@ function copyCode(btn){
   navigator.clipboard.writeText(pre.innerText).then(function(){btn.textContent="Copié !";setTimeout(function(){btn.textContent="Copier";},2000);});
 }
 
+/* ══ REFAIRE UN QCM (nouvel ordre de questions à chaque tentative) ══ */
+function retakeIntermediateQCM(qcmNum){
+  var mp=getModProg(currentMod);
+  var key="qcm"+qcmNum;
+  mp[key]=null;
+  setModProg(currentMod,mp);
+  renderModuleContent(currentMod);
+  updateStepDots(currentMod);
+  goModSec(qcmNum===1?1:3);
+}
+function retakeFinalQCM(){
+  var mp=getModProg(currentMod);
+  mp.qcmf=null;
+  mp.validated=false;
+  setModProg(currentMod,mp);
+  renderModuleContent(currentMod);
+  updateStepDots(currentMod);
+  goModSec(5);
+}
+
 /* ══ RENDRE CONTENU MODULE ══ */
 function renderModuleContent(n){
   var cont=MOD_CONTENT[n];if(!cont){console.error("MOD_CONTENT manquant",n);return;}
@@ -1734,9 +2223,21 @@ function renderModuleContent(n){
   document.getElementById("btn-final").style.display="none";
   document.getElementById("result-block").innerHTML="";
   var mp=getModProg(n);
-  renderQCM(data.q1,"qcm1-cont","btn-qcm1","qcm1-res",q1State,mp.qcm1);
-  renderQCM(data.q2,"qcm2-cont","btn-qcm2","qcm2-res",q2State,mp.qcm2);
-  renderFinalQCM(data.qf,mp.qcmf);
+
+  /* Ordre des questions : si un ordre a déjà été sauvegardé (QCM terminé), on le réutilise
+     pour que la relecture reste cohérente. Sinon (nouvelle tentative), on tire un nouvel
+     ordre aléatoire à chaque ouverture — les positions varient donc à chaque essai. */
+  q1Order = (mp.qcm1 && mp.qcm1.done && mp.qcm1.order) ? mp.qcm1.order : shuffledOrder(data.q1.length);
+  q2Order = (mp.qcm2 && mp.qcm2.done && mp.qcm2.order) ? mp.qcm2.order : shuffledOrder(data.q2.length);
+  qfOrder = (mp.qcmf && mp.qcmf.done && mp.qcmf.order) ? mp.qcmf.order : shuffledOrder(data.qf.length);
+
+  q1Data = q1Order.map(function(i){return data.q1[i];});
+  q2Data = q2Order.map(function(i){return data.q2[i];});
+  qfData = qfOrder.map(function(i){return data.qf[i];});
+
+  renderQCM(q1Data,"qcm1-cont","btn-qcm1","qcm1-res",q1State,mp.qcm1);
+  renderQCM(q2Data,"qcm2-cont","btn-qcm2","qcm2-res",q2State,mp.qcm2);
+  renderFinalQCM(qfData,mp.qcmf);
 }
 
 /* ══ RENDER QCM avec restauration ══ */
@@ -1766,7 +2267,8 @@ function renderQCM(data,cid,btnId,resId,state,savedState){
     document.getElementById(resId).style.display="block";
     var sc=Object.values(state).filter(Boolean).length;
     var icon=sc===data.length?"🎉":sc>=Math.ceil(data.length/2)?"👍":"📚";
-    document.getElementById(resId).innerHTML='<div class="mini-result"><span style="font-size:22px">'+icon+'</span><div><div style="font-size:14px;font-weight:700">'+sc+"/"+data.length+" corrects</div></div></div>";
+    var qnumRetake=cid.includes("qcm1")?1:2;
+    document.getElementById(resId).innerHTML='<div class="mini-result"><span style="font-size:22px">'+icon+'</span><div style="flex:1"><div style="font-size:14px;font-weight:700">'+sc+"/"+data.length+' corrects</div></div><button class="btn-nav" onclick="retakeIntermediateQCM('+qnumRetake+')"><i class="fa-solid fa-rotate-right"></i> Refaire ce QCM</button></div>';
     document.getElementById(btnId).style.display="inline-flex";
   }
 }
@@ -1788,7 +2290,7 @@ function restoreAnswer(cid,qi,isCorrect,correctAns,exp,state){
 function answerQCM(btn){
   var cid=btn.dataset.cid,btnId=btn.dataset.bid,resId=btn.dataset.rid;
   var qi=parseInt(btn.dataset.qi),oi=parseInt(btn.dataset.oi),total=parseInt(btn.dataset.total);
-  var data=ALL_QCM[currentMod];var arr=cid.includes("qcm1")?data.q1:data.q2;
+  var arr=cid.includes("qcm1")?q1Data:q2Data;
   var state=cid.includes("qcm1")?q1State:q2State;
   if(state[qi]!==undefined)return;
   var item=arr[qi];
@@ -1802,10 +2304,11 @@ function answerQCM(btn){
     var score=Object.values(state).filter(Boolean).length;
     var rd=document.getElementById(resId);rd.style.display="block";
     var icon=score===total?"🎉":score>=Math.ceil(total/2)?"👍":"📚";
-    rd.innerHTML='<div class="mini-result"><span style="font-size:22px">'+icon+'</span><div><div style="font-size:14px;font-weight:700">'+score+"/"+total+" corrects</div></div></div>";
-    document.getElementById(btnId).style.display="inline-flex";
     var qnum=cid.includes("qcm1")?1:2;
-    saveQCMStep(qnum,total,score,Object.assign({},state));
+    rd.innerHTML='<div class="mini-result"><span style="font-size:22px">'+icon+'</span><div style="flex:1"><div style="font-size:14px;font-weight:700">'+score+"/"+total+' corrects</div></div><button class="btn-nav" onclick="retakeIntermediateQCM('+qnum+')"><i class="fa-solid fa-rotate-right"></i> Refaire ce QCM</button></div>';
+    document.getElementById(btnId).style.display="inline-flex";
+    var usedOrder=cid.includes("qcm1")?q1Order:q2Order;
+    saveQCMStep(qnum,total,score,Object.assign({},state),usedOrder);
   }
 }
 
@@ -1904,7 +2407,7 @@ function submitModFinal(){
     +"</div></div>"+retry+cert;
 
   goModSec(6);
-  saveFinalProg(pass,pct,score,Object.assign({},qfState));
+  saveFinalProg(pass,pct,score,Object.assign({},qfState),qfOrder);
 }
 
 /* ══ ATTESTATION ══ */
