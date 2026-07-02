@@ -85,7 +85,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .mod-two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:600px){.mod-two-col{grid-template-columns:1fr}}
 .use-case-box{background:#f7f6f2;border-radius:8px;padding:.875rem 1rem;border-left:3px solid #378ADD;margin-top:.75rem}
-.use-case-box p{font-size:13px;color:#555;line-height:1.55}
+.use-case-box p{font-size:15px;color:#555;line-height:1.65}
 .tools-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:.375rem}
 .tool-pill{font-size:12px;font-weight:600;padding:4px 11px;border-radius:20px;border:1px solid}
 .prog-bar-wrap{background:#f0ede5;border-radius:999px;height:4px;margin:0 1.5rem .75rem}
@@ -106,25 +106,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .mod-progress-inner{height:5px;border-radius:999px;background:#185FA5;transition:width .4s ease}
 .mod-section-wrap{display:none}.mod-section-wrap.active{display:block;overflow-y:visible}
 .mod-section-tag{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-bottom:.3rem}
-.mod-section-title{font-size:24px;font-weight:700;color:#1a1a1a;margin-bottom:.4rem}
-.mod-section-desc{font-size:15.5px;color:#555;margin-bottom:1.25rem;line-height:1.7}
-.notion-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:1.375rem 1.625rem;margin-bottom:1rem}
+.mod-section-title{font-size:27px;font-weight:700;color:#1a1a1a;margin-bottom:.5rem}
+.mod-section-desc{font-size:17px;color:#555;margin-bottom:1.375rem;line-height:1.75}
+.notion-card{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:1.625rem 1.875rem;margin-bottom:1.25rem}
 .nc-header{display:flex;align-items:center;gap:10px;margin-bottom:.75rem}
 .nc-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
 .nc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.nc-title-sm{font-size:15px;font-weight:700;color:#1a1a1a}
-.nc-body{font-size:14px;color:#555;line-height:1.65}
+.nc-title-sm{font-size:16.5px;font-weight:700;color:#1a1a1a;line-height:1.4}
+.nc-body{font-size:16px;color:#555;line-height:1.7}
 .nc-list{list-style:none;margin-top:.5rem}
-.nc-list li{font-size:14px;color:#444;padding:5px 0;border-bottom:1px solid #f0ede5;display:flex;gap:8px;line-height:1.5;align-items:flex-start}
+.nc-list li{font-size:15.5px;color:#444;padding:8px 0;border-bottom:1px solid #f0ede5;display:flex;gap:8px;line-height:1.65;align-items:flex-start}
 .nc-list li:last-child{border-bottom:none}
 .nc-list li::before{content:"→";color:#378ADD;flex-shrink:0;font-size:12px;margin-top:3px;font-weight:700}
 .code-block{background:#1e1e2e;border-radius:10px;padding:1.25rem 1.5rem;margin:.75rem 0;position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.code-block pre{font-family:'Consolas','Monaco','Courier New',monospace;font-size:13.5px;line-height:1.85;color:#cdd6f4;white-space:pre;margin:0}
+.code-block pre{font-family:'Consolas','Monaco','Courier New',monospace;font-size:15px;line-height:1.9;color:#cdd6f4;white-space:pre;margin:0}
 .r-cm{color:#6c7086}.r-kw{color:#cba6f7}.r-st{color:#a6e3a1}.r-fn{color:#89b4fa}.r-pkg{color:#f38ba8}.r-nb{color:#fab387}
 .copy-code-btn{position:absolute;top:.5rem;right:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;color:#cdd6f4;font-size:11px;padding:2px 9px;cursor:pointer;font-family:inherit}
 .copy-code-btn:hover{background:rgba(255,255,255,.18)}
-.info-box{background:#E6F1FB;border:1px solid #B5D4F4;border-radius:8px;padding:.75rem 1rem;margin:.625rem 0;font-size:13.5px;color:#0C447C;display:flex;gap:10px}
-.warn-box{background:#FAEEDA;border:1px solid #FAC775;border-radius:8px;padding:.75rem 1rem;margin:.625rem 0;font-size:13.5px;color:#633806;display:flex;gap:10px}
+.info-box{background:#E6F1FB;border:1px solid #B5D4F4;border-radius:8px;padding:1rem 1.125rem;margin:.75rem 0;font-size:15px;line-height:1.6;color:#0C447C;display:flex;gap:10px}
+.warn-box{background:#FAEEDA;border:1px solid #FAC775;border-radius:8px;padding:1rem 1.125rem;margin:.75rem 0;font-size:15px;line-height:1.6;color:#633806;display:flex;gap:10px}
 
 /* ── Correctif débordement : textes/chemins/codes longs sans espace ── */
 .info-box, .warn-box{overflow-wrap:anywhere;word-break:break-word}
@@ -132,14 +132,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .nc-list li, .mod-list li, .ex-list li{overflow-wrap:anywhere;word-break:break-word;min-width:0}
 .nc-list li > *, .mod-list li > *{min-width:0}
 .mod-section-desc, .nc-body, .use-case-box p, .data-dl-desc, .qcm-q, .qcm-opt, .nc-title-sm, .mod-title-sm{overflow-wrap:anywhere;word-break:break-word}
-code{overflow-wrap:anywhere;word-break:break-word}
+code{overflow-wrap:anywhere;word-break:break-word;font-size:1.03em;background:rgba(0,0,0,.045);padding:1px 5px;border-radius:4px}
 .notion-card{overflow:hidden}
 .screenshot-box svg{max-width:100%;height:auto}
 .qcm-item{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:1.125rem 1.375rem;margin-bottom:.75rem}
 .qcm-num{font-size:11px;color:#888;margin-bottom:.4rem;font-weight:600}
-.qcm-q{font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:.75rem;line-height:1.5}
+.qcm-q{font-size:16.5px;font-weight:600;color:#1a1a1a;margin-bottom:.875rem;line-height:1.55}
 .qcm-opts{display:flex;flex-direction:column;gap:.4rem}
-.qcm-opt{background:#fff;border:1px solid #e0ddd5;border-radius:8px;padding:.75rem 1rem;font-size:14px;color:#1a1a1a;cursor:pointer;text-align:left;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:10px;font-family:inherit;width:100%}
+.qcm-opt{background:#fff;border:1px solid #e0ddd5;border-radius:8px;padding:.875rem 1.125rem;font-size:15.5px;color:#1a1a1a;cursor:pointer;text-align:left;transition:border-color .15s,background .15s;display:flex;align-items:center;gap:10px;font-family:inherit;width:100%}
 .qcm-opt:hover:not(:disabled){border-color:#B5D4F4;background:#E6F1FB}
 .qcm-opt.correct{border-color:#3B6D11!important;background:#EAF3DE!important;color:#27500A!important}
 .qcm-opt.wrong{border-color:#A32D2D!important;background:#FCEBEB!important;color:#791F1F!important}
@@ -208,8 +208,8 @@ code{overflow-wrap:anywhere;word-break:break-word}
 .data-dl-btn:hover{background:#08325b}
 
 /* ── Mini-captures illustratives (résultat attendu) ── */
-.screenshot-box{background:#f7f6f2;border:1px solid #e0ddd5;border-radius:10px;padding:.875rem;margin:.75rem 0}
-.screenshot-caption{font-size:11.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.625rem;display:flex;align-items:center;gap:6px;justify-content:center}
+.screenshot-box{background:#f7f6f2;border:1px solid #e0ddd5;border-radius:10px;padding:1.125rem;margin:1rem 0}
+.screenshot-caption{font-size:12.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem;display:flex;align-items:center;gap:6px;justify-content:center}
 </style>
 </head>
 <body>
@@ -980,7 +980,7 @@ var MOD_CONTENT = {
 </ul>
 <div class="screenshot-box">
   <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — résultat attendu dans pgAdmin après l'étape 1.12</div>
-  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto">
     <rect x="0" y="0" width="520" height="210" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
     <rect x="0" y="0" width="520" height="26" rx="8" fill="#2c2f33"/>
     <rect x="0" y="14" width="520" height="12" fill="#2c2f33"/>
@@ -1034,7 +1034,7 @@ psql -U postgres -h localhost -p 5432
 </ul>
 <div class="screenshot-box">
   <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — panneau DBeaver après l'étape 2.9</div>
-  <svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+  <svg viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto">
     <rect x="0" y="0" width="520" height="190" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
     <rect x="0" y="0" width="520" height="26" rx="8" fill="#2c2f33"/>
     <rect x="0" y="14" width="520" height="12" fill="#2c2f33"/>
@@ -1127,7 +1127,7 @@ pip install pandas sqlalchemy psycopg2-binary jupyterlab</pre></div>
 </ul>
 <div class="screenshot-box">
   <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — interface Talend Open Studio attendue après l'étape 5.8</div>
-  <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+  <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto">
     <rect x="0" y="0" width="520" height="200" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
     <rect x="0" y="0" width="520" height="22" fill="#2c2f33"/>
     <text x="260" y="15" text-anchor="middle" font-family="Arial" font-size="9" fill="#cfd3d6">Formation_Assurance — Talend Open Studio</text>
@@ -1159,7 +1159,7 @@ pip install pandas sqlalchemy psycopg2-binary jupyterlab</pre></div>
 </ul>
 <div class="screenshot-box">
   <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — canevas Power BI attendu après l'étape 6.5</div>
-  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+  <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto">
     <rect x="0" y="0" width="520" height="210" rx="8" fill="#ffffff" stroke="#d3d1c7"/>
     <rect x="0" y="0" width="520" height="26" fill="#F2C811"/>
     <text x="12" y="17" font-family="Arial" font-size="10" fill="#333">Fichier   Accueil   Insertion   Modélisation   Affichage</text>
@@ -1199,7 +1199,7 @@ docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n
 </ul>
 <div class="screenshot-box">
   <div class="screenshot-caption"><i class="fa-solid fa-image"></i> Aperçu — terminal (étape 7.6) puis navigateur (étape 7.7-7.8)</div>
-  <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto">
+  <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;display:block;margin:0 auto">
     <rect x="0" y="0" width="520" height="100" rx="8" fill="#1e1e2e"/>
     <circle cx="14" cy="14" r="4" fill="#ff5f57"/><circle cx="28" cy="14" r="4" fill="#febc2e"/><circle cx="42" cy="14" r="4" fill="#28c840"/>
     <text x="260" y="18" text-anchor="middle" font-family="Arial" font-size="10" fill="#8a8fa3">PowerShell</text>
