@@ -125,6 +125,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .copy-code-btn:hover{background:rgba(255,255,255,.18)}
 .info-box{background:#E6F1FB;border:1px solid #B5D4F4;border-radius:8px;padding:.75rem 1rem;margin:.625rem 0;font-size:13.5px;color:#0C447C;display:flex;gap:10px}
 .warn-box{background:#FAEEDA;border:1px solid #FAC775;border-radius:8px;padding:.75rem 1rem;margin:.625rem 0;font-size:13.5px;color:#633806;display:flex;gap:10px}
+
+/* ── Correctif débordement : textes/chemins/codes longs sans espace ── */
+.info-box, .warn-box{overflow-wrap:anywhere;word-break:break-word}
+.info-box > div, .warn-box > div{min-width:0;flex:1;overflow-wrap:anywhere;word-break:break-word}
+.nc-list li, .mod-list li, .ex-list li{overflow-wrap:anywhere;word-break:break-word;min-width:0}
+.nc-list li > *, .mod-list li > *{min-width:0}
+.mod-section-desc, .nc-body, .use-case-box p, .data-dl-desc, .qcm-q, .qcm-opt, .nc-title-sm, .mod-title-sm{overflow-wrap:anywhere;word-break:break-word}
+code{overflow-wrap:anywhere;word-break:break-word}
+.notion-card{overflow:hidden}
+.screenshot-box svg{max-width:100%;height:auto}
 .qcm-item{background:#fff;border:1px solid #e0ddd5;border-radius:12px;padding:1.125rem 1.375rem;margin-bottom:.75rem}
 .qcm-num{font-size:11px;color:#888;margin-bottom:.4rem;font-weight:600}
 .qcm-q{font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:.75rem;line-height:1.5}
