@@ -961,7 +961,6 @@ var MOD_CONTENT = {
 <div class="mod-section-title">Installer son environnement — Partie 1 : PostgreSQL, DBeaver, Python</div>
 <div class="mod-section-desc">Avant toute chose, on installe les outils utilisés pendant toute la formation. Chaque étape est expliquée en détail, sans présupposer de connaissances techniques avancées. Tous les exercices s'appuieront sur les systèmes d'information de trois compagnies d'assurance distinctes : <strong>ADA Assurance Vie</strong>, <strong>Oméga Assurance</strong> (Non-Vie/IARD) et <strong>SigmaRé</strong> (Réassurance).</div>
 <div class="info-box"><i class="fa-solid fa-language"></i><div><strong>À propos de la langue :</strong> si Windows est configuré en français, plusieurs installeurs affichent leurs boutons en français (ex : <strong>Suivant</strong> / <strong>Terminer</strong> / <strong>Installer</strong> / <strong>Fermer</strong>). D'autres (DBeaver, Talend, Docker Desktop) restent souvent en anglais même sur un poste français. Dans les deux cas, la position des boutons et la logique des écrans restent identiques — les mini-aperçus ci-dessous montrent le résultat attendu pour t'aider à t'y repérer. <em>Ce sont des schémas simplifiés reconstitués pour la formation, pas des captures d'écran réelles des logiciels — l'agencement exact peut varier légèrement selon la version installée.</em></div></div>
-
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#E6F1FB"><i class="fa-solid fa-database" style="color:#185FA5"></i></div><div><div class="nc-label" style="color:#185FA5">Étape 1 — Installer PostgreSQL</div><div class="nc-title-sm">La base de données qui hébergera les entrepôts des 3 compagnies</div></div></div>
 <ul class="nc-list">
@@ -1119,8 +1118,12 @@ pip install pandas sqlalchemy psycopg2-binary jupyterlab</pre></div>
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#EEEDFE"><i class="fa-solid fa-diagram-project" style="color:#534AB7"></i></div><div><div class="nc-label" style="color:#534AB7">Étape 5 — Installer Talend Open Studio</div><div class="nc-title-sm">L'ETL visuel utilisé au Module 2</div></div></div>
 <ul class="nc-list">
-<li><strong>5.1 — Vérifier le prérequis Java :</strong> Talend nécessite un JDK (Java Development Kit). Ouvrir un terminal et taper <code>java -version</code> — si une version 11 ou supérieure s'affiche, c'est bon. Sinon, télécharger et installer un JDK gratuit sur <strong>adoptium.net</strong> (choisir la version LTS la plus récente, ex. JDK 17) avant de continuer</li>
-<li><strong>5.2 — Télécharger Talend Open Studio for Data Integration :</strong> l'édition Community gratuite est disponible via le dépôt d'archives officiel de Talend (rechercher "Talend Open Studio for Data Integration download" — le fichier se présente sous forme d'archive <code>.zip</code> d'environ 1 Go)</li>
+<li><strong>5.1 — Installer le JDK 17 :</strong> Talend nécessite précisément un <strong>JDK 17</strong> (les versions plus récentes causent une erreur au démarrage). Tu peux le garder en plus d'un JDK plus récent déjà installé, ils coexistent sans problème. Sur <strong>adoptium.net</strong>, choisis bien la version <strong>17 (LTS)</strong> et le package <strong>.msi</strong> (pas le .zip). Vérifier ensuite avec <code>java -version</code> dans un terminal</li>
+<li><strong>5.2 — Télécharger Talend Open Studio for Data Integration :</strong> talend.com ne propose plus le téléchargement direct (produit devenu payant), on passe donc par un dépôt communautaire qui republie les mêmes builds :
+  <br>&nbsp;&nbsp;— Va sur <strong>github.com/advanova/talend-open-studio/releases</strong>
+  <br>&nbsp;&nbsp;— Choisis la version la plus récente non "pre-release" (au moment de la rédaction : <strong>v8.0.1</strong>)
+  <br>&nbsp;&nbsp;— Dans la section "Assets" de cette version, télécharge le fichier correspondant à Windows 64 bits (nom du type <code>...Win-x86_64...zip</code>) — environ 1 Go</li>
+<li><strong>5.2 bis — Vigilance :</strong> ce dépôt n'est pas maintenu par Talend/Qlik. Scanne le fichier avec ton antivirus avant de l'exécuter</li>
 <li><strong>5.3 — Extraire l'archive :</strong> clic droit sur le fichier <code>.zip</code> téléchargé → "Extraire tout..." (Windows) ou double-clic (macOS), dans un dossier facile à retrouver (ex : <code>C:\\Talend</code>)</li>
 <li><strong>5.4 — Lancer Talend :</strong> ouvrir le dossier extrait et double-cliquer sur l'exécutable <code>TOS_DI-win-x86_64.exe</code> (Windows) ou <code>TOS_DI-macosx-cocoa.app</code> (macOS) — aucune installation "classique" n'est nécessaire, Talend Open Studio est portable</li>
 <li><strong>5.5 — Premier lancement :</strong> accepter la licence, puis à l'écran "Connect to a Talend Cloud Studio" cliquer sur <strong>"Continue without login"</strong> (ou équivalent) pour rester en local</li>
@@ -1149,6 +1152,10 @@ pip install pandas sqlalchemy psycopg2-binary jupyterlab</pre></div>
   </svg>
 </div>
 <div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Talend Open Studio est gourmand en mémoire (prévoir au moins 4 Go de RAM disponible) et peut mettre 1 à 2 minutes à démarrer à chaque lancement — c'est normal, pas la peine de forcer la fermeture.</div></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Erreur au lancement ("An error has occurred. See the log file...") avec un journal affichant juste "null"</strong> → Talend utilise un autre JDK que le 17 (souvent un JDK plus récent déjà installé sur la machine). Solution : dans le dossier où Talend a été extrait, ouvrir le fichier <code>Talend-Studio-win-x86_64.ini</code> avec le Bloc-notes, et ajouter ces 2 lignes juste avant la ligne <code>-vmargs</code> (en adaptant le chemin au numéro de version JDK 17 réellement installé) :
+<div class="code-block" style="margin:.5rem 0"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>-vm
+C:\\Program Files\\Eclipse Adoptium\\jdk-17.x.x-hotspot\\bin\\javaw.exe</pre></div>
+Sauvegarder et relancer Talend.</div></div>
 </div>
 
 <div class="notion-card">
