@@ -1,0 +1,25 @@
+id_traite,cedante,type_traite,taux_cession,prime_cedee,date_effet
+TR-0001,Oméga Assurance,Excédent de plein,20.58,133873629.11,2021-11-19
+TR-0002,ADA Assurance Vie,Quote-part,17.73,303181893.03,2021-02-16
+TR-0003,Oméga Assurance,Excédent de plein,30.22,33515085.21,2020-07-25
+TR-0004,ADA Assurance Vie,Excess of Loss,63.74,207973433.48,2025-01-12
+TR-0005,Oméga Assurance,Quote-part,21.18,69271203.1,2023-08-19
+TR-0006,ADA Assurance Vie,Quote-part,22.29,77127456.68,2025-02-14
+TR-0007,Oméga Assurance,Excess of Loss,145.5,52916445.0,2025-04-23
+TR-0008,ADA Assurance Vie,Excess of Loss,36.53,291981248.91,2020-03-20
+TR-0009,Oméga Assurance,Excédent de plein,37.83,350090871.45,2024-09-25
+TR-0010,ADA Assurance Vie,Excédent de plein,40.21,333006044.75,2023-11-05
+TR-0011,Oméga Assurance,Quote-part,54.42,127558663.75,2023-03-21
+TR-0012,ADA Assurance Vie,Quote-part,41.54,385336675.39,2024-03-09
+TR-0013,Oméga Assurance,Excédent de plein,63.71,349659009.3,2023-05-16
+TR-0014,ADA Assurance Vie,Excédent de plein,63.0,352930179.28,2020-08-28
+TR-0015,Oméga Assurance,Excess of Loss,45.26,479813966.67,2021-09-26
+TR-0016,ADA Assurance Vie,Excédent de plein,-12.0,207059693.07,2025-02-11
+TR-0017,Oméga Assurance,Quote-part,51.63,238426134.73,2023-01-03
+TR-0018,ADA Assurance Vie,Excédent de plein,48.14,457533264.67,2022-06-13
+TR-0019,Oméga Assurance,Excess of Loss,36.07,138779915.74,2022-03-31
+TR-0020,ADA Assurance Vie,Excédent de plein,43.14,122140303.53,2024-11-01
+TR-0021,Oméga Assurance,Excédent de plein,22.95,358779223.29,2025-03-24
+TR-0022,ADA Assurance Vie,Excédent de plein,,455086489.5,2022-08-01
+TR-0023,Oméga Assurance,Excess of Loss,49.82,369862969.44,2022-02-05
+TR-0024,ADA Assurance Vie,Excédent de plein,28.08,172048046.97,2025-01-28

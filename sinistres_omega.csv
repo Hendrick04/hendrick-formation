@@ -1,0 +1,81 @@
+id_sinistre,id_police,date_sinistre,type_sinistre,garantie,montant_sinistre,statut
+SIN-OM-0001,POL-OM-0043,2022-02-28,Vol,Vol et incendie,597344.52,Réglé
+SIN-OM-0002,POL-OM-0081,2022-04-13,Dégât des eaux,Dégâts des eaux,113870.32,Réglé
+SIN-OM-0003,POL-OM-0094,2022-10-26,Bris de glace,Bris de glace,116528.95,Réglé
+SIN-OM-0004,POL-OM-0036,2022-11-24,Dégât des eaux,Dégâts des eaux,244006.2,Réglé
+SIN-OM-0005,POL-OM-0124,2022-09-28,Bris de glace,Bris de glace,541346.98,Déclaré
+SIN-OM-0006,POL-OM-0081,2022-08-11,Incendie,Vol et incendie,1467801.08,Réglé
+SIN-OM-0007,POL-OM-0031,2022-11-14,Inondation,Catastrophes naturelles,1023677.1,Réglé
+SIN-OM-0008,POL-OM-0059,2022-02-05,Inondation,Catastrophes naturelles,645660.29,En cours
+SIN-OM-0009,POL-OM-0017,2022-04-01,Bris de glace,Bris de glace,383951.52,Déclaré
+SIN-OM-0010,POL-OM-0036,2025-07-29,Vol,Vol et incendie,42478.92,En cours
+SIN-OM-0011,POL-OM-0106,2023-05-17,Inondation,Catastrophes naturelles,1052957.14,Déclaré
+SIN-OM-0012,POL-OM-0146,2026-03-06,Tempête,Catastrophes naturelles,785474.66,Déclaré
+SIN-OM-0013,POL-OM-0104,2026-02-22,Incendie,Vol et incendie,1116923.0,Réglé
+SIN-OM-0014,POL-OM-0034,2023-04-12,Inondation,Catastrophes naturelles,515334.34,En cours
+SIN-OM-0015,POL-OM-0017,2023-09-28,Inondation,Catastrophes naturelles,448699.42,Déclaré
+SIN-OM-0016,POL-OM-0026,2024-04-07,Tempête,Catastrophes naturelles,814776.45,Réglé
+SIN-OM-0017,POL-OM-0128,2023-05-19,Inondation,Catastrophes naturelles,,Réglé
+SIN-OM-0018,POL-OM-0017,2023-08-09,Collision,Dommages tous accidents,289828.39,En cours
+SIN-OM-0019,POL-OM-0052,2025-11-14,Inondation,Catastrophes naturelles,359856.11,Déclaré
+SIN-OM-0020,POL-OM-0114,2026-02-07,Tempête,Catastrophes naturelles,1051494.24,Déclaré
+SIN-OM-0021,POL-OM-0004,2025-09-09,Dégât des eaux,Dégâts des eaux,231965.67,Déclaré
+SIN-OM-0022,POL-OM-0007,2023-01-08,Incendie,Vol et incendie,759555.55,Déclaré
+SIN-OM-0023,POL-OM-0092,2023-12-23,Inondation,Catastrophes naturelles,554500.15,Réglé
+SIN-OM-0024,POL-OM-0076,2024-02-05,Collision,Dommages tous accidents,347582.9,Déclaré
+SIN-OM-0025,POL-OM-0130,2024-11-25,Bris de glace,Bris de glace,604548.97,Réglé
+SIN-OM-0026,POL-OM-0017,2026-02-21,Inondation,Catastrophes naturelles,714163.18,Réglé
+SIN-OM-0027,POL-OM-0139,2023-06-27,Incendie,Vol et incendie,405084.93,Réglé
+SIN-OM-0028,POL-OM-0108,2025-09-03,Inondation,Catastrophes naturelles,882722.28,En cours
+SIN-OM-0029,POL-OM-0029,2025-10-28,Tempête,Catastrophes naturelles,1227195.58,En cours
+SIN-OM-0030,POL-OM-0068,2025-09-28,Incendie,Vol et incendie,1155206.67,En cours
+SIN-OM-0031,POL-OM-0129,2024-11-16,Incendie,Vol et incendie,1015773.65,Déclaré
+SIN-OM-0032,POL-OM-0124,2025-01-21,Inondation,Catastrophes naturelles,834003.22,Déclaré
+SIN-OM-0033,POL-OM-0059,2025-10-29,Incendie,Vol et incendie,694382.17,Déclaré
+SIN-OM-0034,POL-OM-0122,2025-12-04,Dégât des eaux,Dégâts des eaux,,Déclaré
+SIN-OM-0035,POL-OM-0093,2024-06-21,Collision,Dommages tous accidents,437753.5,En cours
+SIN-OM-0036,POL-OM-0135,2025-09-06,Dégât des eaux,Dégâts des eaux,330178.74,Déclaré
+SIN-OM-0037,POL-OM-0063,2025-02-17,Vol,Vol et incendie,601983.08,Déclaré
+SIN-OM-0038,POL-OM-0130,2023-07-20,Dégât des eaux,Dégâts des eaux,65122.45,Déclaré
+SIN-OM-0039,POL-OM-0060,2026-03-31,Tempête,Catastrophes naturelles,1105698.78,En cours
+SIN-OM-0040,POL-OM-0083,2025-11-14,Bris de glace,Bris de glace,184787.79,Réglé
+SIN-OM-0041,POL-OM-0114,2023-01-07,Collision,Dommages tous accidents,297746.42,Réglé
+SIN-OM-0042,POL-OM-0080,2023-10-02,Collision,Dommages tous accidents,99244.56,Réglé
+SIN-OM-0043,POL-OM-0047,2023-08-12,Vol,Vol et incendie,38881.06,En cours
+SIN-OM-0044,POL-OM-0116,2023-02-28,Bris de glace,Bris de glace,334540.23,Déclaré
+SIN-OM-0045,POL-OM-0078,2023-09-17,Tempête,Catastrophes naturelles,1019203.65,Déclaré
+SIN-OM-0046,POL-OM-0079,2024-08-12,Incendie,Vol et incendie,369981.88,En cours
+SIN-OM-0047,POL-OM-0046,2026-02-10,Dégât des eaux,Dégâts des eaux,99842.03,En cours
+SIN-OM-0048,POL-OM-0069,2023-10-25,Dégât des eaux,Dégâts des eaux,124330.38,En cours
+SIN-OM-0049,POL-OM-0013,2026-02-08,Bris de glace,Bris de glace,319498.34,En cours
+SIN-OM-0050,POL-OM-0094,2024-10-22,Incendie,Vol et incendie,1670556.9,Réglé
+SIN-OM-0051,POL-OM-0101,2023-06-07,Collision,Dommages tous accidents,456796.89,Réglé
+SIN-OM-0052,POL-OM-0149,2023-02-15,Tempête,Catastrophes naturelles,749459.96,En cours
+SIN-OM-0053,POL-OM-0121,2023-12-28,Tempête,Catastrophes naturelles,1169080.4,En cours
+SIN-OM-0054,POL-OM-0058,2025-12-24,Tempête,Catastrophes naturelles,633742.19,Réglé
+SIN-OM-0055,POL-OM-0104,2023-12-23,Incendie,Vol et incendie,845533.61,Réglé
+SIN-OM-0056,POL-OM-0017,2024-02-08,Bris de glace,Bris de glace,576718.43,En cours
+SIN-OM-0057,POL-OM-0151,2023-03-29,Incendie,Vol et incendie,849903.09,Réglé
+SIN-OM-0058,POL-OM-0009,2024-06-14,Collision,Dommages tous accidents,,Réglé
+SIN-OM-0059,POL-OM-0105,2023-08-11,Vol,Vol et incendie,260379.31,Réglé
+SIN-OM-0060,POL-OM-0149,2024-06-01,Incendie,Vol et incendie,297657.56,Déclaré
+SIN-OM-0061,POL-OM-0017,2025-11-30,Inondation,Catastrophes naturelles,251129.12,Déclaré
+SIN-OM-0062,POL-OM-0045,2024-01-04,Tempête,Catastrophes naturelles,847455.65,Réglé
+SIN-OM-0063,POL-OM-0089,2024-12-03,Dégât des eaux,Dégâts des eaux,40749.2,Déclaré
+SIN-OM-0064,POL-OM-0038,2025-04-19,Bris de glace,Bris de glace,292425.06,En cours
+SIN-OM-0065,POL-OM-0042,2024-08-22,Dégât des eaux,Dégâts des eaux,524287.69,Déclaré
+SIN-OM-0066,POL-OM-0143,2025-04-19,Collision,Dommages tous accidents,491179.1,Réglé
+SIN-OM-0067,POL-OM-0127,2025-05-27,Collision,Dommages tous accidents,291706.29,Réglé
+SIN-OM-0068,POL-OM-0031,2024-08-09,Dégât des eaux,Dégâts des eaux,468594.7,Réglé
+SIN-OM-0069,POL-OM-0090,2023-01-22,Vol,Vol et incendie,602336.83,Déclaré
+SIN-OM-0070,POL-OM-0105,2024-03-17,Dégât des eaux,Dégâts des eaux,338378.26,Déclaré
+SIN-OM-0071,POL-OM-0067,2025-01-17,Dégât des eaux,Dégâts des eaux,,Réglé
+SIN-OM-0072,POL-OM-0109,2023-11-05,Collision,Dommages tous accidents,174833.69,En cours
+SIN-OM-0073,POL-OM-0093,2023-05-06,Incendie,Vol et incendie,607821.54,En cours
+SIN-OM-0074,POL-OM-0070,2023-04-07,Incendie,Vol et incendie,133844.93,En cours
+SIN-OM-0075,POL-OM-0072,2024-09-25,Bris de glace,Bris de glace,126347.27,Déclaré
+SIN-OM-0076,POL-OM-0021,2025-01-31,Dégât des eaux,Dégâts des eaux,596268.3,Déclaré
+SIN-OM-0077,POL-OM-0018,2025-02-15,Vol,Vol et incendie,176676.57,Réglé
+SIN-OM-0003,POL-OM-0094,2022-10-26,Bris de glace,Bris de glace,116528.95,Réglé
+SIN-OM-0025,POL-OM-0130,2024-11-25,Bris de glace,Bris de glace,604548.97,Réglé
+SIN-OM-0062,POL-OM-0045,2024-01-04,Tempête,Catastrophes naturelles,847455.65,Réglé
