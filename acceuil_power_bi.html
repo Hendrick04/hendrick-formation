@@ -209,7 +209,29 @@ code{overflow-wrap:anywhere;word-break:break-word;font-size:1.03em;background:rg
 
 /* ── Mini-captures illustratives (résultat attendu) ── */
 .screenshot-box{background:#f7f6f2;border:1px solid #e0ddd5;border-radius:10px;padding:1.125rem;margin:1rem 0}
-.screenshot-caption{font-size:12.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem;display:flex;align-items:center;gap:6px;justify-content:center}
+.screenshot-caption{font-size:12.5px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem;display:flex;align-items:center;gap:6px;justify-content:center}/* ── Exercices & corrigés ── */
+.ex-card{background:#fff;border:1px solid #e0ddd5;border-left:4px solid #185FA5;border-radius:12px;padding:1.125rem 1.375rem;margin-bottom:.875rem}
+.ex-head{display:flex;align-items:center;gap:9px;margin-bottom:.55rem;flex-wrap:wrap}
+.ex-num{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#0C447C;background:#E6F1FB;border:1px solid #B5D4F4;border-radius:20px;padding:2px 10px;white-space:nowrap}
+.ex-lvl{font-size:11px;font-weight:700;border-radius:20px;padding:2px 10px;border:1px solid;white-space:nowrap}
+.ex-lvl.facile{background:#EAF3DE;color:#27500A;border-color:#C0DD97}
+.ex-lvl.moyen{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.ex-lvl.avance{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
+.ex-title{font-size:16px;font-weight:700;color:#1a1a1a;flex:1 1 200px;min-width:0;line-height:1.4}
+.ex-body{font-size:15.5px;color:#555;line-height:1.7;overflow-wrap:anywhere}
+.ex-body ul{list-style:none;margin-top:.4rem}
+.ex-body ul li{padding:5px 0;display:flex;gap:8px;align-items:flex-start;line-height:1.6;border-bottom:1px solid #f0ede5;min-width:0}
+.ex-body ul li:last-child{border-bottom:none}
+.ex-body ul li::before{content:"→";color:#378ADD;font-weight:700;flex-shrink:0;font-size:12px;margin-top:4px}
+.ex-attendu{background:#f7f6f2;border-radius:8px;padding:.7rem .95rem;margin-top:.7rem;font-size:14.5px;color:#555;line-height:1.6;border-left:3px solid #C0DD97;overflow-wrap:anywhere}
+details.sol{margin-top:.7rem;border:1px solid #e0ddd5;border-radius:8px;overflow:hidden;background:#faf9f8}
+details.sol>summary{cursor:pointer;list-style:none;padding:.6rem .95rem;font-size:13.5px;font-weight:600;color:#0C447C;background:#E6F1FB;user-select:none}
+details.sol>summary::-webkit-details-marker{display:none}
+details.sol>summary::before{content:"\u25B8  ";font-weight:700}
+details.sol[open]>summary::before{content:"\u25BE  "}
+.sol-inner{padding:.5rem .95rem .95rem}
+.sol-inner .code-block{margin-top:.5rem}
+
 </style>
 </head>
 <body>
@@ -1289,7 +1311,13 @@ n8n start
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI d'Oméga Assurance</div><div class="nc-title-sm">Table PostgreSQL dans la base omega_assurance_dwh</div></div></div>
 <div class="nc-body">Dans DBeaver, connecte-toi à la base <code>omega_assurance_dwh</code> créée au Module 1, ouvre un nouvel éditeur SQL et exécute ce script pour créer les 2 tables du SI d'Oméga Assurance :</div>
-<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> polices (
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- La base omega_assurance_dwh existe déjà : elle a été créée au Module 1.</span>
+<span class="r-cm">-- On n'y crée donc QUE les tables, jamais la base.</span>
+<span class="r-cm">-- Les 2 DROP permettent de rejouer ce script autant de fois que nécessaire.</span>
+<span class="r-kw">DROP TABLE IF EXISTS</span> sinistres <span class="r-kw">CASCADE</span>;
+<span class="r-kw">DROP TABLE IF EXISTS</span> polices <span class="r-kw">CASCADE</span>;
+
+<span class="r-kw">CREATE TABLE</span> polices (
   id_police       <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
   nom_assure      <span class="r-kw">VARCHAR</span>(100),
   branche         <span class="r-kw">VARCHAR</span>(20),   <span class="r-cm">-- Auto, Habitation, RC</span>
@@ -1309,6 +1337,8 @@ n8n start
   statut           <span class="r-kw">VARCHAR</span>(20)
 );</pre></div>
 <div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Clique sur l'icône <i class="fa-solid fa-play"></i> "Execute SQL Script" de DBeaver (ou Ctrl+Entrée sur chaque requête) pour exécuter le script. Rafraîchis l'arborescence à gauche pour voir apparaître les 2 nouvelles tables — c'est le SI d'Oméga Assurance, encore vide, prêt à être alimenté par le workflow n8n.</div></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div><strong>Vérifie bien la base de connexion avant d'exécuter.</strong> Dans DBeaver, le nom de la base active est affiché en haut de l'éditeur SQL : il doit indiquer <code>omega_assurance_dwh</code>, et non <code>postgres</code> ni <code>ada_vie_dwh</code>. Les 3 bases ont été créées au Module 1 — il ne faut <strong>pas</strong> les recréer ici.
+<br>Attention également : les lignes <code>DROP TABLE IF EXISTS</code> <strong>suppriment les tables et toutes leurs données</strong> si elles existent déjà. C'est ce qu'on veut pendant la formation (repartir d'un SI propre à chaque essai), mais ne jamais reproduire ce réflexe sur une base de production.</div></div>
 </div>
 
 <div class="notion-card">
@@ -1344,7 +1374,102 @@ n8n start
 <li><strong>8.</strong> Dans DBeaver, exécuter <code>SELECT * FROM polices;</code> sur <code>omega_assurance_dwh</code> pour vérifier que les lignes sont bien arrivées</li>
 </ul>
 <div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>Si le node Postgres échoue, vérifie que le service PostgreSQL est démarré (Module 1) et que les credentials (mot de passe, port) sont corrects — le message d'erreur de n8n indique généralement la cause exacte au clic sur le node en rouge.</div></div>
-<div class="use-case-box"><p><strong>Pour aller plus loin :</strong> répéter les étapes 1 à 8 avec <code>sinistres_omega.xlsx</code> et la table <code>sinistres</code>, puis ajouter un node <strong>HTTP Request</strong> entre l'extraction et le Edit Fields pour enrichir chaque sinistre avec la météo du jour via une API REST publique — utile pour l'analyse des sinistres climatiques (tempêtes, inondations).</p></div>
+</div>
+
+<div class="notion-card" style="border:2px solid #B5D4F4">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-list-check" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">TP guidé n°2 — Charger les sinistres IARD d'Oméga</div><div class="nc-title-sm">Fichier requis : sinistres_omega.xlsx · Durée estimée : 45 min</div></div></div>
+<div class="nc-body">Ce second TP reprend la mécanique du premier, mais introduit trois difficultés nouvelles : une table avec clé étrangère, des doublons à éliminer et des montants manquants à traiter.</div>
+<ul class="nc-list">
+<li><strong>1.</strong> Créer un nouveau workflow nommé <code>Charger_Sinistres_Omega</code></li>
+<li><strong>2.</strong> Nodes <strong>Read/Write Files from Disk</strong> puis <strong>Extract from File</strong> (format XLSX) sur <code>sinistres_omega.xlsx</code></li>
+<li><strong>3.</strong> Ajouter un node <strong>Remove Duplicates</strong> configuré sur le champ <code>id_sinistre</code> : le fichier contient des lignes en double, qui feraient échouer l'insertion sur la clé primaire</li>
+<li><strong>4.</strong> Ajouter un node <strong>Edit Fields (Set)</strong> et créer le champ <code>montant_sinistre</code> avec l'expression <code>{{ $json.montant_sinistre || 0 }}</code> pour remplacer les montants vides par 0</li>
+<li><strong>5.</strong> Ajouter un node <strong>Filter</strong> : ne garder que les sinistres dont la <code>date_sinistre</code> est postérieure au 01/01/2023</li>
+<li><strong>6.</strong> Node <strong>Postgres</strong> (opération Insert) vers la table <code>sinistres</code> de <code>omega_assurance_dwh</code></li>
+<li><strong>7.</strong> Exécuter le workflow. En cas d'erreur <code>violates foreign key constraint</code>, c'est que le TP n°1 n'a pas été rejoué : la table <code>polices</code> doit être chargée avant, puisque <code>sinistres.id_police</code> y fait référence</li>
+<li><strong>8.</strong> Vérifier dans DBeaver : <code>SELECT statut, COUNT(*), SUM(montant_sinistre) FROM sinistres GROUP BY statut;</code></li>
+</ul>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>L'ordre de chargement compte toujours : table mère (<code>polices</code>) d'abord, table fille (<code>sinistres</code>) ensuite. C'est la première règle d'ordonnancement d'un pipeline, formalisée au Module 5 avec l'automatisation.</div></div>
+</div>
+
+<div class="mod-section-tag" style="margin-top:1.75rem">Exercices — n8n</div>
+<div class="nc-body" style="margin-bottom:.875rem">À faire seul, après les deux TP. Les corrigés sont repliés : cherche d'abord, ouvre ensuite.</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 1</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Compter les polices Auto actives</span></div>
+<div class="ex-body">Dupliquer le workflow <code>Charger_Polices_Omega</code> (clic droit sur le workflow → Duplicate), puis modifier le node Filter pour ne conserver que les polices actives de la branche <strong>Auto</strong>. Exécuter sans le node Postgres final et lire le nombre d'items en sortie.
+<div class="ex-attendu"><strong>Attendu :</strong> le compteur d'items affiché sous le node Filter correspond exactement au résultat de <code>SELECT COUNT(*) FROM polices WHERE branche = 'Auto' AND statut = 'Actif';</code> une fois la table chargée.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+Dans le node Filter, garder la condition <code>statut</code> · <strong>is equal to</strong> · <code>Actif</code> et ajouter une seconde condition avec le combinateur <strong>AND</strong> : <code>branche</code> · <strong>is equal to</strong> · <code>Auto</code>. n8n affiche le nombre d'items sortants sous le node après l'exécution.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 2</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Calculer une prime mensuelle</span></div>
+<div class="ex-body">Dans un node <strong>Edit Fields (Set)</strong>, créer un champ <code>prime_mensuelle</code> (type Number) égal à la prime annuelle divisée par 12 et arrondie à 2 décimales.
+<div class="ex-attendu"><strong>Attendu :</strong> pour une police à 240 000 de prime annuelle, la sortie affiche 20 000.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+Passer le champ en mode <em>Expression</em> (bascule au survol du champ) et saisir :
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>{{ Math.round($json.prime_annuelle / 12 * 100) / 100 }}</pre></div>
+Les doubles accolades sont la syntaxe d'expression n8n : tout ce qui est à l'intérieur est du JavaScript évalué pour chaque item du flux.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 3</span><span class="ex-lvl moyen">Moyen</span><span class="ex-title">Normaliser les noms d'assurés avec un node Code</span></div>
+<div class="ex-body">Le fichier source contient des noms saisis de façon inégale : espaces superflus et casse incohérente. Ajouter un node <strong>Code</strong> qui nettoie <code>nom_assure</code> pour tous les items : suppression des espaces de début et de fin, puis passage en majuscules.
+<div class="ex-attendu"><strong>Attendu :</strong> une valeur telle que « &nbsp;koffi ADAMA&nbsp; » devient « KOFFI ADAMA », et aucun item n'est perdu au passage.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+Node Code, mode <em>Run Once for All Items</em> :
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">for</span> (<span class="r-kw">const</span> item <span class="r-kw">of</span> $input.all()) {
+  <span class="r-kw">if</span> (item.json.nom_assure) {
+    item.json.nom_assure = item.json.nom_assure.trim().toUpperCase();
+  }
+}
+<span class="r-kw">return</span> $input.all();</pre></div>
+Le test conditionnel évite une erreur sur les lignes où le nom est vide — un node Code qui plante interrompt l'ensemble du workflow.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 4</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Enrichir les sinistres avec une API météo</span></div>
+<div class="ex-body">Les sinistres climatiques (tempête, inondation) doivent être rapprochés des conditions météo du jour. Insérer un node <strong>HTTP Request</strong> entre l'extraction et le chargement, qui interroge une API météo publique pour la date de chaque sinistre, puis ajouter la précipitation relevée dans une nouvelle colonne.
+<ul>
+<li>Utiliser une API ouverte comme <code>api.open-meteo.com</code>, qui ne demande pas de clé d'authentification</li>
+<li>Ajouter au préalable la colonne cible en base : <code>ALTER TABLE sinistres ADD COLUMN precipitation_mm NUMERIC(6,2);</code></li>
+<li>Limiter l'appel aux seuls sinistres de type Tempête ou Inondation, pour ne pas saturer l'API</li>
+</ul>
+<div class="ex-attendu"><strong>Attendu :</strong> seuls les sinistres climatiques portent une valeur de précipitation ; les autres restent à NULL.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+Chaîne de nodes : Extract from File → Filter (type_sinistre parmi Tempête / Inondation) → HTTP Request → Edit Fields → Postgres.
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">// URL du node HTTP Request, en mode Expression (coordonnées d'Abidjan) :</span>
+https://api.open-meteo.com/v1/archive?latitude=5.35&amp;longitude=-4.02
+  &amp;daily=precipitation_sum
+  &amp;start_date={{ $json.date_sinistre }}&amp;end_date={{ $json.date_sinistre }}
+
+<span class="r-cm">// Puis dans Edit Fields, champ precipitation_mm (Number) :</span>
+{{ $json.daily.precipitation_sum[0] }}</pre></div>
+Penser à activer <strong>Retry On Fail</strong> dans les réglages du node HTTP Request : une API publique renvoie régulièrement des erreurs temporaires, et sans réessai le workflow entier échoue sur un seul appel raté.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 5</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Rendre le workflow rejouable</span></div>
+<div class="ex-body">En l'état, relancer <code>Charger_Polices_Omega</code> deux fois provoque une erreur de clé primaire dupliquée. Modifier le workflow pour qu'il puisse tourner autant de fois que voulu sans erreur ni doublon — c'est la notion d'<strong>idempotence</strong>, centrale en production.
+<div class="ex-attendu"><strong>Attendu :</strong> après trois exécutions successives, <code>SELECT COUNT(*) FROM polices;</code> renvoie toujours le même nombre.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+Deux approches valables, à connaître toutes les deux :
+<ul>
+<li><strong>Upsert</strong> — dans le node Postgres, choisir l'opération <em>Upsert</em> plutôt que <em>Insert</em>, avec <code>id_police</code> comme colonne de correspondance. Chaque ligne est insérée si elle est nouvelle, mise à jour sinon.</li>
+<li><strong>Vidage préalable</strong> — ajouter en tête de workflow un node Postgres exécutant <code>TRUNCATE TABLE polices CASCADE;</code>. Plus simple, mais destructif : à réserver aux tables de travail rechargées intégralement.</li>
+</ul>
+C'est exactement le problème traité en SQL au début de ce module avec <code>DROP TABLE IF EXISTS</code>.
+</div></details>
+</div>
 </div>`,
 
     c2:`<div class="mod-section-tag">Module 2 · Cours 2/3</div>
@@ -1353,8 +1478,12 @@ n8n start
 
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI d'ADA Assurance Vie</div><div class="nc-title-sm">Table PostgreSQL dans la base ada_vie_dwh</div></div></div>
-<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>ada_vie_dwh</code> et exécute ce script pour créer la table du SI d'ADA Assurance Vie :</div>
-<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> polices (
+<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>ada_vie_dwh</code> créée au Module 1 (il ne faut pas la recréer) et exécute ce script pour y créer la table du SI d'ADA Assurance Vie :</div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- Base ada_vie_dwh : déjà créée au Module 1, on n'y ajoute que la table.</span>
+<span class="r-cm">-- Le DROP rend le script rejouable sans erreur "relation already exists".</span>
+<span class="r-kw">DROP TABLE IF EXISTS</span> polices <span class="r-kw">CASCADE</span>;
+
+<span class="r-kw">CREATE TABLE</span> polices (
   id_police         <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
   nom_assure        <span class="r-kw">VARCHAR</span>(100),
   produit           <span class="r-kw">VARCHAR</span>(30),  <span class="r-cm">-- Épargne, Prévoyance, Retraite</span>
@@ -1365,6 +1494,7 @@ n8n start
   beneficiaire      <span class="r-kw">VARCHAR</span>(100),
   statut            <span class="r-kw">VARCHAR</span>(20)
 );</pre></div>
+<div class="warn-box"><i class="fa-solid fa-triangle-exclamation"></i><div>La table s'appelle <code>polices</code>, comme celle d'Oméga — mais elle n'a <strong>pas les mêmes colonnes</strong> (capital assuré, bénéficiaire, produit d'épargne). Il n'y a pas de conflit car les deux vivent dans des bases séparées : assure-toi simplement d'être connecté à <code>ada_vie_dwh</code> et non à <code>omega_assurance_dwh</code> avant d'exécuter, sinon tu écraseras le SI d'Oméga.</div></div>
 </div>
 
 <div class="notion-card">
@@ -1413,7 +1543,181 @@ n8n start
 <span class="r-kw">ORDER BY</span> prime_annuelle <span class="r-kw">DESC</span>;</pre></div>
 <div class="info-box"><i class="fa-solid fa-lightbulb"></i><div><strong>WHERE vs HAVING :</strong> WHERE filtre les lignes avant l'agrégation, HAVING filtre les groupes après l'agrégation.</div></div>
 </div>
-<div class="use-case-box"><p><strong>TP guidé — ADA Assurance Vie :</strong> à partir de la table <code>polices</code> importée, écrire la requête qui donne le Top 10 des polices Vie les plus rentables (<code>prime_annuelle</code> la plus élevée) par région, triées par région puis par prime décroissante.</p></div>`,
+<div class="notion-card" style="border:2px solid #B5D4F4">
+<div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-list-check" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">TP guidé — ADA Assurance Vie, étape par étape</div><div class="nc-title-sm">Base ada_vie_dwh · Durée estimée : 1h · Livrable : une vue SQL</div></div></div>
+<div class="nc-body">Objectif : produire une vue <code>v_portefeuille_ada</code> exploitable directement par Power BI au Module 4. On procède par étapes, en vérifiant le résultat à chaque requête avant de passer à la suivante.</div>
+<ul class="nc-list">
+<li><strong>1.</strong> Se connecter à <code>ada_vie_dwh</code> dans DBeaver et vérifier le chargement : <code>SELECT COUNT(*) FROM polices;</code></li>
+<li><strong>2.</strong> Contrôler la qualité : compter les capitaux manquants avec <code>SELECT COUNT(*) FROM polices WHERE capital_assure IS NULL;</code></li>
+<li><strong>3.</strong> Lister les valeurs distinctes de <code>region</code> et de <code>produit</code> pour repérer d'éventuelles incohérences de saisie (casse, espaces)</li>
+<li><strong>4.</strong> Écrire la requête du Top 10 des polices les plus rentables par région (prime annuelle décroissante)</li>
+<li><strong>5.</strong> Ajouter une colonne calculée <code>segment</code> avec un <code>CASE WHEN</code> sur le capital assuré</li>
+<li><strong>6.</strong> Ajouter l'ancienneté du contrat en années à partir de <code>date_souscription</code></li>
+<li><strong>7.</strong> Encapsuler le tout dans une vue <code>v_portefeuille_ada</code></li>
+<li><strong>8.</strong> Vérifier la vue : <code>SELECT segment, COUNT(*), ROUND(AVG(prime_annuelle),2) FROM v_portefeuille_ada GROUP BY segment;</code></li>
+</ul>
+<details class="sol"><summary>Voir le corrigé complet du TP</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- Étape 4 : Top 10 par région</span>
+<span class="r-kw">SELECT</span> region, nom_assure, prime_annuelle
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> statut = <span class="r-st">'Actif'</span>
+<span class="r-kw">ORDER BY</span> region <span class="r-kw">ASC</span>, prime_annuelle <span class="r-kw">DESC</span>
+<span class="r-kw">LIMIT</span> 10;
+
+<span class="r-cm">-- Étapes 5 à 7 : la vue finale</span>
+<span class="r-kw">CREATE OR REPLACE VIEW</span> v_portefeuille_ada <span class="r-kw">AS</span>
+<span class="r-kw">SELECT</span>
+  id_police,
+  nom_assure,
+  produit,
+  region,
+  date_souscription,
+  <span class="r-kw">COALESCE</span>(capital_assure, 0) <span class="r-kw">AS</span> capital_assure,
+  prime_annuelle,
+  <span class="r-kw">CASE WHEN</span> capital_assure > 15000000 <span class="r-kw">THEN</span> <span class="r-st">'Gros capital'</span>
+       <span class="r-kw">WHEN</span> capital_assure > 5000000  <span class="r-kw">THEN</span> <span class="r-st">'Capital moyen'</span>
+       <span class="r-kw">ELSE</span> <span class="r-st">'Petit capital'</span>
+  <span class="r-kw">END</span> <span class="r-kw">AS</span> segment,
+  <span class="r-kw">EXTRACT</span>(<span class="r-kw">YEAR FROM AGE</span>(<span class="r-kw">CURRENT_DATE</span>, date_souscription)) <span class="r-kw">AS</span> anciennete_annees
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> statut = <span class="r-st">'Actif'</span>;</pre></div>
+<code>CREATE OR REPLACE VIEW</code> plutôt que <code>CREATE VIEW</code> : la vue peut ainsi être redéfinie sans erreur si tu reprends le TP, dans le même esprit que les <code>DROP TABLE IF EXISTS</code> vus plus haut.
+</div></details>
+</div>
+
+<div class="mod-section-tag" style="margin-top:1.75rem">Exercices — SQL</div>
+<div class="nc-body" style="margin-bottom:.875rem">Toutes les requêtes s'écrivent sur la base <code>ada_vie_dwh</code>, sauf les deux derniers exercices qui portent sur <code>omega_assurance_dwh</code>.</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 1</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Primes totales par produit</span></div>
+<div class="ex-body">Afficher, pour chaque produit (Épargne, Prévoyance, Retraite), le nombre de polices actives et le total des primes annuelles, du produit le plus rentable au moins rentable.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">SELECT</span> produit,
+       <span class="r-kw">COUNT</span>(*) <span class="r-kw">AS</span> nb_polices,
+       <span class="r-kw">SUM</span>(prime_annuelle) <span class="r-kw">AS</span> total_primes
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> statut = <span class="r-st">'Actif'</span>
+<span class="r-kw">GROUP BY</span> produit
+<span class="r-kw">ORDER BY</span> total_primes <span class="r-kw">DESC</span>;</pre></div>
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 2</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Détecter les anomalies de saisie</span></div>
+<div class="ex-body">Trouver les polices dont le capital assuré est manquant ou nul, ou dont la prime annuelle est négative. Ces lignes devront être signalées au métier avant tout reporting.
+<div class="ex-attendu"><strong>Piège :</strong> <code>capital_assure &lt;&gt; 0</code> exclut aussi les NULL. En SQL, toute comparaison avec NULL renvoie NULL, jamais vrai.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">SELECT</span> id_police, nom_assure, capital_assure, prime_annuelle
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> capital_assure <span class="r-kw">IS NULL</span>
+   <span class="r-kw">OR</span> capital_assure = 0
+   <span class="r-kw">OR</span> prime_annuelle &lt; 0;</pre></div>
+Il faut bien un <code>IS NULL</code> explicite : c'est la source d'erreur la plus fréquente en SQL.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 3</span><span class="ex-lvl moyen">Moyen</span><span class="ex-title">Taux de prime moyen par région</span></div>
+<div class="ex-body">Calculer, par région, le rapport moyen entre prime annuelle et capital assuré, exprimé en pourcentage arrondi à 2 décimales. N'inclure que les régions comptant au moins 5 polices actives.
+<div class="ex-attendu"><strong>Attendu :</strong> une ligne par région, triée du taux le plus élevé au plus faible.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">SELECT</span> region,
+       <span class="r-kw">COUNT</span>(*) <span class="r-kw">AS</span> nb_polices,
+       <span class="r-kw">ROUND</span>(<span class="r-kw">AVG</span>(prime_annuelle / <span class="r-kw">NULLIF</span>(capital_assure, 0)) * 100, 2) <span class="r-kw">AS</span> taux_moyen_pct
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">WHERE</span> statut = <span class="r-st">'Actif'</span>
+<span class="r-kw">GROUP BY</span> region
+<span class="r-kw">HAVING COUNT</span>(*) >= 5
+<span class="r-kw">ORDER BY</span> taux_moyen_pct <span class="r-kw">DESC</span>;</pre></div>
+<code>NULLIF(capital_assure, 0)</code> transforme les zéros en NULL et évite une division par zéro, qui interromprait la requête.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 4</span><span class="ex-lvl moyen">Moyen</span><span class="ex-title">Souscriptions par année</span></div>
+<div class="ex-body">Produire l'évolution du nombre de souscriptions et du capital assuré total, année par année, à partir de <code>date_souscription</code>.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">SELECT</span> <span class="r-kw">EXTRACT</span>(<span class="r-kw">YEAR FROM</span> date_souscription) <span class="r-kw">AS</span> annee,
+       <span class="r-kw">COUNT</span>(*) <span class="r-kw">AS</span> nb_souscriptions,
+       <span class="r-kw">SUM</span>(<span class="r-kw">COALESCE</span>(capital_assure, 0)) <span class="r-kw">AS</span> capital_total
+<span class="r-kw">FROM</span> polices
+<span class="r-kw">GROUP BY</span> annee
+<span class="r-kw">ORDER BY</span> annee;</pre></div>
+Variante à connaître : <code>DATE_TRUNC('year', date_souscription)</code> conserve un vrai type date, ce qui est préférable quand le résultat alimente un axe temporel Power BI.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 5</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Classement des polices dans leur région</span></div>
+<div class="ex-body">Pour chaque région, afficher les 3 polices au capital le plus élevé — et seulement celles-là. Un simple <code>LIMIT 3</code> ne suffit pas : il faut un classement calculé à l'intérieur de chaque région.
+<div class="ex-attendu"><strong>Indice :</strong> fonction fenêtre <code>ROW_NUMBER() OVER (PARTITION BY ... ORDER BY ...)</code>, enveloppée dans une sous-requête ou une CTE.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">WITH</span> classement <span class="r-kw">AS</span> (
+  <span class="r-kw">SELECT</span> region, nom_assure, capital_assure,
+         <span class="r-kw">ROW_NUMBER</span>() <span class="r-kw">OVER</span> (
+           <span class="r-kw">PARTITION BY</span> region
+           <span class="r-kw">ORDER BY</span> capital_assure <span class="r-kw">DESC NULLS LAST</span>
+         ) <span class="r-kw">AS</span> rang
+  <span class="r-kw">FROM</span> polices
+  <span class="r-kw">WHERE</span> statut = <span class="r-st">'Actif'</span>
+)
+<span class="r-kw">SELECT</span> region, nom_assure, capital_assure, rang
+<span class="r-kw">FROM</span> classement
+<span class="r-kw">WHERE</span> rang &lt;= 3
+<span class="r-kw">ORDER BY</span> region, rang;</pre></div>
+Le filtre sur <code>rang</code> ne peut pas s'écrire directement dans le <code>WHERE</code> de la requête principale : les fonctions fenêtre sont évaluées après le WHERE, d'où la CTE.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 6</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Sinistralité par branche chez Oméga</span></div>
+<div class="ex-body">Se connecter cette fois à <code>omega_assurance_dwh</code>. Calculer, par branche (Auto, Habitation, RC), le ratio sinistres / primes : total des montants de sinistres divisé par le total des primes annuelles, en pourcentage. Les branches sans aucun sinistre doivent apparaître avec un ratio de 0, et non disparaître du résultat.
+<div class="ex-attendu"><strong>Attendu :</strong> les trois branches sont présentes dans le résultat, même celle sans sinistre.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">SELECT</span> p.branche,
+       <span class="r-kw">SUM</span>(p.prime_annuelle) <span class="r-kw">AS</span> total_primes,
+       <span class="r-kw">COALESCE</span>(<span class="r-kw">SUM</span>(s.montant_sinistre), 0) <span class="r-kw">AS</span> total_sinistres,
+       <span class="r-kw">ROUND</span>(
+         <span class="r-kw">COALESCE</span>(<span class="r-kw">SUM</span>(s.montant_sinistre), 0) / <span class="r-kw">NULLIF</span>(<span class="r-kw">SUM</span>(p.prime_annuelle), 0) * 100, 2
+       ) <span class="r-kw">AS</span> ratio_sp_pct
+<span class="r-kw">FROM</span> polices p
+<span class="r-kw">LEFT JOIN</span> sinistres s <span class="r-kw">ON</span> s.id_police = p.id_police
+<span class="r-kw">GROUP BY</span> p.branche
+<span class="r-kw">ORDER BY</span> ratio_sp_pct <span class="r-kw">DESC</span>;</pre></div>
+Le <code>LEFT JOIN</code> est indispensable : avec un <code>INNER JOIN</code>, une branche sans sinistre disparaîtrait purement et simplement du rapport — une erreur classique qui fait sous-estimer le portefeuille.
+<br><br><strong>Attention à la double comptabilisation :</strong> une police ayant 3 sinistres voit sa prime comptée 3 fois dans <code>SUM(p.prime_annuelle)</code>. Pour un calcul rigoureux, il faut agréger les sinistres dans une sous-requête avant la jointure — c'est l'objet de l'exercice suivant.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 7</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Corriger la double comptabilisation</span></div>
+<div class="ex-body">Reprendre l'exercice 6 et corriger le biais : les primes doivent être comptées une seule fois par police, quel que soit le nombre de sinistres rattachés.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">WITH</span> sin_agg <span class="r-kw">AS</span> (
+  <span class="r-kw">SELECT</span> id_police, <span class="r-kw">SUM</span>(montant_sinistre) <span class="r-kw">AS</span> montant_total
+  <span class="r-kw">FROM</span> sinistres
+  <span class="r-kw">GROUP BY</span> id_police
+)
+<span class="r-kw">SELECT</span> p.branche,
+       <span class="r-kw">SUM</span>(p.prime_annuelle) <span class="r-kw">AS</span> total_primes,
+       <span class="r-kw">COALESCE</span>(<span class="r-kw">SUM</span>(a.montant_total), 0) <span class="r-kw">AS</span> total_sinistres,
+       <span class="r-kw">ROUND</span>(
+         <span class="r-kw">COALESCE</span>(<span class="r-kw">SUM</span>(a.montant_total), 0) / <span class="r-kw">NULLIF</span>(<span class="r-kw">SUM</span>(p.prime_annuelle), 0) * 100, 2
+       ) <span class="r-kw">AS</span> ratio_sp_pct
+<span class="r-kw">FROM</span> polices p
+<span class="r-kw">LEFT JOIN</span> sin_agg a <span class="r-kw">ON</span> a.id_police = p.id_police
+<span class="r-kw">GROUP BY</span> p.branche
+<span class="r-kw">ORDER BY</span> ratio_sp_pct <span class="r-kw">DESC</span>;</pre></div>
+Règle générale : agréger d'abord du côté « plusieurs », joindre ensuite. Comparer les deux résultats permet de mesurer l'ampleur du biais sur les données d'Oméga.
+</div></details>
+</div>
+</div>`,
 
     c3:`<div class="mod-section-tag">Module 2 · Cours 3/3</div>
 <div class="mod-section-title">Python / Pandas — Charger, nettoyer, transformer</div>
@@ -1421,8 +1725,13 @@ n8n start
 
 <div class="notion-card">
 <div class="nc-header"><div class="nc-icon" style="background:#0C447C"><i class="fa-solid fa-database" style="color:#fff"></i></div><div><div class="nc-label" style="color:#0C447C">Avant de commencer — créer le SI de SigmaRé</div><div class="nc-title-sm">Tables PostgreSQL dans la base sigmare_dwh</div></div></div>
-<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>sigmare_dwh</code> et exécute ce script pour créer les 2 tables du SI de SigmaRé :</div>
-<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">CREATE TABLE</span> traites (
+<div class="nc-body">Dans DBeaver, connecte-toi à la base <code>sigmare_dwh</code> créée au Module 1 (il ne faut pas la recréer) et exécute ce script pour y créer les 2 tables du SI de SigmaRé :</div>
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm">-- Base sigmare_dwh : déjà créée au Module 1, on n'y ajoute que les tables.</span>
+<span class="r-cm">-- On supprime d'abord la table fille (sinistres_cedes) puis la table mère (traites).</span>
+<span class="r-kw">DROP TABLE IF EXISTS</span> sinistres_cedes <span class="r-kw">CASCADE</span>;
+<span class="r-kw">DROP TABLE IF EXISTS</span> traites <span class="r-kw">CASCADE</span>;
+
+<span class="r-kw">CREATE TABLE</span> traites (
   id_traite     <span class="r-kw">VARCHAR</span>(15) <span class="r-kw">PRIMARY KEY</span>,
   cedante       <span class="r-kw">VARCHAR</span>(50),   <span class="r-cm">-- ADA Assurance Vie / Oméga Assurance</span>
   type_traite   <span class="r-kw">VARCHAR</span>(30),   <span class="r-cm">-- Quote-part, Excédent de plein, Excess of Loss</span>
@@ -1439,6 +1748,7 @@ n8n start
   montant_cede     <span class="r-kw">NUMERIC</span>(14,2),
   statut           <span class="r-kw">VARCHAR</span>(20)
 );</pre></div>
+<div class="info-box"><i class="fa-solid fa-circle-info"></i><div>L'ordre des <code>DROP</code> compte : <code>sinistres_cedes</code> possède une clé étrangère vers <code>traites</code>, il faut donc supprimer la table fille en premier. Le mot-clé <code>CASCADE</code> gère ce cas automatiquement, mais respecter l'ordre reste la bonne habitude à prendre.</div></div>
 </div>
 
 <div class="notion-card">
@@ -1483,6 +1793,112 @@ df_sin_ced.to_sql(<span class="r-st">"sinistres_cedes"</span>, engine, if_exists
 <li><strong>6.</strong> Charger <code>df_traites</code> et <code>df_sin_ced</code> nettoyés dans les tables <code>traites</code> et <code>sinistres_cedes</code> de la base <code>sigmare_dwh</code> avec <code>to_sql()</code></li>
 <li><strong>7.</strong> Vérifier dans DBeaver avec <code>SELECT cedante, COUNT(*) FROM sinistres_cedes GROUP BY cedante;</code></li>
 </ul>
+</div>
+
+<div class="mod-section-tag" style="margin-top:1.75rem">Exercices — Python / Pandas</div>
+<div class="nc-body" style="margin-bottom:.875rem">À réaliser dans un notebook Jupyter, à la suite du TP guidé SigmaRé.</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 1</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Diagnostic de qualité des données</span></div>
+<div class="ex-body">Avant toute transformation, produire un mini-rapport de qualité sur <code>df_sin_ced</code> : nombre de lignes, nombre de doublons, valeurs manquantes par colonne et types de chaque colonne.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>print(<span class="r-st">"Lignes :"</span>, len(df_sin_ced))
+print(<span class="r-st">"Doublons :"</span>, df_sin_ced.duplicated().sum())
+print(<span class="r-st">"\nValeurs manquantes :"</span>)
+print(df_sin_ced.isna().sum())
+print(<span class="r-st">"\nTypes :"</span>)
+print(df_sin_ced.dtypes)</pre></div>
+Ce diagnostic en quatre lignes devrait devenir un réflexe systématique à l'ouverture de tout fichier source.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 2</span><span class="ex-lvl facile">Facile</span><span class="ex-title">Primes cédées par cédante</span></div>
+<div class="ex-body">Calculer le total des primes cédées et le nombre de traités par cédante (ADA Assurance Vie, Oméga Assurance), triés par montant décroissant.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>resume = (df_traites
+    .groupby(<span class="r-st">"cedante"</span>)
+    .agg(nb_traites=(<span class="r-st">"id_traite"</span>, <span class="r-st">"count"</span>),
+         total_primes=(<span class="r-st">"prime_cedee"</span>, <span class="r-st">"sum"</span>))
+    .reset_index()
+    .sort_values(<span class="r-st">"total_primes"</span>, ascending=<span class="r-kw">False</span>))
+print(resume)</pre></div>
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 3</span><span class="ex-lvl moyen">Moyen</span><span class="ex-title">Résultat technique par traité</span></div>
+<div class="ex-body">Pour chaque traité, calculer le résultat technique : prime cédée moins total des sinistres cédés rattachés. Ajouter une colonne <code>rentable</code> valant Oui ou Non selon le signe du résultat.
+<div class="ex-attendu"><strong>Attendu :</strong> un traité sans aucun sinistre doit afficher un résultat égal à sa prime cédée, et non une valeur manquante.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-cm"># Agréger les sinistres AVANT la jointure</span>
+sin_par_traite = (df_sin_ced
+    .groupby(<span class="r-st">"id_traite"</span>)[<span class="r-st">"montant_cede"</span>]
+    .sum()
+    .reset_index()
+    .rename(columns={<span class="r-st">"montant_cede"</span>: <span class="r-st">"total_sinistres"</span>}))
+
+res = df_traites.merge(sin_par_traite, on=<span class="r-st">"id_traite"</span>, how=<span class="r-st">"left"</span>)
+res[<span class="r-st">"total_sinistres"</span>] = res[<span class="r-st">"total_sinistres"</span>].fillna(0)
+res[<span class="r-st">"resultat"</span>] = res[<span class="r-st">"prime_cedee"</span>] - res[<span class="r-st">"total_sinistres"</span>]
+res[<span class="r-st">"rentable"</span>] = res[<span class="r-st">"resultat"</span>].apply(<span class="r-kw">lambda</span> x: <span class="r-st">"Oui"</span> <span class="r-kw">if</span> x > 0 <span class="r-kw">else</span> <span class="r-st">"Non"</span>)
+print(res[[<span class="r-st">"id_traite"</span>, <span class="r-st">"cedante"</span>, <span class="r-st">"resultat"</span>, <span class="r-st">"rentable"</span>]])</pre></div>
+Le <code>how="left"</code> combiné au <code>fillna(0)</code> garantit qu'aucun traité ne disparaît : c'est l'équivalent Pandas du <code>LEFT JOIN</code> + <code>COALESCE</code> vu en SQL au cours précédent.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 4</span><span class="ex-lvl moyen">Moyen</span><span class="ex-title">Contrôle de cohérence sur les taux de cession</span></div>
+<div class="ex-body">Un taux de cession doit être compris entre 0 et 100. Détecter les traités hors bornes, les afficher, puis les exclure du chargement en base — sans les supprimer silencieusement : le nombre de lignes écartées doit être affiché.
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre>anomalies = df_traites[(df_traites[<span class="r-st">"taux_cession"</span>] &lt; 0) |
+                       (df_traites[<span class="r-st">"taux_cession"</span>] > 100) |
+                       (df_traites[<span class="r-st">"taux_cession"</span>].isna())]
+
+print(f<span class="r-st">"{len(anomalies)} traité(s) écarté(s) :"</span>)
+print(anomalies[[<span class="r-st">"id_traite"</span>, <span class="r-st">"cedante"</span>, <span class="r-st">"taux_cession"</span>]])
+
+df_traites_ok = df_traites.drop(anomalies.index)</pre></div>
+Écarter des lignes sans le journaliser est l'une des fautes les plus graves en ingénierie de données : les chiffres du rapport final ne sont alors plus explicables au métier.
+</div></details>
+</div>
+</div>
+
+<div class="ex-card">
+<div class="ex-head"><span class="ex-num">Exercice 5</span><span class="ex-lvl avance">Avancé</span><span class="ex-title">Chargement idempotent avec to_sql</span></div>
+<div class="ex-body">Le script du TP utilise <code>if_exists="append"</code> : le relancer duplique donc toutes les lignes. Modifier le chargement pour qu'il soit rejouable, tout en conservant la structure de table créée en SQL (clés primaires et clé étrangère).
+<div class="ex-attendu"><strong>Piège :</strong> <code>if_exists="replace"</code> fonctionne mais recrée la table à partir des types Pandas — les contraintes <code>PRIMARY KEY</code> et <code>REFERENCES</code> définies plus haut sont alors perdues.</div>
+<details class="sol"><summary>Voir le corrigé</summary><div class="sol-inner">
+<div class="code-block"><button class="copy-code-btn" onclick="copyCode(this)">Copier</button><pre><span class="r-kw">from</span> sqlalchemy <span class="r-kw">import</span> text
+
+<span class="r-cm"># Vider les tables sans détruire leur structure — fille puis mère</span>
+<span class="r-kw">with</span> engine.begin() <span class="r-kw">as</span> conn:
+    conn.execute(text(<span class="r-st">"TRUNCATE TABLE sinistres_cedes, traites CASCADE;"</span>))
+
+<span class="r-cm"># Puis recharger normalement</span>
+df_traites_ok.to_sql(<span class="r-st">"traites"</span>, engine, if_exists=<span class="r-st">"append"</span>, index=<span class="r-kw">False</span>)
+df_sin_ced.to_sql(<span class="r-st">"sinistres_cedes"</span>, engine, if_exists=<span class="r-st">"append"</span>, index=<span class="r-kw">False</span>)</pre></div>
+<code>engine.begin()</code> ouvre une transaction validée automatiquement à la sortie du bloc : si le chargement échoue, le vidage est annulé et la base reste dans son état d'origine.
+</div></details>
+</div>
+</div>
+
+<div class="notion-card" style="border:2px solid #FAC775;margin-top:1.75rem">
+<div class="nc-header"><div class="nc-icon" style="background:#FAEEDA"><i class="fa-solid fa-trophy" style="color:#854F0B"></i></div><div><div class="nc-label" style="color:#854F0B">TP de synthèse du Module 2</div><div class="nc-title-sm">Les trois entités, les trois outils · Durée estimée : 2h · À rendre avant le QCM final</div></div></div>
+<div class="nc-body">Ce TP mobilise n8n, SQL et Python sur un même besoin métier : produire un tableau de bord de la sinistralité du groupe, consolidant Oméga (assureur direct) et SigmaRé (réassureur).</div>
+<ul class="nc-list">
+<li><strong>1.</strong> <strong>n8n</strong> — s'assurer que <code>polices</code> et <code>sinistres</code> sont chargées dans <code>omega_assurance_dwh</code> via les deux workflows du cours 1</li>
+<li><strong>2.</strong> <strong>Python</strong> — charger traités et sinistres cédés dans <code>sigmare_dwh</code>, contrôles de qualité inclus</li>
+<li><strong>3.</strong> <strong>SQL</strong> — dans <code>omega_assurance_dwh</code>, créer la vue <code>v_sinistralite_omega</code> donnant par branche et par mois : nombre de sinistres, montant total, prime acquise</li>
+<li><strong>4.</strong> <strong>SQL</strong> — dans <code>sigmare_dwh</code>, créer la vue <code>v_cession_sigmare</code> donnant par cédante et par mois le montant cédé</li>
+<li><strong>5.</strong> <strong>Python</strong> — lire les deux vues avec <code>pd.read_sql()</code> depuis les deux bases, les rapprocher sur le mois, et calculer la charge nette conservée par Oméga (sinistres bruts moins montants cédés)</li>
+<li><strong>6.</strong> Exporter le résultat consolidé en <code>synthese_groupe.xlsx</code> — ce fichier servira de source au Module 4 sous Power BI</li>
+</ul>
+<div class="ex-attendu"><strong>Livrables :</strong> les deux workflows n8n exportés en JSON, le script SQL des deux vues, le notebook Python, et le fichier <code>synthese_groupe.xlsx</code>.</div>
+<div class="info-box"><i class="fa-solid fa-lightbulb"></i><div>Difficulté principale de l'étape 5 : les deux vues vivent dans des bases PostgreSQL différentes. Il faut donc deux objets <code>create_engine()</code> distincts et effectuer le rapprochement côté Python — une jointure SQL directe entre deux bases n'est pas possible sans extension dédiée. C'est précisément le problème que la modélisation Data Vault du Module 3 vient résoudre.</div></div>
 </div>`
   },
   3:{
