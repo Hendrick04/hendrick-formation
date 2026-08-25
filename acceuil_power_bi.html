@@ -4107,12 +4107,6 @@ C'est l'argument le plus solide en faveur d'une surveillance de l'absence d'exé
 };
 </script>
 <script>
-/* ══ CONFIG ══
-   ⚠️ Remplace cette URL par ta propre déploiement Google Apps Script
-   (Extensions → Apps Script → Déployer → Nouveau déploiement, dans un
-   Google Sheet dédié à CETTE formation). Sans backend valide, le login
-   et la synchro cloud ne fonctionneront pas, mais la progression reste
-   sauvegardée en local (localStorage) sur l'appareil de l'apprenant. */
 /* ══════════════════════════════════════════════════════════════
    BRANCHEMENT DU SUIVI DES APPRENANTS
    Colle ici l'URL de l'application web Apps Script déployée depuis
@@ -4120,22 +4114,25 @@ C'est l'argument le plus solide en faveur d'une surveillance de l'absence d'exé
    Elle ressemble à :
      https://script.google.com/macros/s/AKfycb.../exec
    Tant que la valeur reste "REMPLACER_PAR_URL_APPS_SCRIPT_POWERBI",
-   le portail laisse entrer n'importe quelle adresse email et la
-   progression n'est enregistrée que sur l'appareil de l'apprenant.
+   le portail laisse entrer n'importe quelle adresse email et AUCUNE
+   progression n'est conservée : tout est perdu à la fermeture de
+   l'onglet. Cette page ne fonctionne réellement qu'avec le classeur.
    ══════════════════════════════════════════════════════════════ */
 var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZDXWjiYVmSsw9v9TDL7O5iQ2sgbipp7Rm-KQCy58ns5pMkBDAD1pc-tmZkMtsMghN/exec";
-var PBI_PROG_KEY = "pbi_progress_v1";
 var PBI_USER_KEY = "pbi_user_v1";
 var pbiCurrentUser = {name:"", email:""};
 
-/* ══ PROGRESSION localStorage ══ */
-function loadProg(){
-  try{ var r=localStorage.getItem(PBI_PROG_KEY); return r?JSON.parse(r):{}; }
-  catch(e){ return {}; }
-}
-function saveProgLocal(prog){
-  try{ localStorage.setItem(PBI_PROG_KEY,JSON.stringify(prog)); }catch(e){}
-}
+/* ══════════════════════════════════════════════════════════════
+   PROGRESSION : le classeur de suivi fait seule autorité.
+   PBI_PROG n'est qu'une copie en mémoire, remplie à la connexion
+   depuis le classeur et vidée à la fermeture de l'onglet. Rien
+   n'est conservé dans le navigateur : un apprenant retrouve donc
+   exactement la même progression sur n'importe quel appareil.
+   ══════════════════════════════════════════════════════════════ */
+var PBI_PROG = {};
+
+function loadProg(){ return PBI_PROG; }
+function saveProgLocal(prog){ PBI_PROG = prog || {}; }
 function getModProg(m){
   var p=loadProg();
   return p[m]||{step:0,cours1:false,cours2:false,cours3:false,qcm1:null,qcm2:null,qcmf:null,validated:false};
@@ -4260,47 +4257,46 @@ function pbiLogin(){
       if(res.ok&&res.found){
         pbiCurrentUser={name:res.name||"",email:email};
         try{localStorage.setItem(PBI_USER_KEY,JSON.stringify(pbiCurrentUser));}catch(e){}
-        var local = loadProg();
-        if(res.steps && Object.keys(res.steps).length > 0){
+        /* La progression est reconstruite UNIQUEMENT depuis le classeur.
+           Aucune fusion avec une éventuelle copie locale : le classeur
+           fait autorité, sur cet appareil comme sur un autre. */
+        var prog = {};
+        function fiche(m){
+          if(!prog[m]) prog[m]={step:0,cours1:false,cours2:false,cours3:false,
+                                 qcm1:null,qcm2:null,qcmf:null,validated:false};
+          return prog[m];
+        }
+
+        /* Étapes intermédiaires : cours vus et QCM 1 & 2 */
+        if(res.steps){
           Object.keys(res.steps).forEach(function(m){
-            var rs  = res.steps[m];
-            var lm  = local[m] || {step:0,cours1:false,cours2:false,cours3:false,
-                                    qcm1:null,qcm2:null,qcmf:null,validated:false};
-            if((rs.step||0) > (lm.step||0)) lm.step = rs.step;
+            var rs = res.steps[m], lm = fiche(m);
+            if((rs.step||0) > lm.step) lm.step = rs.step;
             if(rs.cours1) lm.cours1 = true;
             if(rs.cours2) lm.cours2 = true;
             if(rs.cours3) lm.cours3 = true;
-            if(rs.qcm1 && (!lm.qcm1 || rs.qcm1.correct > (lm.qcm1.correct||0))){
-              lm.qcm1 = { done:true, score:rs.qcm1.score, correct:rs.qcm1.correct,
-                           total:rs.qcm1.total||4, states:{} };
-            }
-            if(rs.qcm2 && (!lm.qcm2 || rs.qcm2.correct > (lm.qcm2.correct||0))){
-              lm.qcm2 = { done:true, score:rs.qcm2.score, correct:rs.qcm2.correct,
-                           total:rs.qcm2.total||4, states:{} };
-            }
-            local[m] = lm;
+            if(rs.qcm1) lm.qcm1 = { done:true, score:rs.qcm1.score,
+                                    correct:rs.qcm1.correct, total:rs.qcm1.total||4, states:{} };
+            if(rs.qcm2) lm.qcm2 = { done:true, score:rs.qcm2.score,
+                                    correct:rs.qcm2.correct, total:rs.qcm2.total||4, states:{} };
           });
         }
-        if(res.progress && Object.keys(res.progress).length > 0){
+
+        /* QCM finaux et validation des modules */
+        if(res.progress){
           Object.keys(res.progress).forEach(function(m){
-            var rp = res.progress[m];
-            var lm = local[m] || {step:0,cours1:false,cours2:false,cours3:false,
-                                   qcm1:null,qcm2:null,qcmf:null,validated:false};
-            if(rp.validated && !lm.validated){
-              lm.validated = true;
-              lm.step = 6;
-              lm.qcmf = lm.qcmf || { done:true, pct:rp.score||0, score:Math.round((rp.score||0)/10),
-                                       validated:true, states:{} };
+            var rp = res.progress[m], lm = fiche(m);
+            var pct = rp.score||0;
+            lm.qcmf = { done:true, pct:pct, score:Math.round(pct/10),
+                        validated:!!rp.validated, states:{} };
+            if(rp.validated){
+              lm.validated = true; lm.step = 6;
               lm.cours1 = true; lm.cours2 = true; lm.cours3 = true;
-            } else if((rp.score||0) > 0 && !lm.qcmf){
-              lm.qcmf = { done:true, pct:rp.score||0, score:Math.round((rp.score||0)/10),
-                           validated:(rp.score||0)>=70, states:{} };
-              if(lm.qcmf.validated) lm.validated = true;
             }
-            local[m] = lm;
           });
         }
-        saveProgLocal(local);
+
+        saveProgLocal(prog);
         pbiShowConnected();
       }else{
         err.textContent=res.error||"Email non autorisé. Contacte le formateur.";
@@ -4329,36 +4325,86 @@ function pbiShowConnected(){
 
 function pbiLogout(){
   pbiCurrentUser={name:"",email:""};
+  PBI_PROG={};                 /* la progression sera relue depuis le classeur */
   try{localStorage.removeItem(PBI_USER_KEY);}catch(e){}
   document.getElementById("pbi-id-overlay").classList.remove("hidden");
   document.getElementById("pbi-user-bar").classList.remove("show");
   document.getElementById("pbi-id-email").value="";
 }
 
-/* ══ SHEETS ══ */
+/* ══════════════════════════════════════════════════════════════
+   ENVOI AU CLASSEUR
+   Le classeur étant la seule mémoire, un envoi perdu est une
+   progression perdue. Chaque envoi est donc réessayé, et une file
+   d'attente garde les envois en échec tant que la page est ouverte.
+   ══════════════════════════════════════════════════════════════ */
+var fileEnvois = [];
+var envoiEnCours = false;
+
+function backendConfigure(){
+  return APPS_SCRIPT_URL && APPS_SCRIPT_URL.indexOf("REMPLACER_PAR_URL") !== 0;
+}
+
 function sendToSheets(payload,onDone){
-  if(!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("REMPLACER_PAR_URL")===0) return; /* pas de backend configuré */
-  var url=APPS_SCRIPT_URL+"?data="+encodeURIComponent(JSON.stringify(payload));
+  if(!backendConfigure()){
+    showSaveStatus("err","Suivi non configuré : progression non enregistrée");
+    if(onDone) onDone(false);
+    return;
+  }
+  fileEnvois.push({payload:payload, onDone:onDone, essais:0});
+  traiterFile();
+}
+
+function traiterFile(){
+  if(envoiEnCours || !fileEnvois.length) return;
+  envoiEnCours = true;
+  var tache = fileEnvois[0];
+  var url = APPS_SCRIPT_URL + "?data=" + encodeURIComponent(JSON.stringify(tache.payload));
+
   fetch(url)
-    .then(function(r){return r.json();})
+    .then(function(r){ return r.json(); })
     .then(function(res){
-      if(res.ok){if(payload.action==="save_progress")showSaveStatus("ok");if(onDone)onDone(true);}
-      else{console.warn("[Sheets]",res.error);if(payload.action==="save_progress")showSaveStatus("err");}
+      if(!res.ok) throw new Error(res.error||"refus du serveur");
+      fileEnvois.shift();
+      envoiEnCours = false;
+      if(tache.payload.action === "save_progress") showSaveStatus("ok");
+      if(tache.onDone) tache.onDone(true);
+      traiterFile();
     })
-    .catch(function(){
-      fetch(APPS_SCRIPT_URL,{method:"POST",mode:"no-cors",
-        headers:{"Content-Type":"text/plain;charset=UTF-8"},body:JSON.stringify(payload)})
-      .then(function(){if(payload.action==="save_progress")showSaveStatus("ok");})
-      .catch(function(){if(payload.action==="save_progress")showSaveStatus("err");});
+    .catch(function(err){
+      tache.essais++;
+      envoiEnCours = false;
+      if(tache.essais < 4){
+        /* 2 s, 4 s, 8 s : laisse le temps à une coupure réseau brève */
+        setTimeout(traiterFile, 2000 * tache.essais);
+        showSaveStatus("err","Enregistrement en attente… nouvelle tentative");
+      }else{
+        fileEnvois.shift();
+        console.warn("[Suivi] envoi abandonné :", err, tache.payload);
+        showSaveStatus("err","Échec d'enregistrement : ne ferme pas la page, vérifie ta connexion");
+        if(tache.onDone) tache.onDone(false);
+        traiterFile();
+      }
     });
 }
 
-function showSaveStatus(type){
+/* Prévient si des envois restent en attente au moment de quitter */
+window.addEventListener("beforeunload", function(e){
+  if(fileEnvois.length){
+    e.preventDefault();
+    e.returnValue = "";
+  }
+});
+
+function showSaveStatus(type,message){
   var el=document.getElementById("pbi-save-status"); if(!el)return;
   el.className="pbi-save-status "+type;
-  el.innerHTML=type==="ok"?'<i class="fa-solid fa-circle-check"></i> Progression sauvegardée':'<i class="fa-solid fa-triangle-exclamation"></i> Erreur de sauvegarde';
+  var txt = message || (type==="ok" ? "Progression enregistrée" : "Erreur d'enregistrement");
+  el.innerHTML = (type==="ok"
+      ? '<i class="fa-solid fa-circle-check"></i> '
+      : '<i class="fa-solid fa-triangle-exclamation"></i> ') + txt;
   el.style.display="flex";
-  setTimeout(function(){el.style.display="none";},4000);
+  setTimeout(function(){el.style.display="none";}, type==="ok"?3000:7000);
 }
 
 /* ══ AFFICHER PROGRESSION ACCUEIL ══ */
@@ -4758,15 +4804,6 @@ function enregistrerCertificat(type, mod, intitule, pct, ref){
     score   : pct || 0,
     ref     : ref
   });
-  /* Trace locale, utile si le classeur n'est pas branché */
-  try{
-    var k = "pbi_certificats";
-    var all = JSON.parse(localStorage.getItem(k) || "{}");
-    all[ref] = { type:type, module:mod, intitule:intitule, score:pct,
-                 date:new Date().toISOString(),
-                 nom:pbiCurrentUser.name, email:pbiCurrentUser.email };
-    localStorage.setItem(k, JSON.stringify(all));
-  }catch(e){}
 }
 
 function downloadAttestMod(){
@@ -4952,18 +4989,23 @@ function downloadAttestation(){
 
 /* ══ INIT ══ */
 window.onload=function(){
-  try{
-    var saved=localStorage.getItem(PBI_USER_KEY);
-    if(saved){
-      pbiCurrentUser=JSON.parse(saved);
-      if(pbiCurrentUser.email){
-        document.getElementById("pbi-id-email").value=pbiCurrentUser.email;
-        pbiShowConnected();
-        return;
-      }
+  var saved=null;
+  try{ saved=JSON.parse(localStorage.getItem(PBI_USER_KEY)||"null"); }catch(e){}
+
+  /* L'email est mémorisé pour éviter de le ressaisir, mais la progression
+     n'est jamais lue depuis le navigateur : on relance une connexion
+     complète pour la recharger depuis le classeur. */
+  if(saved && saved.email){
+    document.getElementById("pbi-id-email").value = saved.email;
+    if(APPS_SCRIPT_URL && APPS_SCRIPT_URL.indexOf("REMPLACER_PAR_URL")!==0){
+      pbiLogin();      /* recharge la progression puis affiche la formation */
+      return;
     }
-  }catch(e){}
-  var p=loadProg();renderAccueilProg(p);unlockModules(p);
+    pbiCurrentUser = saved;
+    pbiShowConnected();
+    return;
+  }
+  renderAccueilProg({}); unlockModules({});
 };
 
 /* ══ PDF COMPLET DU COURS ══ */
