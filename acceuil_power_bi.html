@@ -4113,7 +4113,17 @@ C'est l'argument le plus solide en faveur d'une surveillance de l'absence d'exé
    Google Sheet dédié à CETTE formation). Sans backend valide, le login
    et la synchro cloud ne fonctionneront pas, mais la progression reste
    sauvegardée en local (localStorage) sur l'appareil de l'apprenant. */
-var APPS_SCRIPT_URL = "REMPLACER_PAR_URL_APPS_SCRIPT_POWERBI";
+/* ══════════════════════════════════════════════════════════════
+   BRANCHEMENT DU SUIVI DES APPRENANTS
+   Colle ici l'URL de l'application web Apps Script déployée depuis
+   le classeur "Suivi Formation Data Eng & Power BI".
+   Elle ressemble à :
+     https://script.google.com/macros/s/AKfycb.../exec
+   Tant que la valeur reste "REMPLACER_PAR_URL_APPS_SCRIPT_POWERBI",
+   le portail laisse entrer n'importe quelle adresse email et la
+   progression n'est enregistrée que sur l'appareil de l'apprenant.
+   ══════════════════════════════════════════════════════════════ */
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwZDXWjiYVmSsw9v9TDL7O5iQ2sgbipp7Rm-KQCy58ns5pMkBDAD1pc-tmZkMtsMghN/exec";
 var PBI_PROG_KEY = "pbi_progress_v1";
 var PBI_USER_KEY = "pbi_user_v1";
 var pbiCurrentUser = {name:"", email:""};
@@ -4659,7 +4669,8 @@ function submitModFinal(){
       +'Score : '+pct+'% &nbsp;·&nbsp; '+score+'/10'
       +'<i class="fa-solid fa-star" style="color:#185FA5;font-size:11px"></i>'
       +'</div>'
-      +'<div style="font-size:11px;color:#aaa;margin:.5rem 0 1rem">Délivrée le '+today+'</div>'
+      +'<div style="font-size:11px;color:#aaa;margin:.5rem 0 .25rem">Délivrée le '+today+'</div>'
+      +'<div style="font-size:10px;color:#bbb;margin-bottom:1rem;font-family:Consolas,Monaco,monospace">Réf. '+certRef("module",currentMod)+'</div>'
       +'<hr style="border:none;border-top:1px dashed #e0ddd5;margin:.875rem 0"/>'
       +'<div style="font-size:12px;color:#666">Data Engineering &amp; Power BI · <strong>Hendrick TENIN</strong><br>'
       +'<span style="font-size:11px;color:#aaa">Ingénieur Statisticien Économiste · Certifié Data Scientist</span></div>'
@@ -4708,6 +4719,54 @@ function getJsPDFCtor(){
   if(window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
   if(window.jsPDF) return window.jsPDF;
   return null;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ATTESTATIONS : référence unique + enregistrement au classeur
+   La référence est calculée à partir de l'email et du module :
+   elle est donc TOUJOURS la même pour une attestation donnée.
+   Retélécharger le PDF ne crée pas une nouvelle attestation,
+   cela incrémente seulement le compteur côté classeur.
+   ══════════════════════════════════════════════════════════════ */
+function certHash(txt){
+  var h = 5381;
+  for(var i=0;i<txt.length;i++){ h = ((h*33) ^ txt.charCodeAt(i)) >>> 0; }
+  /* Dispersion : sans elle, deux entrées proches (module 3 et module 4
+     du même email) donnent deux références qui ne diffèrent que d'un
+     caractère, et une faute de recopie tomberait sur une référence
+     valide appartenant à quelqu'un d'autre. */
+  h ^= h >>> 16;  h = Math.imul(h, 2246822507) >>> 0;
+  h ^= h >>> 13;  h = Math.imul(h, 3266489909) >>> 0;
+  h ^= h >>> 16;
+  return ("000000" + (h >>> 0).toString(36).toUpperCase()).slice(-6);
+}
+
+/* Ex : DEPB-M3-K4X92A  ·  DEPB-FIN-K4X92A */
+function certRef(type, mod){
+  var base = (pbiCurrentUser.email||"anonyme") + "|" + type + "|" + (mod||"");
+  return "DEPB-" + (type==="finale" ? "FIN" : "M"+mod) + "-" + certHash(base);
+}
+
+function enregistrerCertificat(type, mod, intitule, pct, ref){
+  sendToSheets({
+    action  : "save_certificate",
+    email   : pbiCurrentUser.email,
+    name    : pbiCurrentUser.name,
+    type    : type,                 /* "module" ou "finale" */
+    module  : mod || "",
+    intitule: intitule || "",
+    score   : pct || 0,
+    ref     : ref
+  });
+  /* Trace locale, utile si le classeur n'est pas branché */
+  try{
+    var k = "pbi_certificats";
+    var all = JSON.parse(localStorage.getItem(k) || "{}");
+    all[ref] = { type:type, module:mod, intitule:intitule, score:pct,
+                 date:new Date().toISOString(),
+                 nom:pbiCurrentUser.name, email:pbiCurrentUser.email };
+    localStorage.setItem(k, JSON.stringify(all));
+  }catch(e){}
 }
 
 function downloadAttestMod(){
@@ -4769,8 +4828,15 @@ function downloadAttestMod(){
     pdf.setFontSize(8); pdf.setTextColor(153,153,153);
     pdf.text("Ingenieur Statisticien Economiste - Certifie Data Scientist",CX,162,{align:"center"});
 
+    /* Référence de l'attestation, en bas à droite */
+    var refMod = certRef("module", currentMod);
+    pdf.setFontSize(7); pdf.setTextColor(180,180,180);
+    pdf.text("Reference : " + refMod, PW-16, PH-16, {align:"right"});
+
     var fileName = "Attestation_PBI_Module"+currentMod+"_"+pName.replace(/\s+/g,"_")+".pdf";
     pdf.save(fileName);
+
+    enregistrerCertificat("module", currentMod, modTxt, pct, refMod);
 
   } catch(e) {
     console.error("Erreur PDF:", e);
@@ -4867,7 +4933,15 @@ function downloadAttestation(){
     pdf.setFont("helvetica","normal");pdf.setFontSize(8);pdf.setTextColor(150,180,215);
     pdf.text("Ingénieur Statisticien Économiste · Certifié Data Scientist",PW/2,183,{align:"center"});
 
+    /* Référence de l'attestation finale */
+    var refFin = certRef("finale");
+    pdf.setFontSize(7);pdf.setTextColor(110,140,180);
+    pdf.text("Reference : " + refFin, PW-16, PH-14, {align:"right"});
+
     pdf.save("Attestation_DataEngineering_PowerBI_"+pName.replace(/\s+/g,"_")+".pdf");
+
+    enregistrerCertificat("finale", "", "Formation complète (6 modules)", scoreGlobal, refFin);
+
     document.getElementById("attestation-overlay").style.display="none";
     document.body.style.overflow="";
   }catch(e){
